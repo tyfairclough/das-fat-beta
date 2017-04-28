@@ -1,22 +1,11 @@
 {% extends "layout.html" %}
-
 {% block page_title %}
   Sprint {{sprint}} - Dashboard
 {% endblock %}
-
 {% block inside_header %}
-
 {% endblock %}
-
-
-
-
 {% block content %}
-
-
-
 <main class="index" id="content" role="main" tabindex="-1">
-
   <div class="grid-row">
     <div class="column-two-thirds">
         <div class="hgroup">
@@ -25,12 +14,11 @@ Find apprenticeship training
             </h1>
 <p>For employers looking to take on apprentices.</p>
 <p>Use this service to:</p>
-            
         <ul class="list list-bullet">
             <li>search for apprenticeship training by job role or keyword</li>
             <li>find training providers who offer the apprenticeship training you choose</li>
         </ul>
-        <a href="/sprint/{{sprint}}/onboarding/index.html" class="button button-start">Start</a>
+        <a href="/sprint/{{sprint}}/triage/search-select.html" class="button button-start">Start</a>
         </div>
 
         <h3 class="heading-medium">Help</h3>
@@ -40,6 +28,5 @@ Find apprenticeship training
         <p>Telephone: 0800 015 0600 <a href="https://findapprenticeshiptraining.sfa.bis.gov.uk/"> Find out about call charges</a></p>
     </div>
   </div>
-
 </main><!-- / #content -->
 {% endblock %}

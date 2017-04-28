@@ -3664,6 +3664,134 @@ dl.course-details dd {
   display: inline-block;
 }
 
+.provider-results #current-search div {
+  width: 30%;
+  float: left;
+}
+
+.provider-results #current-search div .form-control {
+  width: 100% !important;
+  border-right: none;
+}
+
+.provider-results .filters {
+  display: block;
+  margin: 0 0 20px 0;
+  border: 1px solid #dee0e2;
+  overflow: hidden;
+}
+
+.provider-results .filters .toggler {
+  clear: both;
+  background: #dee0e2;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 5px 30px 5px 10px;
+  margin: 0;
+  top: 0;
+  float: none;
+  position: relative;
+  cursor: default;
+}
+
+.provider-results .filters .toggled-content {
+  padding: 20px;
+}
+
+#provider-results .result {
+  overflow: auto;
+  border-bottom: 1px solid #bfc1c3;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+#provider-results .result-data-list dt {
+  max-width: none;
+  font-weight: normal;
+}
+
+#provider-results .result-data-list dt {
+  margin-bottom: 0 !important;
+}
+
+#provider-results .result-data-list dt {
+  font-weight: bold;
+  max-width: 40%;
+  padding-right: 7.5px;
+  clear: left;
+  margin-bottom: 1em;
+}
+
+#provider-results .result-data-list dt, #provider-results .result-data-list dd {
+  float: left;
+  box-sizing: border-box;
+}
+
+#provider-results .address {
+  border-left: #bfc1c3 solid 3px;
+  padding: 7.5px !important;
+}
+
+.data-list--provider dt, .data-list--provider dd {
+  float: left;
+  box-sizing: border-box;
+  padding-bottom: 7.5px;
+}
+
+.data-list--provider dt {
+  font-weight: bold;
+  width: 35%;
+  padding-right: 7.5px;
+  clear: left;
+  margin-bottom: 1em;
+}
+
+.data-list--provider dd {
+  width: 65%;
+  margin-bottom: 1em;
+}
+
+.data-list--provider.data-list--compact dd, .data-list--provider.data-list--compact dt {
+  margin-bottom: 0;
+}
+
+.rating--inline span {
+  width: 50px;
+  float: left;
+}
+
+.progress-container {
+  background-color: #dee0e2;
+}
+
+.rating--inline .progress-container {
+  margin-left: 3em;
+}
+
+.progress-container .progressbar {
+  height: 1.1em;
+  background-color: #2b8cc4;
+}
+
+.satisfaction-source {
+  display: block;
+  text-align: right;
+  font-family: "nta",Arial,sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.143;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  color: #6f777b;
+}
+
+.satisfaction-source {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
 .elements-index .heading-medium {
   margin: 1em 0 0 0;
 }
