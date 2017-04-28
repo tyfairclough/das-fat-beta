@@ -3787,6 +3787,36 @@ dl.course-details dd {
   line-height: 1.25;
 }
 
+.alpha-index, .course-index {
+  height: 25px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.alpha-index a, .alpha-index span, .course-index span, .course-index a {
+  display: inline-block;
+  width: 21px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.course-index span, .course-index a {
+  width: auto;
+  margin-right: 10px;
+}
+
+#provider-header {
+  background: #f8f8f8;
+  border-bottom: 1px solid #bfc1c3;
+}
+
+#provider-header .wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
 .elements-index .heading-medium {
   margin: 1em 0 0 0;
 }
