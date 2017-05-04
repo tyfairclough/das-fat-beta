@@ -1936,4 +1936,23 @@ dl.course-details {
     }
 }
 
+    .result-data-list {
+        .address {
+            width: 100%;
+        }
+    }
 
+#provider-results .result {
+    h2 {
+        display: inline;
+    }
+    .tag.tag-national, .tag.tag-new, .labelmessage strong.new {
+        background-color: #808080;
+        color: white;
+        padding: 0 0.4em;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 4px;
+        text-transform: capitalize;
+        }
+}

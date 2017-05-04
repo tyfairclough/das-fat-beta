@@ -8,18 +8,13 @@
 
 <!-- govuk_elements js -->
 <script src="/public/javascripts/govuk/details.polyfill.js"></script>
-<script src="/public/javascripts/application.js"></script>
 <script src="/public/javascripts/stackable.min.js"></script>
-<script src="/public/javascripts/zxcvbn.js"></script>
-<script src="/public/javascripts/hammer.min.js"></script>
-<script src="/public/javascripts/jquery.hammer.js"></script>
+<script src="/public/javascripts/application.js"></script>
+
 
 <script src="/public/javascripts/aml.js"></script>
+<script src="/public/javascripts/tinysort.min.js"></script>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css" integrity="sha256-gl80aFE+bSTFw7UJf+ne/RkwC55cjidIp0Oe3AX5pfo=" crossorigin="anonymous" />
 
 <script type="text/javascript"
   src=
@@ -57,15 +52,122 @@ $(document).ready(function () {
         case 'provider-detail-multiple':
             providerDetailMultiple();
             break;
+        case 'provider-start':
+            providerStart();
+            break;
+        case 'provider-results':
+            providerResults();
+            break;
         default: break;
     };
+    
+    
+    function providerResults() {
+        
+        
+        var resultSet = localStorage.getItem("resultSet");
+        
+            if ( resultSet == "0") {
+                console.log("all levy providers")
+                var nationalCount = $(".national").len;
+            } else if ( resultSet == "1") {
+                console.log("all non levy providers")
+            } else if ( resultSet == "2") {
+                console.log("levy paying with a provider name")
+            } else if ( resultSet == "3") {
+                console.log("levy payyign with location ")
+            } else if (resultSet == "4") {
+                console.log ("levy with name and location")
+            } else if (resultSet == "5") {
+                console.log("non levy with name")
+            } else if (resultSet == "6") {
+                console.log("non levy with location");
+            } else if (resultSet == "7") {
+                console.log("non levy with name and location");
+            } else {
+                console.log("please choose if you pay the levy");
+            }
+        
+        // hide national    
+        $("article.national").hide();
+        $("article.national").show();
+        
+        //alert(nationalCount);
+        
+    }
+    
+    
+    //alpha sort
+            tinysort('#provider-results>article',{selector:'h2'});
+    // distance sort
+            tinysort('#provider-results>article',{selector:'article',data:'distance'});
+    // national filter
+            //$("article").attr("data-national").hide();
 
+    
+    function providerStart() {
+        $(".button").click(function(e){
+            e.preventDefault();
+            var name = $("#name").val(); 
+            console.log(name);
+            var location = $("#location").val();
+            console.log(location);
+            var levy = $('input[name=levy-group]:checked').val();
+            console.log(levy);
+            
+            if ( levy == "1" && name == ""  && location == "") {
+                console.log("all levy providers")
+               localStorage.setItem("resultSet","0");                
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if ( levy == "2" && name == "" && location == "") {
+               localStorage.setItem("resultSet","1");
+                console.log("all non levy providers")
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if ( levy == "1" && name != "" && location == "") {
+               localStorage.setItem("resultSet","2");
+                console.log("levy paying with a provider name")
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if ( levy =="1"  && name == ""  && location != "") {
+               localStorage.setItem("resultSet","3");
+                console.log("levy payyign with location ")
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if (levy == "1" && name != "" && location != "") {
+               localStorage.setItem("resultSet","4");
+                console.log ("levy with name and location")
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if (levy ="2" && name != "" && location == "") {
+               localStorage.setItem("resultSet","5");
+                console.log("non levy with name")
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if (levy == "2" && name == "" && location != "") {
+               localStorage.setItem("resultSet","6");
+                console.log("non levy with location");
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if (levy == "2" && name != "" && location != "") {
+               localStorage.setItem("resultSet","7");
+                console.log("non levy with name and location");
+                window.location.href = "/sprint/{{sprint}}/provider/results";
+            } else if (levy == "") {
+               localStorage.setItem("resultSet","8");
+                console.log("please choose if you pay the levy");
+            } else {
+               localStorage.setItem("resultSet","9");
+                console.log("please choose if you pay the levy");
+            }
+        })
+    }
+
+    
+    
+    
+     
     function searchSelect() {
         $(".button").click(function(e){
             e.preventDefault();
             var state = $('input[name=radio-group]:checked').val();
             if ( state == "1" ) {
-                window.location.href = "/sprint/{{sprint}}/course/index";
+                //window.location.href = "/sprint/{{sprint}}/course/index";
+                window.location.href = "https://findapprenticeshiptraining.sfa.bis.gov.uk/Apprenticeship/Search";
             } else if ( state == "2" ) {
                 window.location.href = "/sprint/{{sprint}}/provider/index";
             } else {
@@ -127,19 +229,6 @@ function initGoogleMap(){
 }
     
 });
-    
 
-
-
-   /* var sites = [
-	['ACL Basildon', 39.58108, -105.63535, 4, 'ACL Basildon, Broadmayne, Churchill Avenue, Basildon, Essex, SS14 3SG'],
-	['ACL Brentwood', 51.620475, 0.307175, 2, 'ACL Braintree, Broadmayne, Churchill Avenue, Braintreee, Essex, BR11 3SG'],
-	['ACL Chelmsford', 51.735587, 0.468550, 1, 'ACL Chelmsford, Broadmayne, Churchill Avenue, Basildon, Essex, CM4 3SS 3SG'],
-	['ACL Harlow', 51.767787, 0.087806, 3, 'ACL Harlow, Broadmayne, Churchill Avenue, Harlow, Essex, CM9 13XL']
-    */
-        //var basildon = {lat: 51.576084, lng: 0.488736};
-        //var brentwood = {lat: 51.620475, lng: 0.307175};
-        //var chelmsford = {lat: 51.735587, lng: 0.468550};
-        //var harlow = {lat: 51.767787, lng: 0.087806};
 </script>
 

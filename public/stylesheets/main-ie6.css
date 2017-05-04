@@ -3855,3 +3855,21 @@ dl.course-details dd {
   width: 70%;
   margin-bottom: 1em;
 }
+
+.result-data-list .address {
+  width: 100%;
+}
+
+#provider-results .result h2 {
+  display: inline;
+}
+
+#provider-results .result .tag.tag-national, #provider-results .result .tag.tag-new, #provider-results .result .labelmessage strong.new {
+  background-color: #808080;
+  color: white;
+  padding: 0 0.4em;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
