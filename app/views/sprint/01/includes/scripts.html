@@ -21,6 +21,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css" integrity="sha256-gl80aFE+bSTFw7UJf+ne/RkwC55cjidIp0Oe3AX5pfo=" crossorigin="anonymous" />
 
+<script type="text/javascript"
+  src=
+"http://maps.googleapis.com/maps/api/js?key=AIzaSyB1tbIAqN0XqcgTR1-          FxYoVTVq6Is6lD98&sensor=false">
+</script>
 <script>
 $(document).ready(function () {
     
@@ -50,6 +54,9 @@ $(document).ready(function () {
         case 'search-select':
             searchSelect();
             break;
+        case 'provider-detail-multiple':
+            providerDetailMultiple();
+            break;
         default: break;
     };
 
@@ -67,7 +74,72 @@ $(document).ready(function () {
         })
     }
     
-});
-</script>
+    function providerDetailMultiple() {
+        
+        $("#map-tab").hide();
+        $(".course-index > a.map").click(function(e){
+            e.preventDefault();
+            $("#alpha-tab").hide();
+            $("#map-tab").show();
+            $(".course-index .alphabetic").removeClass("active");
+            initGoogleMap();
+        });
+    }
+    
 
+    
+    var locations = [
+  ["Basildon",     51.576084, 0.488736],
+  ["Brentwood",    51.620475,  0.307175],
+  ["Chelmsford", 51.735587, 0.468550],
+  ["Harlow", 51.767787, 0.087806]
+];
+
+function initGoogleMap(){
+
+  var infowindow = new google.maps.InfoWindow(); /* SINGLE */
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 9,
+      center: new google.maps.LatLng(51.620475,  0.307175)
+  });
+  
+  function placeMarker( loc ) {
+    var latLng = new google.maps.LatLng( loc[1], loc[2]);
+    var marker = new google.maps.Marker({
+      position : latLng,
+      map      : map
+    });
+    google.maps.event.addListener(marker, 'click', function(){
+        infowindow.close(); // Close previously opened infowindow
+        infowindow.setContent( "<div id='infowindow'>"+ loc[0] +"</div>");
+        infowindow.open(map, marker);
+    });
+  }
+  
+  // ITERATE ALL LOCATIONS
+  // Don't create functions inside for loops
+  // therefore refer to a previously created function
+  // and pass your iterating location as argument value:
+  for(var i=0; i<locations.length; i++) {
+    placeMarker( locations[i] );
+  } 
+  
+}
+    
+});
+    
+
+
+
+   /* var sites = [
+	['ACL Basildon', 39.58108, -105.63535, 4, 'ACL Basildon, Broadmayne, Churchill Avenue, Basildon, Essex, SS14 3SG'],
+	['ACL Brentwood', 51.620475, 0.307175, 2, 'ACL Braintree, Broadmayne, Churchill Avenue, Braintreee, Essex, BR11 3SG'],
+	['ACL Chelmsford', 51.735587, 0.468550, 1, 'ACL Chelmsford, Broadmayne, Churchill Avenue, Basildon, Essex, CM4 3SS 3SG'],
+	['ACL Harlow', 51.767787, 0.087806, 3, 'ACL Harlow, Broadmayne, Churchill Avenue, Harlow, Essex, CM9 13XL']
+    */
+        //var basildon = {lat: 51.576084, lng: 0.488736};
+        //var brentwood = {lat: 51.620475, lng: 0.307175};
+        //var chelmsford = {lat: 51.735587, lng: 0.468550};
+        //var harlow = {lat: 51.767787, lng: 0.087806};
+</script>
 

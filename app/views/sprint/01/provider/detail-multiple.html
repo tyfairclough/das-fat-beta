@@ -5,7 +5,7 @@
     {% block inside_header %}
     {% endblock %}
     {% block content %}
-    <main class="provider-detail-single" id="content" role="main" tabindex="-1">
+    <main class="provider-detail-multiple" id="content" role="main" tabindex="-1">
 
           {% include "includes/link-back.html" %}
 
@@ -111,10 +111,10 @@
 
                 <h2 class="heading-large">All training locations</h2>
                  <div class="course-index">
-                     <span title="b">alphabetic</span>
-                    <a href="#" title="a">map</a>
+                     <a href="#" title="alphabetic" class="active">alphabetic</a>
+                    <a href="#" title="map" class="map">map</a>
                 </div>
-
+                <section id="alpha-tab">
                 <div class="alpha-index">
                     <span title="a">a</span>
                     <a href="#b" title="b">b</a>
@@ -152,21 +152,18 @@
                     <a href="/sprint/{{sprint}}/provider/detail-single.html">View 14 courses offered here</a>
 
                 </details>
-                <hr>
                 <details>
                     <summary>Braintree</summary>
-                    <h1 class="heading-large">Accounting, level 2</h1>
-                    <p>This apprenticeship has been designed and developed to meet industry needs aligned with high level technological development. Building on a sound foundation of material and scientific understanding the programme delivers high level engagement with latest technology. Balanced phases of learning encompass theoretical understanding with extensive technical and practical learning in the employer’s workplace. Individual development objectives are aligned with both the apprenticeship outcomes and specific employer needs.</p>
+                    <address>ACL Braintree, Broadmayne, Churchill Avenue, Braintreee, Essex, BR11 3SG</address>
+                    <a href="/sprint/{{sprint}}/provider/detail-single.html">View 14 courses offered here</a>
 
                 </details>
-                <hr>
                 <h5 class="heading-medium">C</h5>
                 <details>
                     <summary>Chelmsford</summary>
-                    <h1 class="heading-large">CNC Technician, level 3</h1>
-                    <p>This apprenticeship has been designed and developed to meet industry needs aligned with high level technological development. Building on a sound foundation of material and scientific understanding the programme delivers high level engagement with latest technology. Balanced phases of learning encompass theoretical understanding with extensive technical and practical learning in the employer’s workplace. Individual development objectives are aligned with both the apprenticeship outcomes and specific employer needs.</p>
+                    <address>ACL Chelmsford, Broadmayne, Churchill Avenue, Basildon, Essex, CM4 3SS 3SG</address>
+                    <a href="/sprint/{{sprint}}/provider/detail-single.html">View 14 courses offered here</a>
                 </details>
-                <hr>
                 <h5 class="heading-medium" style="display:none;">D</h5>
                 <h5 class="heading-medium" style="color: #BFC1C3; display:none;">E</h5>
 
@@ -175,8 +172,8 @@
                 <h5 class="heading-medium">H</h5>
 <details>
                     <summary>Harlow</summary>
-                    <h1 class="heading-large">CNC Technician, level 3</h1>
-                    <p>This apprenticeship has been designed and developed to meet industry needs aligned with high level technological development. Building on a sound foundation of material and scientific understanding the programme delivers high level engagement with latest technology. Balanced phases of learning encompass theoretical understanding with extensive technical and practical learning in the employer’s workplace. Individual development objectives are aligned with both the apprenticeship outcomes and specific employer needs.</p>
+                    <address>ACL Harlow, Broadmayne, Churchill Avenue, Harlow, Essex, CM9 13XL</address>
+                    <a href="/sprint/{{sprint}}/provider/detail-single.html">View 14 courses offered here</a>
                 </details>        
         
                 <h5 class="heading-medium" style="display:none;">I</h5>
@@ -200,7 +197,11 @@
                 <h5 class="heading-medium" style="color: #BFC1C3; display:none;">Z</h5>
             </section>
         
+        <section id="map-tab">
+             <div id="map" style="height: 50vh"></div>
+        </section>
         <hr />
+        </section>
 
 
                 <div class="survey">

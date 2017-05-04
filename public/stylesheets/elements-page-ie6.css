@@ -3815,11 +3815,45 @@ dl.course-details dd {
 #provider-header {
   background: #f8f8f8;
   border-bottom: 1px solid #bfc1c3;
+  width: 100%;
+  position: absolute;
+  left: 0;
 }
 
 #provider-header .wrapper {
   width: 960px;
   margin: 0 auto;
+}
+
+#provider-header + div {
+  padding-top: 400px;
+}
+
+.provider-detail-single .ui-find-training-providers {
+  margin-top: 60px;
+}
+
+.provider-detail-single .data-list {
+  margin-bottom: 30px;
+}
+
+.provider-detail-single .data-list dd, .provider-detail-single .data-list dt {
+  float: left;
+  box-sizing: border-box;
+  padding-bottom: 7.5px;
+}
+
+.provider-detail-single .data-list dt {
+  font-weight: bold;
+  width: 30%;
+  padding-right: 7.5px;
+  clear: left;
+  margin-bottom: 1em;
+}
+
+.provider-detail-single .data-list dd {
+  width: 70%;
+  margin-bottom: 1em;
 }
 
 .elements-index .heading-medium {
