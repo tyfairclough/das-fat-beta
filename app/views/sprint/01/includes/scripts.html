@@ -176,60 +176,6 @@ $(document).ready(function () {
             $proName = $("#providerName").val();
             window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName="+$proName+"";            
         })
-   /*     $(".button").click(function(e){
-            e.preventDefault();
-            var providerName = $("#providerName").val(); 
-            console.log(name);
-            var providerLocation = $("#providerLocation").val();
-            console.log(location);
-            var levy = $('input[name=levy-group]:checked').val();
-            console.log(levy);
-            
-            
-            localStorage.setItem("queryProviderName",providerName);
-            localStorage.setItem("queryProviderLocation",providerLocation);
-            localStorage.setItem("queryLevy",levy);
-            
-            if ( levy == "1" && providerName == ""  && providerLocation == "") {
-                console.log("all levy providers");
-               localStorage.setItem("resultSet","0");                
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if ( levy == "2" && providerName == "" && providerLocation == "") {
-               localStorage.setItem("resultSet","1");
-                console.log("all non levy providers")
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if ( levy == "1" && providerName != "" && providerLocation == "") {
-               localStorage.setItem("resultSet","2");
-                console.log("levy paying with a provider name")
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if ( levy =="1"  && providerName == ""  && providerLocation != "") {
-               localStorage.setItem("resultSet","3");
-                console.log("levy payyign with location ")
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if (levy == "1" && providerName != "" && providerLocation != "") {
-               localStorage.setItem("resultSet","4");
-                console.log ("levy with name and location")
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if (levy ="2" && providerName != "" && providerLocation == "") {
-               localStorage.setItem("resultSet","5");
-                console.log("non levy with name")
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if (levy == "2" && providerName == "" && providerLocation != "") {
-               localStorage.setItem("resultSet","6");
-                console.log("non levy with location");
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if (levy == "2" && providerName != "" && providerLocation != "") {
-               localStorage.setItem("resultSet","7");
-                console.log("non levy with name and location");
-                window.location.href = "/sprint/{{sprint}}/provider/results-list";
-            } else if (levy == "") {
-               localStorage.setItem("resultSet","8");
-                console.log("please choose if you pay the levy");
-            } else {
-               localStorage.setItem("resultSet","9");
-                console.log("please choose if you pay the levy");
-            }
-        }) */
     }
 
     
@@ -268,7 +214,8 @@ $(document).ready(function () {
             
             
                 if ( $proName != "" ) {
-            $("#providerName").val($proName);
+
+            $("#providerName").val($proName.replace(/%20/g, " "));
     } else {
             $("#providerName").val("");
     }
@@ -549,13 +496,13 @@ function deg2rad(deg) {
 
                   
     if ( $usrLoc != "" ) {
-            $("#location").val($usrLoc);        
+            $("#location").val($usrLoc.replace(/%20/g, " "));        
     } else {
             $("#location").val("");        
     }
     
     if ( $proName != "" ) {
-            $("#name").val($proName);
+            $("#name").val($proName.replace(/%20/g, " "));
     } else {
             $("#name").val("");
     }
