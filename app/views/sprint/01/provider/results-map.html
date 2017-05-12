@@ -1,0 +1,375 @@
+{% extends "layout.html" %}
+{% block page_title %}
+  Sprint {{sprint}} - Dashboard
+{% endblock %}
+{% block inside_header %}
+{% endblock %}
+{% block content %}
+<main class="provider-results-map" id="content" role="main" tabindex="-1">
+    <section id="map-search">
+        <div class="wrapper">
+
+            <form>
+            <div class="form-group">
+            <label for="location" class="form-label">Location</label>
+            <input id="location" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+            <label for="name" class="form-label">Provider name</label>
+            <input id="name" type="text" class="form-control" />
+            </div>
+                
+<div class="form-group inline">
+        <legend class="form-label">Show levy providers?</legend>
+        <label class="block-label selection-button-radio" for="levy-1">
+        <input id="levy-1" type="radio" name="levy-group" value="1">
+        Yes
+        </label>
+        <label class="block-label selection-button-radio" for="levy-2">
+        <input id="levy-2" type="radio" name="levy-group" value="2">
+        No
+        </label>
+        </div>
+            </form>
+            
+            
+        <nav id="user-nav">
+                <ul>
+                    <li class="top-level"><a href="/sprint/{{sprint}}/provider/results-list.html"><i class="fa fa-bars"></i> Show as a list</a></li>
+                    <li class="top-level"><a class="js-toggle menu-closed nav-menu-link">Sort by</a>
+                    <ul id="nav-user" class="">
+                        <li><a href="#">Closest</a></li>
+                        <li><a href="#">Best match</a></li>
+                    </ul>
+                    </li>
+                </ul>
+        </nav>
+        </div>
+
+        <aside>
+            <div id="provider-results" style="float: left; width: 100%;">
+    
+            <article class="result">
+    <header>
+                        <h2 class="bold-medium">
+                        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">ASTUTE MINDS trading as MIDDLETONMURRAY</a>
+                        </h2>
+    </header>
+        <dl class="result-data-list">
+        <dt>Distance:</dt>
+        <dd class="distance" data-distance="17.7">17.7 miles away</dd>
+        <dd class="address">MiddletonMurray- Romford, 4th Floor, Queen's Court, 9-17 Eastern Road, Romford, Essex, RM1 3NG</dd>
+
+        <dt>Apprenticeships:</dt>
+        <dd class="deliveryOptions">34</dd>
+
+
+        <dt>Locations:</dt>
+        <dd class="employer-satisfaction">
+        1
+        </dd>
+        <dt>Employer satisfaction:</dt>
+        <dd class="learner-satisfaction">
+        93%
+        </dd>
+        <dt>Average achievement rate:</dt>
+        <dd class="achievement-rate">
+        100%
+        </dd>
+        </dl>
+</article><article class="result">
+    <header>
+                        <h2 class="bold-medium">
+                        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">Barking &amp; Dagenham College</a>
+                        </h2>
+    </header>
+        <dl class="result-data-list">
+        <dt>Distance:</dt>
+        <dd class="distance" data-distance="18.7">18.7 miles away</dd>
+        <dd class="address">Rush Green Campus, Dagenham Road, Romford, Essex, RM7 0XU</dd>
+
+        <dt>Apprenticeships:</dt>
+        <dd class="deliveryOptions">34</dd>
+
+
+        <dt>Locations:</dt>
+        <dd class="employer-satisfaction">
+        1
+        </dd>
+        <dt>Employer satisfaction:</dt>
+        <dd class="learner-satisfaction">
+        93%
+        </dd>
+        <dt>Average achievement rate:</dt>
+        <dd class="achievement-rate">
+        100%
+        </dd>
+        </dl>
+</article><article class="result levy">
+<header>
+        <h2 class="bold-medium">
+        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">Harlow college</a>
+        </h2>
+</header>
+<dl class="result-data-list">
+<dt>Distance:</dt>
+<dd class="distance" data-distance="2.2">2.2 miles away</dd>
+<dd class="address">ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB</dd>
+
+<dt>Apprenticeships:</dt>
+<dd class="deliveryOptions">34</dd>
+
+
+<dt>Locations:</dt>
+<dd class="employer-satisfaction">
+1
+</dd>
+<dt>Employer satisfaction:</dt>
+<dd class="learner-satisfaction">
+93%
+</dd>
+<dt>Average achievement rate:</dt>
+<dd class="achievement-rate">
+100%
+</dd>
+</dl>
+</article><article class="result levy">
+    <header>
+                        <h2 class="bold-medium">
+                        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">Harlow college</a>
+                        </h2>
+    </header>
+        <dl class="result-data-list">
+        <dt>Distance:</dt>
+        <dd class="distance" data-distance="2.2">2.2 miles away</dd>
+        <dd class="address">ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB</dd>
+
+        <dt>Apprenticeships:</dt>
+        <dd class="deliveryOptions">34</dd>
+
+
+        <dt>Locations:</dt>
+        <dd class="employer-satisfaction">
+        1
+        </dd>
+        <dt>Employer satisfaction:</dt>
+        <dd class="learner-satisfaction">
+        93%
+        </dd>
+        <dt>Average achievement rate:</dt>
+        <dd class="achievement-rate">
+        100%
+        </dd>
+        </dl>
+</article><article class="result national levy" style="">
+<header>
+        <h2 class="bold-medium">
+        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">IXION GROUP CONTRACTS LIMITED</a>
+        </h2>
+<span class="tag tag-new">National</span>
+</header>
+<dl class="result-data-list">
+<dt>Distance:</dt>
+<dd class="distance" data-distance="1.7">1.7 miles away</dd>
+<dd class="address">On-site training provider</dd>
+
+<dt>Apprenticeships:</dt>
+<dd class="deliveryOptions">34</dd>
+
+
+<dt>Locations:</dt>
+<dd class="employer-satisfaction">
+1
+</dd>
+<dt>Employer satisfaction:</dt>
+<dd class="learner-satisfaction">
+93%
+</dd>
+<dt>Average achievement rate:</dt>
+<dd class="achievement-rate">
+100%
+</dd>
+</dl>
+</article><article class="result">
+    <header>
+                        <h2 class="bold-medium">
+                        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">MIDDLETONMURRAY LIMITED</a>
+                        </h2>
+    </header>
+        <dl class="result-data-list">
+        <dt>Distance:</dt>
+        <dd class="distance" data-distance="17.7">17.7 miles away</dd>
+        <dd class="address">MiddletonMurray- Romford, 4th Floor, Queen's Court, 9-17 Eastern Road, Romford, Essex, RM1 3NG</dd>
+
+        <dt>Apprenticeships:</dt>
+        <dd class="deliveryOptions">34</dd>
+
+
+        <dt>Locations:</dt>
+        <dd class="employer-satisfaction">
+        1
+        </dd>
+        <dt>Employer satisfaction:</dt>
+        <dd class="learner-satisfaction">
+        93%
+        </dd>
+        <dt>Average achievement rate:</dt>
+        <dd class="achievement-rate">
+        100%
+        </dd>
+        </dl>
+</article><article class="result levy national" style="">
+    <header>
+                        <h2 class="bold-medium">
+                        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">Seevic College</a>
+    <span class="tag tag-new">National</span>
+                        </h2>
+    </header>
+        <dl class="result-data-list">
+        <dt>Distance:</dt>
+        <dd class="distance" data-distance="12.7">12.7 miles away</dd>
+        <dd class="address">SEEVIC COLLEGE, Runnymede Chase, BENFLEET, Essex, SS7 1TW</dd>
+
+        <dt>Apprenticeships:</dt>
+        <dd class="deliveryOptions">34</dd>
+
+
+        <dt>Locations:</dt>
+        <dd class="employer-satisfaction">
+        1
+        </dd>
+        <dt>Employer satisfaction:</dt>
+        <dd class="learner-satisfaction">
+        93%
+        </dd>
+        <dt>Average achievement rate:</dt>
+        <dd class="achievement-rate">
+        100%
+        </dd>
+        </dl>
+</article><article class="result national" style="">
+    <header>
+                        <h2 class="bold-medium">
+                        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">Southend Adult Community College</a>
+                        </h2>
+    </header>
+        <dl class="result-data-list">
+        <dt>Distance:</dt>
+        <dd class="distance" data-distance="17">17 miles away</dd>
+        <dd class="address">Southchurch Centre, Ambleside Drive, Southend on Sea, Essex, SS1 2UP</dd>
+
+        <dt>Apprenticeships:</dt>
+        <dd class="deliveryOptions">34</dd>
+
+
+        <dt>Locations:</dt>
+        <dd class="employer-satisfaction">
+        1
+        </dd>
+        <dt>Employer satisfaction:</dt>
+        <dd class="learner-satisfaction">
+        93%
+        </dd>
+        <dt>Average achievement rate:</dt>
+        <dd class="achievement-rate">
+        100%
+        </dd>
+        </dl>
+</article><article class="result national" style="">
+    <header>
+                        <h2 class="bold-medium">
+                        <a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-single.html">THE TEACHING &amp; LEARNING GROUP LIMITED</a>
+                            <span class="tag tag-new">National</span>
+                        </h2>
+    </header>
+        <dl class="result-data-list">
+        <dt>Distance:</dt>
+        <dd class="distance" data-distance="17.7">17.7 miles away</dd>
+        <dd class="address">MiddletonMurray- Romford, 4th Floor, Queen's Court, 9-17 Eastern Road, Romford, Essex, RM1 3NG</dd>
+
+        <dt>Apprenticeships:</dt>
+        <dd class="deliveryOptions">34</dd>
+
+
+        <dt>Locations:</dt>
+        <dd class="employer-satisfaction">
+        1
+        </dd>
+        <dt>Employer satisfaction:</dt>
+        <dd class="learner-satisfaction">
+        93%
+        </dd>
+        <dt>Average achievement rate:</dt>
+        <dd class="achievement-rate">
+        100%
+        </dd>
+        </dl>
+</article><article class="result levy">
+<header>
+<h2 class="bold-medium">
+<a attr-ga-result-interval="1-3" href="/sprint/01/provider/detail-multiple.html">XCL Essex</a>
+</h2>
+<dl class="result-data-list">
+<dt>Distance:</dt>
+<dd class="distance" data-distance="2.2">2.2 miles away</dd>
+<dd class="address">ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB</dd>
+
+<dt>Apprenticeships:</dt>
+<dd class="deliveryOptions">34</dd>
+
+
+<dt>Locations:</dt>
+<dd class="employer-satisfaction">
+5
+</dd>
+<dt>Employer satisfaction:</dt>
+<dd class="learner-satisfaction">
+93%
+</dd>
+<dt>Average achievement rate:</dt>
+<dd class="achievement-rate">
+100%
+</dd>
+</dl>
+</header>
+</article>
+            </div>
+        </aside>
+            <div id="map">
+            </div>
+<footer class="group js-footer" id="footer" role="contentinfo">
+    <div class="footer-wrapper">
+
+        <div class="footer-meta">
+            <div class="footer-meta-inner">
+                <ul class="platform-help-links">
+                    <li>
+                        <a class="footer__link" href="https://sfacontactforms.azurewebsites.net/employer-enquiry" target="_blank">Contact us</a>
+                    </li>
+                    <li>
+                        <a class="footer__link" href="https://www.surveymonkey.co.uk/r/MLTBYNX" target="_blank">Feedback</a>
+                    </li>
+                    <li>
+                        <a href="/cookies">Cookies</a>
+                    </li>
+                    <li>Built by the <a href="http://gov.uk/sfa" target="_blank">Skills Funding Agency</a></li>
+                </ul>
+                <div class="open-government-licence">
+                    <p class="logo">
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+                    </p>
+
+                    <p>
+                        All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    </section>
+</main><!-- / #content -->
+{% endblock %}

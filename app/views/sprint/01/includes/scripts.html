@@ -9,20 +9,24 @@
 <!-- govuk_elements js -->
 <script src="/public/javascripts/govuk/details.polyfill.js"></script>
 <script src="/public/javascripts/stackable.min.js"></script>
+<script src="/public/javascripts/jquery.distancecalculator.js"></script>
+<script src="/public/javascripts/jPages.min.js"></script>
 <script src="/public/javascripts/application.js"></script>
 
 
-<script src="/public/javascripts/aml.js"></script>
+<script src="/public/javascripts/readmore.min.js"></script>
+<script src="/public/javascripts/aml.js" id="proData" xmldata="/public/javascripts/proSource.xml "></script>
 <script src="/public/javascripts/tinysort.min.js"></script>
-
-
-<script type="text/javascript"
-  src=
-"http://maps.googleapis.com/maps/api/js?key=AIzaSyB1tbIAqN0XqcgTR1-          FxYoVTVq6Is6lD98&sensor=false">
-</script>
 <script>
+    
+      var mapMarkers;
+      var mapMarkers = new Array();
+
+
+
 $(document).ready(function () {
     
+
     // get variables
     var i = 0;
     var className = $("#content").attr('class'); 
@@ -41,6 +45,23 @@ $(document).ready(function () {
         return (false);
     } 
     var newLevyAccount = getQueryVariable("newLevyAccount");
+    // defines url variables as global vars 
+    var $distance = Number(getQueryVariable("WithinDistance"));
+    var $resultsToDisplay = Number(getQueryVariable("resultsToDisplay"));
+    var $location = getQueryVariable("Location");
+    var $keywords = getQueryVariable("Keywords");
+    var $trainingId = getQueryVariable("trainingId");
+    var $proId = getQueryVariable("proId");
+    var $address = getQueryVariable("address");
+    var $appType = getQueryVariable("appType");
+    var $appCat = parseInt(getQueryVariable("appCat"));
+    var $usrLoc = getQueryVariable("usrLoc");
+    var $catId = getQueryVariable("catId");
+    var $ignoreRadius = getQueryVariable("ignoreRadius");
+    
+        var $proOutput = "";
+        var $mapOutput = [[]];
+
 
      // get local storage variables
      var sessionState = JSON.parse(localStorage.getItem("sessionState"));
@@ -55,15 +76,38 @@ $(document).ready(function () {
         case 'provider-start':
             providerStart();
             break;
-        case 'provider-results':
-            providerResults();
+        case 'provider-detail-single':
+            providerDetailSingle();
+            break;      
+        case 'provider-results-list':
+            providerResultsList();
+            break;
+        case 'provider-results-map':
+            providerResultsMap();
             break;
         default: break;
     };
     
+    function providerDetailSingle() {
+        $('article.markdown').readmore({
+            blockCSS: 'display: block; width: 100%'
+        });
+    }
     
-    function providerResults() {
+    function providerResultsWorkFlow() {
         
+        
+        $("#providerName").val(localStorage.getItem("queryProviderName"));
+        //$("#providerLocation").val(localStorage.getItem("queryproviderLocation"));
+        var levy = localStorage.getItem("queryLevy");
+        
+        if ( levy != "1" ) {
+            // set levy to yes
+                    $('#levy-1').prop('checked', true).parent().addClass("selection-button-radio selected");
+
+        } else {
+            //set levy to no
+                    $('#levy-2').prop('checked', true).parent().addClass("selection-button-radio selected");        }
         
         var resultSet = localStorage.getItem("resultSet");
         
@@ -93,60 +137,63 @@ $(document).ready(function () {
         $("article.national").show();
         
         //alert(nationalCount);
+    
         
+//        $(".multiple-choice input").click(function(e){
+  //          //e.preventDefault();
+//            $("#select-box").prop("disabled", true);
+  //      })
     }
-    
-    
-    //alpha sort
-            tinysort('#provider-results>article',{selector:'h2'});
-    // distance sort
-            tinysort('#provider-results>article',{selector:'article',data:'distance'});
-    // national filter
-            //$("article").attr("data-national").hide();
+
 
     
     function providerStart() {
         $(".button").click(function(e){
             e.preventDefault();
-            var name = $("#name").val(); 
+            var providerName = $("#providerName").val(); 
             console.log(name);
-            var location = $("#location").val();
+            var providerLocation = $("#providerLocation").val();
             console.log(location);
             var levy = $('input[name=levy-group]:checked').val();
             console.log(levy);
             
-            if ( levy == "1" && name == ""  && location == "") {
-                console.log("all levy providers")
+            
+            localStorage.setItem("queryProviderName",providerName);
+            localStorage.setItem("queryProviderLocation",providerLocation);
+            localStorage.setItem("queryLevy",levy);
+            
+            if ( levy == "1" && providerName == ""  && providerLocation == "") {
+                console.log("all levy providers");
                localStorage.setItem("resultSet","0");                
-                window.location.href = "/sprint/{{sprint}}/provider/results";
-            } else if ( levy == "2" && name == "" && location == "") {
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
+            } else if ( levy == "2" && providerName == "" && providerLocation == "") {
                localStorage.setItem("resultSet","1");
                 console.log("all non levy providers")
-                window.location.href = "/sprint/{{sprint}}/provider/results";
-            } else if ( levy == "1" && name != "" && location == "") {
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
+            } else if ( levy == "1" && providerName != "" && providerLocation == "") {
                localStorage.setItem("resultSet","2");
                 console.log("levy paying with a provider name")
-                window.location.href = "/sprint/{{sprint}}/provider/results";
-            } else if ( levy =="1"  && name == ""  && location != "") {
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
+            } else if ( levy =="1"  && providerName == ""  && providerLocation != "") {
                localStorage.setItem("resultSet","3");
                 console.log("levy payyign with location ")
-                window.location.href = "/sprint/{{sprint}}/provider/results";
-            } else if (levy == "1" && name != "" && location != "") {
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
+            } else if (levy == "1" && providerName != "" && providerLocation != "") {
                localStorage.setItem("resultSet","4");
                 console.log ("levy with name and location")
-                window.location.href = "/sprint/{{sprint}}/provider/results";
-            } else if (levy ="2" && name != "" && location == "") {
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
+            } else if (levy ="2" && providerName != "" && providerLocation == "") {
                localStorage.setItem("resultSet","5");
                 console.log("non levy with name")
-                window.location.href = "/sprint/{{sprint}}/provider/results";
-            } else if (levy == "2" && name == "" && location != "") {
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
+            } else if (levy == "2" && providerName == "" && providerLocation != "") {
                localStorage.setItem("resultSet","6");
                 console.log("non levy with location");
-                window.location.href = "/sprint/{{sprint}}/provider/results";
-            } else if (levy == "2" && name != "" && location != "") {
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
+            } else if (levy == "2" && providerName != "" && providerLocation != "") {
                localStorage.setItem("resultSet","7");
                 console.log("non levy with name and location");
-                window.location.href = "/sprint/{{sprint}}/provider/results";
+                window.location.href = "/sprint/{{sprint}}/provider/results-list";
             } else if (levy == "") {
                localStorage.setItem("resultSet","8");
                 console.log("please choose if you pay the levy");
@@ -184,51 +231,444 @@ $(document).ready(function () {
             $("#alpha-tab").hide();
             $("#map-tab").show();
             $(".course-index .alphabetic").removeClass("active");
-            initGoogleMap();
+            alert("map coming soon");
         });
     }
     
 
-    
-    var locations = [
-  ["Basildon",     51.576084, 0.488736],
-  ["Brentwood",    51.620475,  0.307175],
-  ["Chelmsford", 51.735587, 0.468550],
-  ["Harlow", 51.767787, 0.087806]
-];
+        function providerResultsList() {
+            
+            
+            
+    //GLOBAL VAR
+    var XMLSource = $('#proData').attr('xmlData');
+    var keyword = '';
+    var catType = '';
+    var stn = '';
+    var frm = '';
 
-function initGoogleMap(){
+    var i = 0;
+    var msgPlural = 'are';
 
-  var infowindow = new google.maps.InfoWindow(); /* SINGLE */
-  var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 9,
-      center: new google.maps.LatLng(51.620475,  0.307175)
-  });
-  
-  function placeMarker( loc ) {
-    var latLng = new google.maps.LatLng( loc[1], loc[2]);
-    var marker = new google.maps.Marker({
-      position : latLng,
-      map      : map
+    var paginateCount = 10;
+
+    var lat1 = "";
+    var lon1 = "";
+    var lat2 = "";
+    var lon2 = "";
+    var radiusDistance = 50;
+    var $address = $usrLoc.replace(/%20/g, " ");;
+    //var $usrLoc = $usrLoc;
+    var $appCat = 17;
+
+    // randomly shorten the provider result by using the fake category filter
+    $appCat = Math.round(Math.random() * 20) + 1;;
+
+    $.ajax({
+        url: "http://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
+        type: "POST",
+        success: function (res) {
+            //console.log(res.results[0].geometry.location.lat);
+            //console.log(res.results[0].geometry.location.lng);
+
+
+            lat1 = res.results[0].geometry.location.lat;
+            lon1 = res.results[0].geometry.location.lng;
+            //console.log(lat1);
+            console.log("search longditude: " + lon1, "latitude: " + lat1);
+            //var lat2 = 51.5073509;
+            //var lon2 = -0.1277583;  
+            //loadloc(lat1, lon1);
+            searchThis();
+        }
     });
-    google.maps.event.addListener(marker, 'click', function(){
-        infowindow.close(); // Close previously opened infowindow
-        infowindow.setContent( "<div id='infowindow'>"+ loc[0] +"</div>");
-        infowindow.open(map, marker);
-    });
-  }
-  
-  // ITERATE ALL LOCATIONS
-  // Don't create functions inside for loops
-  // therefore refer to a previously created function
-  // and pass your iterating location as argument value:
-  for(var i=0; i<locations.length; i++) {
-    placeMarker( locations[i] );
-  } 
-  
+            
+            
+    function feedbackMsg() {
+        var resultCount = $("ol li").length;
+        console.log("result count: " + resultCount);
+        $("span.count").text(resultCount);
+        //$(".appName").text(Cookies.set("appName"));
+        
+
+        
+        $("#providerLocation").val($address);
+    }               
+
+    function searchThis() {
+        $.ajax({
+            type: "GET",
+            url: XMLSource,
+            dataType: "xml",
+            success: function (xml) {
+                loadproviders(xml)
+            },
+            error: function (request, error) {
+                console.log("theres been an error in searchThis: " + arguments);
+                //alert(" Can't do because: " + error);
+            }
+        });
+    }
+            
+
+  function loadproviders(xmlData) {
+
+$proOutput = "";
+
+        $(xmlData).find('pro').each(function () {
+
+            
+            var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
+            //console.log(PROVIDER_ID);
+            var UKPRN = $(this).find('UKPRN').text();
+            var PROVIDER_TYPE_ID = $(this).find('PROVIDER_TYPE_ID').text();
+            var EMAIL = $(this).find('EMAIL').text();
+            var WEBSITE = $(this).find('WEBSITE').text();
+            var PHONE = $(this).find('PHONE').text();
+            var FAX = $(this).find('FAX').text();
+            var Name = $(this).find('Name').text();
+            var Address = $(this).find('Address').text();
+            var appCat = $(this).find('appCat').text();
+            // co-ordinates
+            var LatLong = $(this).find('LatLong').text();
+            LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
+            var lat2 = LatLong[0];
+            var lon2 = LatLong[1];
+
+            var satisfaction = Math.round(Math.random() * 30) + 70;
+            var achievement = Math.round(Math.random() * 30) + 70;
+
+            
+            /*
+                var p = 0.017453292519943295; // Math.PI / 180
+                var c = Math.cos;
+                var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+                    c(lat1 * p) * c(lat2 * p) *
+                    (1 - c((lon2 - lon1) * p)) / 2;
+                //console.log( Name + Math.floor(12742 * Math.asin(Math.sqrt(a)))); // 2 * R; R = 6371 km
+                var distance = (Math.floor(12742 * Math.asin(Math.sqrt(a)))); // 2 * R; R = 6371 km
+           */
+            
+            var distance = getDistanceFromLatLonInKm(lat1,lon2,lat2,lon2).toFixed(1);
+           // console.log(distance);
+
+
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
 }
-    
-});
 
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}        
+            
+            
+                        if (distance >= radiusDistance ) {
+            
+                //distance(lat1,lon1,lat2,lon2);
+
+                $proOutput += "<li id='" + PROVIDER_ID + "' class='result'>";
+                $proOutput += "<div class='column details'>";
+                $proOutput += "<h2 class='heading-medium'><a href='#'class='proName'>" + Name + "</a></h2>";
+                $proOutput += "<dl class='result-data-list'><dt class='distance'>Distance</dt>";
+                $proOutput += "<dd class='distance' data-distance="+ distance +">" + distance + " km</dd>";
+                $proOutput += "<dd><address class='panel panel-border-thin'>" + Address + "</address></dd>";
+                $proOutput += "<dt class='satisfaction'>Employer satisfaction</dt>";
+                $proOutput += "<dd class='satisfaction' data-satisfaction="+ satisfaction +">" + satisfaction + "%</dd>";
+                $proOutput += "<dt class='achievement'>Achievement rate</dt>";
+                $proOutput += "<dd class='achievement' data-achievement="+ achievement + ">" + achievement + "%</dd>";
+                $proOutput += "</dl></div>";
+                $proOutput += "</li>";
+                $proOutput += ""
+
+                            } else {
+                                console.log("no results found");
+                            }
+        });
+        showProviders($proOutput);
+        
+    };
+            
+          
+
+            
+            function showProviders($proOutput) {
+        $("#provider-results").html($proOutput).promise().done(function () {
+            //console.log("on a promise");
+            //tinysort('#provider-results li',{selector: 'dd.satisfaction', data: 'satisfaction', order:'desc'});
+            tinysort('#provider-results li',{selector: 'dd.distance', data: 'distance', order:'asc'});
+            //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
+            //tinysort('#provider-results>li',{selector:'h2'});
+            
+            
+            // distance sort
+           //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
+     
+            //console.log("fire");
+            
+        });
+
+        feedbackMsg();
+        paginateDat(paginateCount);
+
+        //shortlist();
+
+        $(".proName").click(function (e) {
+            var proId = $(this).parent().parent().parent().attr("id");
+            e.preventDefault();
+            location.replace("/sprint/{{sprint}}/provider/detail-single.html?proId=" + proId);
+            localStorage.setItem("providerName", proId);
+        });
+    };
+
+    //
+    // Pagination
+    //
+    function paginateDat(paginateCount) {
+        //$(".page-navigation__btn.previous").css("visibility","hidden");
+        //$("ol li").hide();
+        //$("ol#standard-results li:lt(" + paginateCount + ")").show();
+        //$("ol#framework-results li:lt(" + paginateCount + ")").show();
+        $("#pagedat").jPages({
+            containerID: "provider-results",
+            perPage: paginateCount,
+            animation: "none",
+            first: false,
+            previous: "a.previous",
+            next: "a.next",
+            last: false,
+            midRange: 0,
+            callback: function (pages, items) {
+                $(".totalPage").html(pages.count);
+                $(".prevPage").html((pages.current) - 1);
+                $(".nextPage").html((pages.current) + 1);
+            }
+        });
+
+
+    }
+            
+            
+//tiny sort options
+            
+            $('#select-order').on('change', function() {
+                //alert( this.value );
+                
+                if ( this.value == 2 ) {
+                    // closest first
+                tinysort('#provider-results li',{selector: 'dd.distance', data: 'distance', order:'asc'});              
+                } else if ( this.value == 3 ) {
+                    // satisfaction
+                tinysort('#provider-results li',{selector: 'dd.satisfaction', data: 'satisfaction', order:'desc'});              
+                } else if ( this.value == 4 ) {
+                    // achievement
+                tinysort('#provider-results li',{selector: 'dd.achievement', data: 'achievement', order:'desc'});      
+                } else {
+                tinysort('#provider-results li',{selector: 'dd.distance', data: 'distance', order:'asc'});
+                }
+})
+            
+                  //tinysort('#provider-results li',{selector: 'dd.satisfaction', data: 'satisfaction', order:'desc'});
+            tinysort('#provider-results li',{selector: 'dd.distance', data: 'distance', order:'asc'});
+            //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
+            //tinysort('#provider-results>li',{selector:'h2'});
+            
+            
+            // distance sort
+           //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
+          
+                $('#select-distance').on('change', function() {
+                
+                radiusDistance = this.value;
+                    searchThis();
+                });
+
+            
+        }
+    
+    
+    function providerResultsMap() {
+
+        
+                    $("body").addClass("fluid-width");
+
+    var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    var brandHeight = $("#global-header").height();
+    var navHeight = $("#loggedIn").height();
+    var mapSearchHeight = $("#map-search .wrapper").height();
+    var footerHeight = $("#map-search footer").height();
+    var bodyHeight = viewportHeight - brandHeight - navHeight - mapSearchHeight - footerHeight - 34;
+    $("#map-search aside, #map-search #map").height(bodyHeight);    
+    }
+
+                  
+            
+    //GLOBAL VAR
+    var XMLSource = $('#proData').attr('xmlData');
+
+    var paginateCount = 10;
+
+    var lat1 = "";
+    var lon1 = "";
+    var lat2 = "";
+    var lon2 = "";
+    // randomly shorten the provider result by using the fake category filter
+    $appCat = Math.round(Math.random() * 20) + 1;;
+
+
+    $.ajax({
+        url: "http://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
+        type: "POST",
+        success: function (res) {
+            //console.log(res.results[0].geometry.location.lat);
+            //console.log(res.results[0].geometry.location.lng);
+
+
+            lat1 = res.results[0].geometry.location.lat;
+            lon1 = res.results[0].geometry.location.lng;
+            //console.log(lat1);
+            console.log("search longditude: " + lon1, "latitude: " + lat1);
+            //var lat2 = 51.5073509;
+            //var lon2 = -0.1277583;  
+            //loadloc(lat1, lon1);
+            searchMap();
+        }
+    });
+        
+        
+  function searchMap() {
+        $.ajax({
+            type: "GET",
+            url: XMLSource,
+            dataType: "xml",
+            success: function (xml) {
+                loadMap(xml)
+            },
+            error: function (request, error) {
+                console.log("theres been an error in searchMap: " + arguments);
+                //alert(" Can't do because: " + error);
+            }
+        });
+    }
+            
+
+  function loadMap(xmlData) {
+
+
+      
+  
+      //items = ["Date", "Kg Emitted", "Kg Reduced"];    
+      
+$(xmlData).find('pro').each(function (i) {
+
+            
+            var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
+            var UKPRN = $(this).find('UKPRN').text();
+            var WEBSITE = $(this).find('WEBSITE').text();
+            var PHONE = $(this).find('PHONE').text();
+            var Name = $(this).find('Name').text();
+            var Address = $(this).find('Address').text();
+
+            // co-ordinates
+            var LatLong = $(this).find('LatLong').text();
+            LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
+            var lat2 = LatLong[0];
+            var lon2 = LatLong[1];
+
+            var satisfaction = Math.round(Math.random() * 30) + 70;
+            var achievement = Math.round(Math.random() * 30) + 70;
+            
+
+    
+      var item = new Array();
+      item = ["'"+Name+"'","'"+Name+"'",lon2,lat2];
+      //  console.log(item);
+    mapMarkers.push(item);
+        });        
+    };
+});
+    
+    
+        
+        // Asynchronously Load the map API 
+    var script = document.createElement('script');
+    script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyA8291bnIVrC6Ev9hTQ_1jBh7VpvuAwW8A&callback=initialize";
+    document.body.appendChild(script);
+
+
+
+    
+    
+function initialize() {
+    //console.log(mapMarkers);
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    map.setTilt(45);
+        
+    // Multiple Markers
+    //var markers = items;
+
+      var markers = mapMarkers
+
+
+    // Info Window Content
+    var infoWindowContent = [
+        ['<div class="info_content">' +
+        '<h3>London Eye</h3>' +
+        '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' +        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Palace of Westminster</h3>' +
+        '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +
+        '</div>']
+    ];
+        
+    // Display multiple markers on a map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+    
+    // Loop through our array of markers & place each one on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i][0]
+        });
+        
+        // Allow each marker to have an info window    
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+    }
+                 console.log("fire");       
+
+    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(14);
+        google.maps.event.removeListener(boundsListener);
+    });
+    
+}
 </script>
 

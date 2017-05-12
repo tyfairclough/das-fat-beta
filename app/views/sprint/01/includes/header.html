@@ -1,20 +1,36 @@
+    <header role="banner" id="global-header" class="">
+        <div class="header-wrapper">
+<div class="header-global">
+                <div class="header-logo">
+                    <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
+                        <img src="https://assets.publishing.service.gov.uk/static/gov.uk_logotype_crown_invert_trans-203e1db49d3eff430d7dc450ce723c1002542fe1d2bce661b6d8571f14c1043c.png" alt="" width="36" height="32"> GOV.UK
+                    </a>
+                </div>
+            </div>
+<div class="header-proposition">
+                <div class="content">
+                    <span id="proposition-name">Find apprenticeship training</span>
+                </div>
+            </div>
+        </div>
+    </header>
 <!-- header logged in -->
 
-<nav id="loggedIn" class="hidden">
+<nav id="loggedIn" class="">
 <div class="global-header-bar"></div>
 <div class="header-user">
 	<div class="header-inner">
 		<div class="service-info">
-		    <div class="phase-banner-beta">
+		    <div class="phase-banner-beta" style="border-bottom: none;">
 		        <p>
 		            <strong class="phase-tag">BETA</strong>
 		            <span>This is a new service – your <a href="https://www.surveymonkey.co.uk/r/accessmylevysurvey" target="_blank">feedback</a> will help us to improve it. </span>
 		        </p>
 		    </div>
 		</div>
-		<nav id="user-nav" class="js-hidden-mobile">
-			<ul>
-				<li class="top-level">
+		<nav id="user-nav" class="js-hidden-mobile hidden">
+			<ul><a href="#" style="padding: 10px 0px 10px 20px; float: right;">Sign in</a>
+				<li class="top-level hidden">
 		<a href="#user-nav" class="js-toggle menu-closed nav-menu-link" data-target="#user-nav">Settings</a>
 					<ul id="nav-user" class="js-hidden-mobile">
 						<li><a href="/sprint/{{sprint}}/user/change-email.html">Change your email address</a></li>
@@ -29,11 +45,11 @@
 
 			</ul>
 		</nav>
-        <h2 class="heading-medium" style="margin: 10px 10px 10px 0;"><span class="company-name">Your levy account</span></h2>
+        <h2 class="heading-medium hidden" style="margin: 10px 10px 10px 0;"><span class="company-name">Your levy account</span></h2>
 
 	</div>
 </div>
-<div class="header-organisation">
+<div class="header-organisation hidden">
 	<div class="header-inner">
 
 		<!--<h2 class="heading-medium">Spend your levy homepage</h2>-->
@@ -51,60 +67,3 @@
 </div>
 </nav>
 
-<!-- header logged out -->
-<nav id="loggedOut" class="hidden">
-<div class="global-header-bar"></div>
-<div class="header-user">
-	<div class="header-inner">
-		<div class="service-info">
-		    <div class="phase-banner-beta">
-		        <p>
-		            <strong class="phase-tag">BETA</strong>
-		            <span>This is a new service – your <a href="https://www.surveymonkey.co.uk/r/accessmylevysurvey" target="_blank">feedback</a> will help us to improve it. </span>
-		        </p>
-		    </div>
-		</div>
-		<nav id="user-nav" class="js-hidden-mobile">
-			<ul>
-                <li class="top-level">
-                  <a href="#user-nav" class="js-toggle menu-closed nav-menu-link" data-target="#user-nav">Account settings</a>
-					<ul id="nav-user" class="js-hidden-mobile">
-                        <li><a href="/sprint/{{sprint}}/user/index" data-target="#nav-companies">Switch levy account</a></li>
-						<li><a href="/sprint/{{sprint}}/user/rename-account.html">Rename this levy account</a></li>
-                    </ul>
-				</li>
-                <li class="top-level">
-		<a href="#user-nav" class="js-toggle menu-closed nav-menu-link" data-target="#user-nav">Joe Blogs</a>
-					<ul id="nav-user" class="js-hidden-mobile">
-						<li><a href="/sprint/{{sprint}}/user/change-email.html">Change your email address</a></li>
-						<li><a href="/sprint/{{sprint}}/user/reset-password.html">Create a new password</a></li>
-						<li><a href="/sprint/{{sprint}}/user/invitations/all.html">View invitations (1)</a></li>
-						<li id="signOut"><a href="/sprint/{{sprint}}/index">Sign out</a></li>
-                    </ul>
-				</li>
-                <li class="top-level"><a href="#">Help</a></li>
-                
-
-			</ul>
-		</nav>
-        <h2 class="heading-medium" style="margin: 10px 10px 10px 0;"><span class="company-name">Your levy account</span></h2>
-
-	</div>
-</div>
-<div class="header-organisation">
-	<div class="header-inner">
-
-		<!--<h2 class="heading-medium">Spend your levy homepage</h2>-->
-		<nav id="global-nav" class="global-nav">
-			<ul id="global-nav-links">
-				<li class="home"><a href="/sprint/{{ sprint }}/account/dashboard/index">Home</a></li>
-				<li class="finance"><a href="/sprint/{{ sprint }}/account/finance/index">Finance</a></li>
-				<li class="apprentices"><a href="/sprint/{{ sprint }}/account/apprentices/index">Apprentices</a></li>
-				<li class="team"><a href="/sprint/{{ sprint }}/account/team/index">Your team</a></li>
-				<!--<li class="organisations"><a href="/sprint/{{ sprint }}/account/organisations/index">SFA agreements</a></li>-->
-				<!--<li {% if page_name == "paye" %} class="current" {% endif %}><a href="/sprint/{{ sprint }}/account/paye/index">PAYE schemes</a></li>-->
-			</ul>
-		</nav>
-	</div>
-</div>
-</nav>
