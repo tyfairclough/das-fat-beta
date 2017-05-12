@@ -173,8 +173,8 @@ $(document).ready(function () {
         
         $("#nameInput .button").click(function(e){
             e.preventDefault();
-            providerName = $("#providerName").val();
-            window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&proName="+$proName+"";            
+            $proName = $("#providerName").val();
+            window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName="+$proName+"";            
         })
    /*     $(".button").click(function(e){
             e.preventDefault();
