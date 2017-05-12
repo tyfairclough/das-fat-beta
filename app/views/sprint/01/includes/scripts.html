@@ -18,199 +18,190 @@
 <script src="/public/javascripts/tinysort.min.js"></script>
 <script>
     
-      var mapMarkers;
-      var mapMarkers = new Array();
+
+var infoWindows = new Array();
+var mapMarkers = new Array();
+
+ // get variables
+var i = 0;
+var className = $("#content").attr('class'); 
 
 
-
-$(document).ready(function () {
-    
-
-    // get variables
-    var i = 0;
-    var className = $("#content").attr('class'); 
-
-
-    //get url variables    
-    function getQueryVariable(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            if (pair[0] == variable) {
-                return pair[1];
-            }
+//get url variables    
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
         }
-        return (false);
-    } 
-    var newLevyAccount = getQueryVariable("newLevyAccount");
-    // defines url variables as global vars 
-    var $distance = Number(getQueryVariable("WithinDistance"));
-    var $resultsToDisplay = Number(getQueryVariable("resultsToDisplay"));
-    var $location = getQueryVariable("Location");
-    var $keywords = getQueryVariable("Keywords");
-    var $trainingId = getQueryVariable("trainingId");
-    var $proId = getQueryVariable("proId");
-    var $address = getQueryVariable("address");
-    var $appType = getQueryVariable("appType");
-    var $appCat = parseInt(getQueryVariable("appCat"));
-    var $usrLoc = getQueryVariable("usrLoc");
-    var $levyPayer = getQueryVariable("levyPayer");
-    var $catId = getQueryVariable("catId");
-    var $ignoreRadius = getQueryVariable("ignoreRadius");
-    var $proName = getQueryVariable("proName");
-    
-        var $proOutput = "";
-        var $mapOutput = [[]];
-
-
-     // get local storage variables
-     var sessionState = JSON.parse(localStorage.getItem("sessionState"));
-
-    switch(className){
-        case 'search-select':
-            searchSelect();
-            break;
-        case 'provider-detail-multiple':
-            providerDetailMultiple();
-            break;
-        case 'provider-start':
-            providerStart();
-            break;
-        case 'provider-detail-single':
-            providerDetailSingle();
-            break;      
-        case 'provider-results-list':
-            providerResultsList();
-            break;
-        case 'provider-results-map':
-            providerResultsMap();
-            break;
-        default: break;
-    };
-    
-    function providerDetailSingle() {
-        $('article.markdown').readmore({
-            blockCSS: 'display: block; width: 100%'
-        });
     }
-    
-    function providerResultsWorkFlow() {
-        
-        
-        $("#providerName").val(localStorage.getItem("queryProviderName"));
-        //$("#providerLocation").val(localStorage.getItem("queryproviderLocation"));
-        var levy = localStorage.getItem("queryLevy");
-        
-        if ( levy != "1" ) {
-            // set levy to yes
-                    $('#levy-1').prop('checked', true).parent().addClass("selection-button-radio selected");
+    return (false);
+} 
 
+var newLevyAccount = getQueryVariable("newLevyAccount");
+// defines url variables as global vars 
+var $distance = Number(getQueryVariable("WithinDistance"));
+var $resultsToDisplay = Number(getQueryVariable("resultsToDisplay"));
+var $location = getQueryVariable("Location");
+var $keywords = getQueryVariable("Keywords");
+var $trainingId = getQueryVariable("trainingId");
+var $proId = getQueryVariable("proId");
+var $address = getQueryVariable("address");
+var $appType = getQueryVariable("appType");
+var $appCat = parseInt(getQueryVariable("appCat"));
+var $usrLoc = getQueryVariable("usrLoc");
+var $levyPayer = getQueryVariable("levyPayer");
+var $catId = getQueryVariable("catId");
+var $ignoreRadius = getQueryVariable("ignoreRadius");
+var $proName = getQueryVariable("proName");
+
+var $proOutput = "";
+var $mapOutput = [[]];
+
+
+// get local storage variables
+var sessionState = JSON.parse(localStorage.getItem("sessionState"));
+
+switch(className){
+  case 'search-select':
+      searchSelect();
+      break;
+  case 'provider-detail-multiple':
+      providerDetailMultiple();
+      break;
+  case 'provider-start':
+      providerStart();
+      break;
+  case 'provider-detail-single':
+      providerDetailSingle();
+      break;      
+  case 'provider-results-list':
+      providerResultsList();
+      break;
+  case 'provider-results-map':
+      providerResultsMap();  // This is fired
+      break;
+  default: break;
+};
+    
+function providerDetailSingle() {
+    $('article.markdown').readmore({
+        blockCSS: 'display: block; width: 100%'
+    });
+}
+
+function providerResultsWorkFlow() {
+          
+    $("#providerName").val(localStorage.getItem("queryProviderName"));
+    //$("#providerLocation").val(localStorage.getItem("queryproviderLocation"));
+    var levy = localStorage.getItem("queryLevy");
+    
+    if ( levy != "1" ) {
+        // set levy to yes
+                $('#levy-1').prop('checked', true).parent().addClass("selection-button-radio selected");
+
+    } else {
+        //set levy to no
+                $('#levy-2').prop('checked', true).parent().addClass("selection-button-radio selected");        }
+    
+    var resultSet = localStorage.getItem("resultSet");
+    
+        if ( resultSet == "0") {
+            console.log("all levy providers")
+            var nationalCount = $(".national").len;
+        } else if ( resultSet == "1") {
+            console.log("all non levy providers")
+        } else if ( resultSet == "2") {
+            console.log("levy paying with a provider name")
+        } else if ( resultSet == "3") {
+            console.log("levy payyign with location ")
+        } else if (resultSet == "4") {
+            console.log ("levy with name and location")
+        } else if (resultSet == "5") {
+            console.log("non levy with name")
+        } else if (resultSet == "6") {
+            console.log("non levy with location");
+        } else if (resultSet == "7") {
+            console.log("non levy with name and location");
         } else {
-            //set levy to no
-                    $('#levy-2').prop('checked', true).parent().addClass("selection-button-radio selected");        }
-        
-        var resultSet = localStorage.getItem("resultSet");
-        
-            if ( resultSet == "0") {
-                console.log("all levy providers")
-                var nationalCount = $(".national").len;
-            } else if ( resultSet == "1") {
-                console.log("all non levy providers")
-            } else if ( resultSet == "2") {
-                console.log("levy paying with a provider name")
-            } else if ( resultSet == "3") {
-                console.log("levy payyign with location ")
-            } else if (resultSet == "4") {
-                console.log ("levy with name and location")
-            } else if (resultSet == "5") {
-                console.log("non levy with name")
-            } else if (resultSet == "6") {
-                console.log("non levy with location");
-            } else if (resultSet == "7") {
-                console.log("non levy with name and location");
-            } else {
-                console.log("please choose if you pay the levy");
-            }
-        
-        // hide national    
-        $("article.national").hide();
-        $("article.national").show();
-        
-        //alert(nationalCount);
+            console.log("please choose if you pay the levy");
+        }
     
-        
-//        $(".multiple-choice input").click(function(e){
-  //          //e.preventDefault();
-//            $("#select-box").prop("disabled", true);
-  //      })
-    }
+    // hide national    
+    $("article.national").hide();
+    $("article.national").show();
+    
+}
 
 
-    
-    function providerStart() {
-        
-        $("#searchType .button").click(function(e){
-            e.preventDefault();
-                        var searchTypeGroup = $('input[name=searchTypeGroup]:checked').val();
-            if ( searchTypeGroup == "name") {
-                $("#nameInput").removeClass("hidden");
-                $("#searchType").addClass("hidden");                
-            } else {
-                $("#locationInput").removeClass("hidden");
-                $("#searchType").addClass("hidden");
-            }
-        });
-        
-        
-        $("#locationInput .button").click(function(e){
-            e.preventDefault();
-            usrLoc = $("#providerLocation").val();
-            levyPayer = $('input[name=levy-group]:checked').val();
-            window.location.href = "/sprint/{{sprint}}/provider/results-map.html?levyPayer="+levyPayer+"&usrLoc="+usrLoc+"";
-        })
-        
-        
-        $("#nameInput .button").click(function(e){
-            e.preventDefault();
-            $proName = $("#providerName").val();
-            window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName="+$proName+"";            
-        })
-    }
 
+function providerStart() {
+    
+    $("#searchType .button").click(function(e){
+        e.preventDefault();
+                    var searchTypeGroup = $('input[name=searchTypeGroup]:checked').val();
+        if ( searchTypeGroup == "name") {
+            $("#nameInput").removeClass("hidden");
+            $("#searchType").addClass("hidden");                
+        } else {
+            $("#locationInput").removeClass("hidden");
+            $("#searchType").addClass("hidden");
+        }
+    });
     
     
+    $("#locationInput .button").click(function(e){
+        e.preventDefault();
+        usrLoc = $("#providerLocation").val();
+        levyPayer = $('input[name=levy-group]:checked').val();
+        window.location.href = "/sprint/{{sprint}}/provider/results-map.html?levyPayer="+levyPayer+"&usrLoc="+usrLoc+"";
+    })
     
-     
-    function searchSelect() {
-        $(".button").click(function(e){
-            e.preventDefault();
-            var state = $('input[name=radio-group]:checked').val();
-            if ( state == "1" ) {
-                //window.location.href = "/sprint/{{sprint}}/course/index";
-                window.location.href = "https://findapprenticeshiptraining.sfa.bis.gov.uk/Apprenticeship/Search";
-            } else if ( state == "2" ) {
-                window.location.href = "/sprint/{{sprint}}/provider/index";
-            } else {
-                window.location.href ="/sprint/{{sprint}}/assessor/index";
-            }
-        })
-    }
     
-    function providerDetailMultiple() {
-        
-        $("#map-tab").hide();
-        $(".course-index > a.map").click(function(e){
-            e.preventDefault();
-            $("#alpha-tab").hide();
-            $("#map-tab").show();
-            $(".course-index .alphabetic").removeClass("active");
-            alert("map coming soon");
-        });
-    }
-    
+    $("#nameInput .button").click(function(e){
+        e.preventDefault();
+        $proName = $("#providerName").val();
+        window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName="+$proName+"";            
+    })
+}
 
-        function providerResultsList() {
+
+
+
+ 
+function searchSelect() {
+    $(".button").click(function(e){
+        e.preventDefault();
+        var state = $('input[name=radio-group]:checked').val();
+        if ( state == "1" ) {
+            //window.location.href = "/sprint/{{sprint}}/course/index";
+            window.location.href = "https://findapprenticeshiptraining.sfa.bis.gov.uk/Apprenticeship/Search";
+        } else if ( state == "2" ) {
+            window.location.href = "/sprint/{{sprint}}/provider/index";
+        } else {
+            window.location.href ="/sprint/{{sprint}}/assessor/index";
+        }
+    })
+}
+
+function providerDetailMultiple() {
+    
+    $("#map-tab").hide();
+    $(".course-index > a.map").click(function(e){
+        e.preventDefault();
+        $("#alpha-tab").hide();
+        $("#map-tab").show();
+        $(".course-index .alphabetic").removeClass("active");
+        alert("map coming soon");
+    });
+}
+
+
+
+
+function providerResultsList() {
             
             
                 if ( $proName != "" ) {
@@ -478,13 +469,17 @@ function deg2rad(deg) {
 
             
         }
-    
-    
-    function providerResultsMap() {
 
-        
-                    $("body").addClass("fluid-width");
 
+
+
+
+
+
+
+
+function providerResultsMap() {
+		$("body").addClass("fluid-width");
     var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     var brandHeight = $("#global-header").height();
     var navHeight = $("#loggedIn").height();
@@ -492,123 +487,115 @@ function deg2rad(deg) {
     var footerHeight = $("#map-search footer").height();
     var bodyHeight = viewportHeight - brandHeight - navHeight - mapSearchHeight - footerHeight - 34;
     $("#map-search aside, #map-search #map").height(bodyHeight);    
-    }
+}
 
-                  
-    if ( $usrLoc != "" ) {
-            $("#location").val($usrLoc.replace(/%20/g, " "));        
-    } else {
-            $("#location").val("");        
-    }
-    
-    if ( $proName != "" ) {
-            $("#name").val($proName.replace(/%20/g, " "));
-    } else {
-            $("#name").val("");
-    }
+if ( $usrLoc != "" ) {
+  $("#location").val($usrLoc.replace(/%20/g, " "));        
+} else {
+  $("#location").val("");        
+}
 
-    
-    if ( $levyPayer == 1 ) {
-        $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
-    } else {
-        $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
-    }
+if ( $proName != "" ) {
+  $("#name").val($proName.replace(/%20/g, " "));
+} else {
+  $("#name").val("");
+}
+
+if ( $levyPayer == 1 ) {
+  $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
+} else {
+  $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
+}
             
-    //GLOBAL VAR
-    var XMLSource = $('#proData').attr('xmlData');
+//GLOBAL VAR
+var XMLSource = $('#proData').attr('xmlData');
 
-    var paginateCount = 10;
+var paginateCount = 10;
 
-    var lat1 = "";
-    var lon1 = "";
-    var lat2 = "";
-    var lon2 = "";
-    // randomly shorten the provider result by using the fake category filter
-    $appCat = Math.round(Math.random() * 20) + 1;;
+var lat1 = "";
+var lon1 = "";
+var lat2 = "";
+var lon2 = "";
+// randomly shorten the provider result by using the fake category filter
+$appCat = Math.round(Math.random() * 20) + 1;;
 
 
+$.ajax({
+    url: "http://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
+    type: "POST",
+    success: function (res) {
+        //console.log(res.results[0].geometry.location.lat);
+        //console.log(res.results[0].geometry.location.lng);
+
+
+        lat1 = res.results[0].geometry.location.lat;
+        lon1 = res.results[0].geometry.location.lng;
+        //console.log(lat1);
+        console.log("search longditude: " + lon1, "latitude: " + lat1);
+        //var lat2 = 51.5073509;
+        //var lon2 = -0.1277583;  
+        //loadloc(lat1, lon1);
+        searchMap();
+    }
+});
+
+function searchMap() {
     $.ajax({
-        url: "http://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
-        type: "POST",
-        success: function (res) {
-            //console.log(res.results[0].geometry.location.lat);
-            //console.log(res.results[0].geometry.location.lng);
-
-
-            lat1 = res.results[0].geometry.location.lat;
-            lon1 = res.results[0].geometry.location.lng;
-            //console.log(lat1);
-            console.log("search longditude: " + lon1, "latitude: " + lat1);
-            //var lat2 = 51.5073509;
-            //var lon2 = -0.1277583;  
-            //loadloc(lat1, lon1);
-            searchMap();
+        type: "GET",
+        url: XMLSource,
+        dataType: "xml",
+        success: function (xml) {
+            loadMap(xml)
+        },
+        error: function (request, error) {
+            console.log("theres been an error in searchMap: " + arguments);
+            //alert(" Can't do because: " + error);
         }
     });
+}
+
+
+
+function loadMap(xmlData) {
+
+	$(xmlData).find('pro').each(function (i) {
         
-        
-  function searchMap() {
-        $.ajax({
-            type: "GET",
-            url: XMLSource,
-            dataType: "xml",
-            success: function (xml) {
-                loadMap(xml)
-            },
-            error: function (request, error) {
-                console.log("theres been an error in searchMap: " + arguments);
-                //alert(" Can't do because: " + error);
-            }
-        });
-    }
-            
+      var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
+      var UKPRN = $(this).find('UKPRN').text();
+      var WEBSITE = $(this).find('WEBSITE').text();
+      var PHONE = $(this).find('PHONE').text();
+      var Name = $(this).find('Name').text();
+      var Address = $(this).find('Address').text();
 
-  function loadMap(xmlData) {
+      // co-ordinates
+      var LatLong = $(this).find('LatLong').text();
+      LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
+      var lat2 = LatLong[0];
+      var lon2 = LatLong[1];
 
+      var satisfaction = Math.round(Math.random() * 30) + 70;
+      var achievement = Math.round(Math.random() * 30) + 70;
 
-      
-  
-      //items = ["Date", "Kg Emitted", "Kg Reduced"];    
-      
-$(xmlData).find('pro').each(function (i) {
-
-            
-            var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
-            var UKPRN = $(this).find('UKPRN').text();
-            var WEBSITE = $(this).find('WEBSITE').text();
-            var PHONE = $(this).find('PHONE').text();
-            var Name = $(this).find('Name').text();
-            var Address = $(this).find('Address').text();
-
-            // co-ordinates
-            var LatLong = $(this).find('LatLong').text();
-            LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
-            var lat2 = LatLong[0];
-            var lon2 = LatLong[1];
-
-            var satisfaction = Math.round(Math.random() * 30) + 70;
-            var achievement = Math.round(Math.random() * 30) + 70;
-            
-
-    
       var item = new Array();
-      item = ["'"+Name+"'","'"+Name+"'",lon2,lat2];
-      //  console.log(item);
-    mapMarkers.push(item);
-        });        
-    };
-});
-    
-    
-        
-        // Asynchronously Load the map API 
+			item = ["'" + Name + "'",lat2, lon2];
+			
+			mapMarkers.push(item);
+			
+			infoWindows.push(["<div class='info_content'><h3>" + Name + "</h3><p>" + Address + "</p></div>"]);        
+			
+  });   
+};
+
+jQuery(function($) {        // Asynchronously Load the map API 
     var script = document.createElement('script');
     script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyA8291bnIVrC6Ev9hTQ_1jBh7VpvuAwW8A&callback=initialize";
     document.body.appendChild(script);
-
+});
 
 
     
+// Google Maps initialize
+
     
 function initialize() {
     //console.log(mapMarkers);
@@ -621,11 +608,16 @@ function initialize() {
     // Display a map on the page
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     map.setTilt(45);
-        
-    // Multiple Markers
-    //var markers = items;
 
-      var markers = mapMarkers
+    var markers = [
+        ['London Eye, London', 51.503454,-0.119562],
+        ['Palace of Westminster, London', 51.499633,-0.124755]
+    ];
+      
+      console.log(markers);
+      console.log(mapMarkers);
+
+			markers = mapMarkers;
 
 
     // Info Window Content
@@ -638,7 +630,10 @@ function initialize() {
         '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +
         '</div>']
     ];
+    
+    infoWindowContent = infoWindows;
         
+          
     // Display multiple markers on a map
     var infoWindow = new google.maps.InfoWindow(), marker, i;
     
@@ -653,23 +648,18 @@ function initialize() {
         });
         
         // Allow each marker to have an info window    
+        
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
                 infoWindow.setContent(infoWindowContent[i][0]);
                 infoWindow.open(map, marker);
             }
         })(marker, i));
+        
 
         // Automatically center the map fitting all markers on the screen
         map.fitBounds(bounds);
     }
-                 console.log("fire");       
-
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(14);
-        google.maps.event.removeListener(boundsListener);
-    });
     
 }
 </script>
