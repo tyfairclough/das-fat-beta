@@ -174,6 +174,7 @@ $(document).ready(function () {
         $("#nameInput .button").click(function(e){
             e.preventDefault();
             $proName = $("#providerName").val();
+                localStorage.setItem("keyword",$proName);
             window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName="+$proName+"";            
         })
     }
@@ -222,7 +223,8 @@ $(document).ready(function () {
             
     //GLOBAL VAR
     var XMLSource = $('#proData').attr('xmlData');
-    var keyword = '';
+    var keyword = localStorage.getItem("keyword");
+        //keyword = "COLLEGE";
     var catType = '';
     var stn = '';
     var frm = '';
@@ -244,6 +246,9 @@ $(document).ready(function () {
     // randomly shorten the provider result by using the fake category filter
     $appCat = Math.round(Math.random() * 20) + 1;;
 
+            
+        //keyword = $("#input-keywords").val();
+            
     $.ajax({
         url: "http://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
         type: "POST",
@@ -255,7 +260,7 @@ $(document).ready(function () {
             lat1 = res.results[0].geometry.location.lat;
             lon1 = res.results[0].geometry.location.lng;
             //console.log(lat1);
-            console.log("search longditude: " + lon1, "latitude: " + lat1);
+            //console.log("search longditude: " + lon1, "latitude: " + lat1);
             //var lat2 = 51.5073509;
             //var lon2 = -0.1277583;  
             //loadloc(lat1, lon1);
@@ -284,7 +289,7 @@ $(document).ready(function () {
                 loadproviders(xml)
             },
             error: function (request, error) {
-                console.log("theres been an error in searchThis: " + arguments);
+                console.log("theres been an error in searchThisList: " + arguments);
                 //alert(" Can't do because: " + error);
             }
         });
@@ -292,8 +297,10 @@ $(document).ready(function () {
             
 
   function loadproviders(xmlData) {
-
-$proOutput = "";
+      
+        i = 0;
+        var row;
+        var searchExp = "";
 
         $(xmlData).find('pro').each(function () {
 
@@ -314,24 +321,10 @@ $proOutput = "";
             LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
             var lat2 = LatLong[0];
             var lon2 = LatLong[1];
-
             var satisfaction = Math.round(Math.random() * 30) + 70;
             var achievement = Math.round(Math.random() * 30) + 70;
-            var cousrsecount = Math.round(Math.random() * 30) + 10;
-
-            
-            /*
-                var p = 0.017453292519943295; // Math.PI / 180
-                var c = Math.cos;
-                var a = 0.5 - c((lat2 - lat1) * p) / 2 +
-                    c(lat1 * p) * c(lat2 * p) *
-                    (1 - c((lon2 - lon1) * p)) / 2;
-                //console.log( Name + Math.floor(12742 * Math.asin(Math.sqrt(a)))); // 2 * R; R = 6371 km
-                var distance = (Math.floor(12742 * Math.asin(Math.sqrt(a)))); // 2 * R; R = 6371 km
-           */
-            
+            var cousrsecount = Math.round(Math.random() * 30) + 10;            
             var distance = getDistanceFromLatLonInKm(lat1,lon2,lat2,lon2).toFixed(1);
-           // console.log(distance);
 
 
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -352,8 +345,19 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }        
             
+      
+            var exp = new RegExp(keyword, "gi");
+
+            console.log(Name);
+            searchExp = Name.match(exp);
+                console.log(searchExp);
+//            console.log("search term: "+keyword);
+
             
-                        if (distance >= radiusDistance ) {
+            
+                        //if (distance >= radiusDistance ) {
+                        if (searchExp != null ) {
+                            i++;
             
                 //distance(lat1,lon1,lat2,lon2);
 
@@ -377,7 +381,10 @@ function deg2rad(deg) {
                                 console.log("no results found");
                             }
         });
-        showProviders($proOutput);
+      
+                        showProviders($proOutput);
+
+      
         
     };
             
@@ -388,7 +395,7 @@ function deg2rad(deg) {
         $("#provider-results").html($proOutput).promise().done(function () {
             //console.log("on a promise");
             //tinysort('#provider-results li',{selector: 'dd.satisfaction', data: 'satisfaction', order:'desc'});
-            tinysort('#provider-results li',{selector: 'dd.distance', data: 'distance', order:'asc'});
+            //tinysort('#provider-results li',{selector: 'dd.distance', data: 'distance', order:'asc'});
             //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
             //tinysort('#provider-results>li',{selector:'h2'});
             
@@ -480,6 +487,20 @@ function deg2rad(deg) {
         }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   /// MAP MAP MAP
+    
     function providerResultsMap() {
 
         
@@ -561,8 +582,7 @@ function deg2rad(deg) {
             }
         });
     }
-            
-
+    
   function loadMap(xmlData) {
 
 
