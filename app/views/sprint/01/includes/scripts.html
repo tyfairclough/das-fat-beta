@@ -18,13 +18,9 @@
 <script src="/public/javascripts/tinysort.min.js"></script>
 <script>
     
-      var mapMarkers;
-      var mapMarkers = new Array();
+var infoWindows = new Array();
+var mapMarkers = new Array();
 
-
-
-$(document).ready(function () {
-    
 
     // get variables
     var i = 0;
@@ -43,6 +39,7 @@ $(document).ready(function () {
         }
         return (false);
     } 
+    
     var newLevyAccount = getQueryVariable("newLevyAccount");
     // defines url variables as global vars 
     var $distance = Number(getQueryVariable("WithinDistance"));
@@ -142,15 +139,7 @@ $(document).ready(function () {
         // hide national    
         $("article.national").hide();
         $("article.national").show();
-        
-        //alert(nationalCount);
-    
-        
-//        $(".multiple-choice input").click(function(e){
-  //          //e.preventDefault();
-//            $("#select-box").prop("disabled", true);
-  //      })
-    }
+     }
 
 
     
@@ -184,10 +173,6 @@ $(document).ready(function () {
             window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName="+$proName+"";            
         })
     }
-
-    
-    
-    
      
     function searchSelect() {
         $(".button").click(function(e){
@@ -215,9 +200,8 @@ $(document).ready(function () {
             alert("map coming soon");
         });
     }
-    
 
-        function providerResultsList() {
+    function providerResultsList() {
             
             
                 if ( $proName != "" ) {
@@ -496,26 +480,10 @@ function deg2rad(deg) {
             
         }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   /// MAP MAP MAP
-    
-    function providerResultsMap() {
 
-        
-                    $("body").addClass("fluid-width");
 
+function providerResultsMap() {
+		$("body").addClass("fluid-width");
     var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     var brandHeight = $("#global-header").height();
     var navHeight = $("#loggedIn").height();
@@ -523,122 +491,111 @@ function deg2rad(deg) {
     var footerHeight = $("#map-search footer").height();
     var bodyHeight = viewportHeight - brandHeight - navHeight - mapSearchHeight - footerHeight - 34;
     $("#map-search aside, #map-search #map").height(bodyHeight);    
-    }
+}
 
-                  
-    if ( $usrLoc != "" ) {
-            $("#location").val($usrLoc.replace(/%20/g, " "));        
-    } else {
-            $("#location").val("");        
-    }
-    
-    if ( $proName != "" ) {
-            $("#name").val($proName.replace(/%20/g, " "));
-    } else {
-            $("#name").val("");
-    }
+if ( $usrLoc != "" ) {
+  $("#location").val($usrLoc.replace(/%20/g, " "));        
+} else {
+  $("#location").val("");        
+}
 
-    
-    if ( $levyPayer == 1 ) {
-        $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
-    } else {
-        $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
-    }
+if ( $proName != "" ) {
+  $("#name").val($proName.replace(/%20/g, " "));
+} else {
+  $("#name").val("");
+}
+
+if ( $levyPayer == 1 ) {
+  $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
+} else {
+  $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
+}
             
-    //GLOBAL VAR
-    var XMLSource = $('#proData').attr('xmlData');
+//GLOBAL VAR
+var XMLSource = $('#proData').attr('xmlData');
 
-    var paginateCount = 10;
+var paginateCount = 10;
 
-    var lat1 = "";
-    var lon1 = "";
-    var lat2 = "";
-    var lon2 = "";
-    // randomly shorten the provider result by using the fake category filter
-    $appCat = Math.round(Math.random() * 20) + 1;;
+var lat1 = "";
+var lon1 = "";
+var lat2 = "";
+var lon2 = "";
+// randomly shorten the provider result by using the fake category filter
+$appCat = Math.round(Math.random() * 20) + 1;;
 
+$.ajax({
+    url: "http://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
+    type: "POST",
+    success: function (res) {
 
+        lat1 = res.results[0].geometry.location.lat;
+        lon1 = res.results[0].geometry.location.lng;
+        //console.log(lat1);
+        console.log("search longditude: " + lon1, "latitude: " + lat1);
+        //var lat2 = 51.5073509;
+        //var lon2 = -0.1277583;  
+        //loadloc(lat1, lon1);
+        searchMap();
+    }
+});
+
+function searchMap() {
     $.ajax({
-        url: "http://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
-        type: "POST",
-        success: function (res) {
-            //console.log(res.results[0].geometry.location.lat);
-            //console.log(res.results[0].geometry.location.lng);
-
-
-            lat1 = res.results[0].geometry.location.lat;
-            lon1 = res.results[0].geometry.location.lng;
-            //console.log(lat1);
-            //console.log("search longditude: " + lon1, "latitude: " + lat1);
-            //var lat2 = 51.5073509;
-            //var lon2 = -0.1277583;  
-            //loadloc(lat1, lon1);
-            searchMap();
+        type: "GET",
+        url: XMLSource,
+        dataType: "xml",
+        success: function (xml) {
+            loadMap(xml)
+        },
+        error: function (request, error) {
+            console.log("theres been an error in searchMap: " + arguments);
+            //alert(" Can't do because: " + error);
         }
     });
+}
+
+
+
+function loadMap(xmlData) {
+
+	$(xmlData).find('pro').each(function (i) {
         
-        
-  function searchMap() {
-        $.ajax({
-            type: "GET",
-            url: XMLSource,
-            dataType: "xml",
-            success: function (xml) {
-                loadMap(xml)
-            },
-            error: function (request, error) {
-                console.log("theres been an error in searchMap: " + arguments);
-                //alert(" Can't do because: " + error);
-            }
-        });
-    }
-    
-  function loadMap(xmlData) {
+      var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
+      var UKPRN = $(this).find('UKPRN').text();
+      var WEBSITE = $(this).find('WEBSITE').text();
+      var PHONE = $(this).find('PHONE').text();
+      var Name = $(this).find('Name').text();
+      var Address = $(this).find('Address').text();
 
+      // co-ordinates
+      var LatLong = $(this).find('LatLong').text();
+      LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
+      var lat2 = LatLong[0];
+      var lon2 = LatLong[1];
 
-      
-  
-      //items = ["Date", "Kg Emitted", "Kg Reduced"];    
-      
-$(xmlData).find('pro').each(function (i) {
+      var satisfaction = Math.round(Math.random() * 30) + 70;
+      var achievement = Math.round(Math.random() * 30) + 70;
 
-            
-            var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
-            var UKPRN = $(this).find('UKPRN').text();
-            var WEBSITE = $(this).find('WEBSITE').text();
-            var PHONE = $(this).find('PHONE').text();
-            var Name = $(this).find('Name').text();
-            var Address = $(this).find('Address').text();
-
-            // co-ordinates
-            var LatLong = $(this).find('LatLong').text();
-            LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
-            var lat2 = LatLong[0];
-            var lon2 = LatLong[1];
-
-            var satisfaction = Math.round(Math.random() * 30) + 70;
-            var achievement = Math.round(Math.random() * 30) + 70;
-            
-
-    
       var item = new Array();
-      item = ["'"+Name+"'","'"+Name+"'",lon2,lat2];
-      //  console.log(item);
-    mapMarkers.push(item);
-        });        
-    };
-});
-    
-    
-        
-        // Asynchronously Load the map API 
+			item = ["'" + Name + "'",lat2, lon2];
+			
+			mapMarkers.push(item);
+			
+			infoWindows.push(["<div class='info_content'><h3>" + Name + "</h3><p>" + Address + "</p></div>"]);        
+			
+  });   
+};
+
+jQuery(function($) {        // Asynchronously Load the map API 
     var script = document.createElement('script');
     script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyA8291bnIVrC6Ev9hTQ_1jBh7VpvuAwW8A&callback=initialize";
     document.body.appendChild(script);
-
+});
 
 
     
+// Google Maps initialize
+
     
 function initialize() {
     //console.log(mapMarkers);
@@ -651,11 +608,16 @@ function initialize() {
     // Display a map on the page
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     map.setTilt(45);
-        
-    // Multiple Markers
-    //var markers = items;
 
-      var markers = mapMarkers
+    var markers = [
+        ['London Eye, London', 51.503454,-0.119562],
+        ['Palace of Westminster, London', 51.499633,-0.124755]
+    ];
+      
+      console.log(markers);
+      console.log(mapMarkers);
+
+			markers = mapMarkers;
 
 
     // Info Window Content
@@ -668,7 +630,10 @@ function initialize() {
         '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +
         '</div>']
     ];
+    
+    infoWindowContent = infoWindows;
         
+          
     // Display multiple markers on a map
     var infoWindow = new google.maps.InfoWindow(), marker, i;
     
@@ -683,23 +648,18 @@ function initialize() {
         });
         
         // Allow each marker to have an info window    
+        
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
                 infoWindow.setContent(infoWindowContent[i][0]);
                 infoWindow.open(map, marker);
             }
         })(marker, i));
+        
 
         // Automatically center the map fitting all markers on the screen
         map.fitBounds(bounds);
     }
-                 console.log("fire");       
-
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(14);
-        google.maps.event.removeListener(boundsListener);
-    });
     
 }
 </script>
