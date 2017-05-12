@@ -1628,6 +1628,9 @@ table.form {
                      margin-right: 0   
                 }
             }
+            &.jp-disabled {
+                visibility: hidden;
+            }
                 .description {
                     display: block;
                 }

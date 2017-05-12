@@ -3496,6 +3496,10 @@ table.form td .block-label.selection-button-radio::after {
   margin-right: 0;
 }
 
+.page-navigation .page-navigation__btn.jp-disabled {
+  visibility: hidden;
+}
+
 .page-navigation .page-navigation__btn .description {
   display: block;
 }

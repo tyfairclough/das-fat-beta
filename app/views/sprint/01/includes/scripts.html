@@ -9,7 +9,6 @@
 <!-- govuk_elements js -->
 <script src="/public/javascripts/govuk/details.polyfill.js"></script>
 <script src="/public/javascripts/stackable.min.js"></script>
-<script src="/public/javascripts/jquery.distancecalculator.js"></script>
 <script src="/public/javascripts/jPages.min.js"></script>
 <script src="/public/javascripts/application.js"></script>
 
@@ -56,8 +55,10 @@ $(document).ready(function () {
     var $appType = getQueryVariable("appType");
     var $appCat = parseInt(getQueryVariable("appCat"));
     var $usrLoc = getQueryVariable("usrLoc");
+    var $levyPayer = getQueryVariable("levyPayer");
     var $catId = getQueryVariable("catId");
     var $ignoreRadius = getQueryVariable("ignoreRadius");
+    var $proName = getQueryVariable("proName");
     
         var $proOutput = "";
         var $mapOutput = [[]];
@@ -148,7 +149,28 @@ $(document).ready(function () {
 
     
     function providerStart() {
-        $(".button").click(function(e){
+        
+        $("#searchType .button").click(function(e){
+            e.preventDefault();
+                        var searchTypeGroup = $('input[name=searchTypeGroup]:checked').val();
+            if ( searchTypeGroup == "name") {
+                $("#nameInput").removeClass("hidden");
+                $("#searchType").addClass("hidden");                
+            } else {
+                $("#locationInput").removeClass("hidden");
+                $("#searchType").addClass("hidden");
+            }
+        });
+        
+        
+        $("#locationInput .button").click(function(e){
+            e.preventDefault();
+            usrLoc = $("#providerLocation").val();
+            levyPayer = $('input[name=levy-group]:checked').val();
+            window.location.href = "/sprint/{{sprint}}/provider/results-map.html?levyPayer="+levyPayer+"&usrLoc="+usrLoc+"";
+        })
+        
+   /*     $(".button").click(function(e){
             e.preventDefault();
             var providerName = $("#providerName").val(); 
             console.log(name);
@@ -201,7 +223,7 @@ $(document).ready(function () {
                localStorage.setItem("resultSet","9");
                 console.log("please choose if you pay the levy");
             }
-        })
+        }) */
     }
 
     
@@ -218,7 +240,7 @@ $(document).ready(function () {
             } else if ( state == "2" ) {
                 window.location.href = "/sprint/{{sprint}}/provider/index";
             } else {
-                window.location.href ="/sprint/{{sprint}}/assesor/index";
+                window.location.href ="/sprint/{{sprint}}/assessor/index";
             }
         })
     }
@@ -337,6 +359,7 @@ $proOutput = "";
 
             var satisfaction = Math.round(Math.random() * 30) + 70;
             var achievement = Math.round(Math.random() * 30) + 70;
+            var cousrsecount = Math.round(Math.random() * 30) + 10;
 
             
             /*
@@ -381,10 +404,12 @@ function deg2rad(deg) {
                 $proOutput += "<h2 class='heading-medium'><a href='#'class='proName'>" + Name + "</a></h2>";
                 $proOutput += "<dl class='result-data-list'><dt class='distance'>Distance</dt>";
                 $proOutput += "<dd class='distance' data-distance="+ distance +">" + distance + " km</dd>";
-                $proOutput += "<dd><address class='panel panel-border-thin'>" + Address + "</address></dd>";
+                $proOutput += "<dd class='address'><address>" + Address + "</address></dd>";
+                $proOutput += "<dt class='courses'>Courses available</dt>";
+                $proOutput += "<dd class='courses' data-count="+ cousrsecount +">" + cousrsecount + "</dd>";
                 $proOutput += "<dt class='satisfaction'>Employer satisfaction</dt>";
                 $proOutput += "<dd class='satisfaction' data-satisfaction="+ satisfaction +">" + satisfaction + "%</dd>";
-                $proOutput += "<dt class='achievement'>Achievement rate</dt>";
+                $proOutput += "<dt class='achievement'>Averaged achievement rate</dt>";
                 $proOutput += "<dd class='achievement' data-achievement="+ achievement + ">" + achievement + "%</dd>";
                 $proOutput += "</dl></div>";
                 $proOutput += "</li>";
@@ -451,6 +476,7 @@ function deg2rad(deg) {
                 $(".totalPage").html(pages.count);
                 $(".prevPage").html((pages.current) - 1);
                 $(".nextPage").html((pages.current) + 1);
+                $("html, body").animate({ scrollTop: 0 }, "slow");
             }
         });
 
@@ -511,6 +537,24 @@ function deg2rad(deg) {
     }
 
                   
+    if ( $usrLoc != "" ) {
+            $("#location").val($usrLoc);        
+    } else {
+            $("#location").val("");        
+    }
+    
+    if ( $proName != "" ) {
+            $("#name").val($proName);
+    } else {
+            $("#name").val("");
+    }
+
+    
+    if ( $levyPayer == 1 ) {
+        $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
+    } else {
+        $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
+    }
             
     //GLOBAL VAR
     var XMLSource = $('#proData').attr('xmlData');

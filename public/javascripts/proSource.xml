@@ -13,6 +13,8 @@
   <appCat>99</appCat>
   <LearnerScore>9.1</LearnerScore>
   <EmployerScore>8.9</EmployerScore>
+    <ofsted>1</ofsted>
+    <tef></tef>    
         <proMarketing>5 E LTD. have been operating for 30 years successfully supporting the completion of over 2000 apprentices.  Specialising in network engineering, 5 E LTD. have developed strong links with the higher education sector ensuring continuity to higher level of apprenticeship performance.  Employing 50 staff, 5 E LTD. ensure that all education, training and assessment staff are fully qualified with current industrial experience.</proMarketing>
     <proCourseInfo>This apprenticeship has been designed and developed to meet industry needs aligned with high level technological development.  Building on a sound foundation of material and scientific understanding the programme delivers high level engagement with latest technology. Balanced phases of learning encompass theoretical understanding with extensive technical and practical learning in the employer’s workplace.  Individual development objectives are aligned with both the apprenticeship outcomes and specific employer needs.
     
@@ -27,6 +29,10 @@ Equipment accessed during the programme delivered by 5 E LTD. Training includes:
 - In addition to technical skills, the ability to plan for and apply project management skills is critical to achieving Level 4 success
 - 5 E LTD. Training have the benefit of 44,000 sq ft of delivery space operating on three sites across England.  The facilities are fully equipped with resources to meet the needs of all learners.
     </proCourseInfo>
+    <nationalprovider>1</nationalprovider>
+    <levyprovider>1</levyprovider>
+    <multilocation>1</multilocation>
+    <primaryProId>304587</primaryProId>
 </pro>
 <pro proId="304587">
   <UKPRN>10000054</UKPRN>
