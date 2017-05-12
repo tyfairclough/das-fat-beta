@@ -62,6 +62,12 @@ $(document).ready(function () {
     
         var $proOutput = "";
         var $mapOutput = [[]];
+    var radiusDistance = localStorage.getItem("radius");
+    
+    if ( radiusDistance == null ) {
+        var radiusDistance = 50;
+        localStorage.setItem("radius",radiusDistance);
+    }
 
 
      // get local storage variables
@@ -238,8 +244,15 @@ $(document).ready(function () {
     var lon1 = "";
     var lat2 = "";
     var lon2 = "";
-    var radiusDistance = 50;
-    var $address = $usrLoc.replace(/%20/g, " ");;
+            
+
+    var radiusDistance = localStorage.getItem("radius");
+    
+    if ( radiusDistance == null ) {
+        radiusDistance = 50;
+        localStorage.setItem("radius",radiusDistance);
+    }
+            var $address = $usrLoc.replace(/%20/g, " ");;
     //var $usrLoc = $usrLoc;
     var $appCat = 17;
 
@@ -271,7 +284,7 @@ $(document).ready(function () {
             
     function feedbackMsg() {
         var resultCount = $("ol li").length;
-        console.log("result count: " + resultCount);
+        //console.log("result count: " + resultCount);
         $("span.count").text(resultCount);
         //$(".appName").text(Cookies.set("appName"));
         
@@ -345,21 +358,15 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }        
             
-      
             var exp = new RegExp(keyword, "gi");
-
-            console.log(Name);
             searchExp = Name.match(exp);
-                console.log(searchExp);
-//            console.log("search term: "+keyword);
 
+            if ( distance >= radiusDistance ) {
+                console.log("rad is " + radiusDistance + "distance is " +distance)
+            };
             
-            
-                        //if (distance >= radiusDistance ) {
-                        if (searchExp != null ) {
-                            i++;
-            
-                //distance(lat1,lon1,lat2,lon2);
+            if (searchExp != null && distance <= radiusDistance ) {
+                i++;
 
                 $proOutput += "<li id='" + PROVIDER_ID + "' class='result'>";
                 $proOutput += "<div class='column details'>";
@@ -378,7 +385,7 @@ function deg2rad(deg) {
                 $proOutput += ""
 
                             } else {
-                                console.log("no results found");
+                                //console.log("no results found");
                             }
         });
       
@@ -480,9 +487,12 @@ function deg2rad(deg) {
                 $('#select-distance').on('change', function() {
                 
                 radiusDistance = this.value;
-                    searchThis();
+                    localStorage.setItem("radius",radiusDistance);
+                    //searchThis();
+                    location.reload();
                 });
 
+                $("#select-distance").val(localStorage.getItem("radius"));
             
         }
     
@@ -559,7 +569,7 @@ function deg2rad(deg) {
             lat1 = res.results[0].geometry.location.lat;
             lon1 = res.results[0].geometry.location.lng;
             //console.log(lat1);
-            console.log("search longditude: " + lon1, "latitude: " + lat1);
+            //console.log("search longditude: " + lon1, "latitude: " + lat1);
             //var lat2 = 51.5073509;
             //var lon2 = -0.1277583;  
             //loadloc(lat1, lon1);
