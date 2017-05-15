@@ -1,12 +1,6 @@
-{% extends "layout.html" %}
-{% block page_title %}
-  Sprint {{sprint}} - Dashboard
-{% endblock %}
-{% block inside_header %}
-{% endblock %}
-{% block content %}
+{% extends "layout.html" %} {% block page_title %} Sprint {{sprint}} - Dashboard {% endblock %} {% block inside_header %} {% endblock %} {% block content %}
 <main class="provider-results-list" id="content" role="main" tabindex="-1">
-      {% include "includes/link-back.html" %}
+    {% include "includes/link-back.html" %}
 
     <section id="results-list" class="">
 
@@ -17,70 +11,68 @@
 
 
 
-    
-    <div class="grid-row">
-        <div class="column-one-third">
-            <h3 class="bold-small">Filter results</h3>
-            <br>
-<fieldset class="filters filters-accordion">
-              <h2 class="toggler heading-small">Provider details</h2>
-                      <div class="toggled-content">
- <div class="form-group">
-              <label for="providerName" class="form-label">Name (optional)</label>
-        <input type="search" name="q" value="" id="providerName" class="form-control" />
-  </div>
-  <div class="form-group">
-              <label for="providerLocation" class="form-label">Search location (optional)</label>
-        <input id="providerLocation" type="text" class="form-control" value="" />
-  </div>
-    <div class="form-group">
-  <label class="form-label" for="select-distance">Distance from location</label>
-  <select class="form-control" id="select-distance" name="select-distance">
-    <option value="5">5 miles</option>
-    <option value="10">10 miles</option>
-    <option value="50" selected="selected">50 miles</option>
-    <option value="10000">National</option>
-  </select>
-</div>
-                          <div class="multiple-choice">
-      <input id="national-only" name="waste-types" type="checkbox" value="1">
-      <label class="block-label" for="national-only">Only show national providers</label>
-    </div>
-    </div>             
-            </fieldset>
-            
-            
-<fieldset class="filters filters-accordion">
-                <h2 class="toggler heading-small">Apprenticeship levy</h2>
-                <div class="toggled-content">
-                    <div class="form-group">
-        <legend class="form-label">Do you pay the apprenticeship levy?</legend>
-        <label class="block-label selection-button-radio" for="levy-1">
-        <input id="levy-1" type="radio" name="levy-group" value="1">
-        Yes
-        </label>
-        <label class="block-label selection-button-radio" for="levy-2">
-        <input id="levy-2" type="radio" name="levy-group" value="2">
-        No
-        </label>
-        </div>
 
-                    <details>
-                        <summary>What is Apprenticeship levy </summary>
-                        <div class="panel panel-border-narrow">
-                            <p>Apprenticeships are set at different levels of difficulty from the equivalent of GCSE (level 2) up to postgraduate (level 7)</p>
-                            <p><a href="https://www.gov.uk/what-different-qualification-levels-mean/overview" target="_blank" rel="external">More about levels</a></p>
+        <div class="grid-row">
+            <div class="column-one-third">
+                <h3 class="bold-small">Filter results</h3>
+                <br>
+                <fieldset class="filters filters-accordion">
+                    <h2 class="toggler heading-small">Provider details</h2>
+                    <div class="toggled-content">
+                        <div class="form-group">
+                            <label for="providerName" class="form-label">Name (optional)</label>
+                            <input type="search" name="q" value="" id="providerName" class="form-control" />
                         </div>
-                    </details>
-                    
+                        <div class="form-group">
+                            <label for="providerLocation" class="form-label">Search location (optional)</label>
+                            <input id="providerLocation" type="text" class="form-control" value="" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="select-distance">Distance from location</label>
+                            <select class="form-control" id="select-distance" name="select-distance">
+                                <option value="5">5 miles</option>
+                                <option value="10">10 miles</option>
+                                <option value="50" selected="selected">50 miles</option>
+                                <option value="10000">National</option>
+                            </select>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="national-only" name="waste-types" type="checkbox" value="1">
+                            <label class="block-label" for="national-only">Only show national providers</label>
+                        </div>
+                    </div>
+                </fieldset>
 
-                </div>
-            </fieldset>                
 
-            <a class="button">Update results</a>
-        </div>
-        <div class="column-two-thirds">
-        <form method="GET" id="search-results-order">
+                <fieldset class="filters filters-accordion">
+                    <h2 class="toggler heading-small">Apprenticeship levy</h2>
+                    <div class="toggled-content">
+                        <div class="form-group">
+                            <legend class="form-label">Do you pay the apprenticeship levy?</legend>
+                            <label class="block-label selection-button-radio" for="levy-1">
+                                <input id="levy-1" type="radio" name="levy-group" value="1"> Yes
+                            </label>
+                            <label class="block-label selection-button-radio" for="levy-2">
+                                <input id="levy-2" type="radio" name="levy-group" value="2"> No
+                            </label>
+                        </div>
+
+                        <details>
+                            <summary>What is Apprenticeship levy </summary>
+                            <div class="panel panel-border-narrow">
+                                <p>Apprenticeships are set at different levels of difficulty from the equivalent of GCSE (level 2) up to postgraduate (level 7)</p>
+                                <p><a href="https://www.gov.uk/what-different-qualification-levels-mean/overview" target="_blank" rel="external">More about levels</a></p>
+                            </div>
+                        </details>
+
+
+                    </div>
+                </fieldset>
+
+                <a class="button">Update results</a>
+            </div>
+            <div class="column-two-thirds">
+                <form method="GET" id="search-results-order">
                     <input type="hidden" name="Keywords" value="engineer">
                     <input type="hidden" name="page" value="1">
                     <input type="hidden" name="take" value="10">
@@ -90,25 +82,25 @@
                             <a class="hidden" href="#">List view</a>
                             <a id="switchMap" href="/sprint/{{sprint}}/provider/results-map.html">Show on a map <i class="fa fa-map-o"></i></a>
                         </div>
-                        
+
                         <div style="float: right;">
                             <label class="bold-small">Sort by</label>
-                        <select name="order" id="select-order" class="form-control form-control-1-3" style="width: 250px;">
-                            <option elected="selected" value="2">Closest first</option>
-                            <option value="1">Best match</option>
-                            <option value="3">Highest satisfaction</option>
-                            <option value="4">Highest achievement</option>
-                        </select>
-                        <button type="submit" value="Sort" class="button sr-only secondary">Sort</button>
-                            </div>
+                            <select name="order" id="select-order" class="form-control form-control-1-3" style="width: 250px;">
+                                <option selected="selected" value="1">Best match</option>
+                                <option value="2">Closest first</option>
+                                <option value="3">Highest satisfaction</option>
+                                <option value="4">Highest achievement</option>
+                            </select>
+                            <button type="submit" value="Sort" class="button sr-only secondary">Sort</button>
+                        </div>
                     </div>
                 </form>
-            
-            
-            <ol id="provider-results" style="float: left; width: 100%;">
-            </ol> 
-         
-                      <div id="pagedat" style="display: none;">
+
+
+                <ol id="provider-results" style="float: left; width: 100%;">
+                </ol>
+
+                <div id="pagedat" style="display: none;">
 
                 </div>
 
@@ -129,8 +121,9 @@
                     </a>
 
                 </div>
+            </div>
         </div>
-    </div>
-</section>    
-</main><!-- / #content -->
+    </section>
+</main>
+<!-- / #content -->
 {% endblock %}
