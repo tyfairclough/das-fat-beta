@@ -150,6 +150,16 @@
 
         $("#searchType .button").click(function (e) {
             e.preventDefault();
+            UserStep();
+        });
+        
+        $('.provider-start #searchType').keypress(function(e){
+            if(e.which == 13){//Enter key pressed
+            UserStep();
+            }
+        });
+
+        function UserStep() {
             var searchTypeGroup = $('input[name=searchTypeGroup]:checked').val();
             if (searchTypeGroup == "name") {
                 $("#nameInput").removeClass("hidden");
@@ -158,28 +168,62 @@
                 $("#locationInput").removeClass("hidden");
                 $("#searchType").addClass("hidden");
             }
-        });
-
+        }
 
         $("#locationInput .button").click(function (e) {
             e.preventDefault();
+                userLocation()
+        })
+        
+        $('.provider-start #locationInput').keypress(function(e){
+            if(e.which == 13){//Enter key pressed
+                e.preventDefault();
+                userLocation()           
+            }
+        });
+        
+        function userLocation() {
             usrLoc = $("#providerLocation").val();
             levyPayer = $('input[name=levy-group]:checked').val();
-            window.location.href = "/sprint/{{sprint}}/provider/results-map.html?levyPayer=" + levyPayer + "&usrLoc=" + usrLoc + "";
-        })
+            window.location.href = "/sprint/{{sprint}}/provider/results-map.html?levyPayer=" + levyPayer + "&usrLoc=" + usrLoc + "";            
+        }
 
 
         $("#nameInput .button").click(function (e) {
             e.preventDefault();
+            userName();
+
+        });
+        
+            $('.provider-start #nameInput').keypress(function(e){
+            if(e.which == 13){//Enter key pressed
+                e.preventDefault();
+                userName()           
+            }
+        });    
+        
+        
+        function userName () {
             $proName = $("#providerName").val();
             localStorage.setItem("keyword", $proName);
-            window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName=" + $proName + "";
-        })
+            window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName=" + $proName + "";            
+        }
     }
 
     function searchSelect() {
+        
+    $('.search-select').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            directUser();
+        }
+    });        
+        
         $(".button").click(function (e) {
             e.preventDefault();
+            directUser();
+        })
+        
+        function directUser(){
             var state = $('input[name=radio-group]:checked').val();
             if (state == "1") {
                 //window.location.href = "/sprint/{{sprint}}/course/index";
@@ -188,8 +232,8 @@
                 window.location.href = "/sprint/{{sprint}}/provider/index";
             } else {
                 window.location.href = "/sprint/{{sprint}}/assessor/index";
-            }
-        })
+            }            
+        }
     }
 
     function providerDetailMultiple() {
@@ -211,7 +255,7 @@
 
             $("#providerName").val($proName.replace(/%20/g, " "));
         } else {
-            $("#providerName").val("");
+            $("#providerName").val("Learn");
         }
 
         //GLOBAL VAR
@@ -275,6 +319,11 @@
             $("span.count").text(resultCount);
             //$(".appName").text(Cookies.set("appName"));
 
+            if ( resultCount < 1 ) {
+                console.log("no results found");
+                $(".page-navigation").hide();
+                $("#provider-results").html("<span class='bold-small'>No results, please found try again</a></span>");
+            }
 
 
             $("#providerLocation").val($address);
@@ -370,11 +419,10 @@
                     $proOutput += "</li>";
                     $proOutput += ""
 
-                } else {
-                    //console.log("no results found");
                 }
             });
 
+            
             showProviders($proOutput);
 
 
@@ -640,7 +688,7 @@
 
 
             if (distance < radiusDistance) {
-                console.log(distance);
+               // console.log(distance);
 
                 mapMarkers.push(item);
 
