@@ -17,6 +17,11 @@
 <script src="/public/javascripts/aml.js" id="proData" xmldata="/public/javascripts/proSource.xml "></script>
 <script src="/public/javascripts/tinysort.min.js"></script>
 <script>
+	
+		var script = document.createElement('script');
+        script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyA8291bnIVrC6Ev9hTQ_1jBh7VpvuAwW8A&callback=initialize";
+        document.body.appendChild(script);
+
     // scripts.html
 
     var infoWindows = new Array();
@@ -144,8 +149,6 @@
         $("article.national").show();
     }
 
-
-
     function providerStart() {
 
         $("#searchType .button").click(function (e) {
@@ -249,7 +252,7 @@
     }
 
     function providerResultsList() {
-
+		
 
         if ($proName != "") {
 
@@ -346,6 +349,22 @@
             });
         }
 
+				function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = deg2rad(lat2 - lat1); // deg2rad below
+            var dLon = deg2rad(lon2 - lon1);
+            var a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d;
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180)
+        }
 
         function loadproviders(xmlData) {
 
@@ -354,7 +373,6 @@
             var searchExp = "";
 
             $(xmlData).find('pro').each(function () {
-
 
                 var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
                 //console.log(PROVIDER_ID);
@@ -376,58 +394,31 @@
                 var achievement = Math.round(Math.random() * 30) + 70;
                 var cousrsecount = Math.round(Math.random() * 30) + 10;
                 var distance = getDistanceFromLatLonInKm(lat1, lon2, lat2, lon2).toFixed(1);
-
-
-                function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-                    var R = 6371; // Radius of the earth in km
-                    var dLat = deg2rad(lat2 - lat1); // deg2rad below
-                    var dLon = deg2rad(lon2 - lon1);
-                    var a =
-                        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
-                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                    var d = R * c; // Distance in km
-                    return d;
-                }
-
-                function deg2rad(deg) {
-                    return deg * (Math.PI / 180)
-                }
-
+                                
                 var exp = new RegExp(keyword, "gi");
                 searchExp = Name.match(exp);
+                
 
-                if (distance < radiusDistance) {
-                    //console.log("rad is " + radiusDistance + "distance is " + distance)
-                };
-
-                if (searchExp != null && distance <= radiusDistance) {
-                    i++;
-
-                    $proOutput += "<li id='" + PROVIDER_ID + "' class='result'>";
-                    $proOutput += "<div class='column details'>";
-                    $proOutput += "<h2 class='heading-medium'><a href='/sprint/{{sprint}}/provider/detail-single.html'class='proName'>" + Name + "</a></h2>";
-                    $proOutput += "<dl class='result-data-list'><dt class='distance'>Distance</dt>";
-                    $proOutput += "<dd class='distance' data-distance=" + distance + ">" + distance + " km</dd>";
-                    $proOutput += "<dd class='address'><address>" + Address + "</address></dd>";
-                    $proOutput += "<dt class='courses'>Courses available</dt>";
-                    $proOutput += "<dd class='courses' data-count=" + cousrsecount + ">" + cousrsecount + "</dd>";
-                    $proOutput += "<dt class='satisfaction'>Employer satisfaction</dt>";
-                    $proOutput += "<dd class='satisfaction' data-satisfaction=" + satisfaction + ">" + satisfaction + "%</dd>";
-                    $proOutput += "<dt class='achievement'>Averaged achievement rate</dt>";
-                    $proOutput += "<dd class='achievement' data-achievement=" + achievement + ">" + achievement + "%</dd>";
-                    $proOutput += "</dl></div>";
-                    $proOutput += "</li>";
-                    $proOutput += ""
-
-                }
+                $proOutput += "<li id='" + PROVIDER_ID + "' class='result'>";
+                $proOutput += "<div class='column details'>";
+                $proOutput += "<h2 class='heading-medium'><a href='/sprint/{{sprint}}/provider/detail-single.html'class='proName'>" + Name + "</a></h2>";
+                $proOutput += "<dl class='result-data-list'><dt class='distance'>Distance</dt>";
+                $proOutput += "<dd class='distance' data-distance=" + distance + ">" + distance + " km</dd>";
+                $proOutput += "<dd class='address'><address>" + Address + "</address></dd>";
+                $proOutput += "<dt class='courses'>Courses available</dt>";
+                $proOutput += "<dd class='courses' data-count=" + cousrsecount + ">" + cousrsecount + "</dd>";
+                $proOutput += "<dt class='satisfaction'>Employer satisfaction</dt>";
+                $proOutput += "<dd class='satisfaction' data-satisfaction=" + satisfaction + ">" + satisfaction + "%</dd>";
+                $proOutput += "<dt class='achievement'>Averaged achievement rate</dt>";
+                $proOutput += "<dd class='achievement' data-achievement=" + achievement + ">" + achievement + "%</dd>";
+                $proOutput += "</dl></div>";
+                $proOutput += "</li>";
+                $proOutput += ""
+                
             });
 
             
             showProviders($proOutput);
-
-
 
         };
 
@@ -435,20 +426,8 @@
 
 
         function showProviders($proOutput) {
-            $("#provider-results").html($proOutput).promise().done(function () {
-                //console.log("on a promise");
-                //tinysort('#provider-results li',{selector: 'dd.satisfaction', data: 'satisfaction', order:'desc'});
-                //tinysort('#provider-results li',{selector: 'dd.distance', data: 'distance', order:'asc'});
-                //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
-                //tinysort('#provider-results>li',{selector:'h2'});
-
-
-                // distance sort
-                //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
-
-                //console.log("fire");
-
-            });
+	        
+            $("#provider-results").html($proOutput);
 
             feedbackMsg();
             paginateDat(paginateCount);
@@ -555,10 +534,16 @@
         $("#select-distance").val(localStorage.getItem("radius"));
 
     }
+    
+     var paginateCount = 10;
 
-
+    var lat1 = "";
+    var lon1 = "";
+    var lat2 = "";
+    var lon2 = "";
 
     function providerResultsMap() {
+	    
         $("body").addClass("fluid-width");
         var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         var brandHeight = $("#global-header").height();
@@ -567,53 +552,43 @@
         var footerHeight = $("#map-search footer").height();
         var bodyHeight = viewportHeight - brandHeight - navHeight - mapSearchHeight - footerHeight - 34;
         $("#map-search aside, #map-search #map").height(bodyHeight);
-    }
-
-    if ($usrLoc != "") {
-        $("#location").val($usrLoc.replace(/%20/g, " "));
-    } else {
-        $("#location").val("");
-    }
-
-    if ($proName != "") {
-        $("#name").val($proName.replace(/%20/g, " "));
-    } else {
-        $("#name").val("");
-    }
-
-    if ($levyPayer == 1) {
-        $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
-    } else {
-        $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
-    }
-
+        
+		    if ($usrLoc != "") {
+		        $("#location").val($usrLoc.replace(/%20/g, " "));
+		    } else {
+		        $("#location").val("");
+		    }
+		
+		    if ($proName != "") {
+		        $("#name").val($proName.replace(/%20/g, " "));
+		    } else {
+		        $("#name").val("");
+		    }
+		
+		    if ($levyPayer == 1) {
+		        $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
+		    } else {
+		        $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
+		    }
+    
+		    // randomly shorten the provider result by using the fake category filter
+		    $appCat = Math.round(Math.random() * 20) + 1;;
+		
+		    $.ajax({
+		        url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
+		        type: "POST",
+		        success: function (res) {
+			        console.log(res);
+		            lat1 = res.results[0].geometry.location.lat;
+		            lon1 = res.results[0].geometry.location.lng;
+		            searchMap();
+		        }
+		    });
+		}
+    
+    
     //GLOBAL VAR
     var XMLSource = $('#proData').attr('xmlData');
-
-    var paginateCount = 10;
-
-    var lat1 = "";
-    var lon1 = "";
-    var lat2 = "";
-    var lon2 = "";
-    // randomly shorten the provider result by using the fake category filter
-    $appCat = Math.round(Math.random() * 20) + 1;;
-
-    $.ajax({
-        url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
-        type: "POST",
-        success: function (res) {
-
-            lat1 = res.results[0].geometry.location.lat;
-            lon1 = res.results[0].geometry.location.lng;
-            //console.log(lat1);
-            console.log("search longditude: " + lon1, "latitude: " + lat1);
-            //var lat2 = 51.5073509;
-            //var lon2 = -0.1277583;  
-            //loadloc(lat1, lon1);
-            searchMap();
-        }
-    });
 
     function searchMap() {
         $.ajax({
@@ -625,13 +600,23 @@
             },
             error: function (request, error) {
                 console.log("theres been an error in searchMap: " + arguments);
-                //alert(" Can't do because: " + error);
             }
         });
     }
 
-
-
+	     
+   function distanceFromTo (lat1, lon1, lat2, lon2) {
+	      var p = 0.017453292519943295; // Math.PI / 180
+	      var c = Math.cos;
+	      var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+	          c(lat1 * p) * c(lat2 * p) *
+	          (1 - c((lon2 - lon1) * p)) / 2;
+	
+	      return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+	  }
+	  
+	  
+				  
     function loadMap(xmlData) {
 
         $(xmlData).find('pro').each(function (i) {
@@ -645,7 +630,7 @@
 
             // co-ordinates
             var LatLong = $(this).find('LatLong').text();
-            LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
+            LatLong = LatLong.split(',');
             var lat2 = LatLong[0];
             var lon2 = LatLong[1];
 
@@ -653,67 +638,34 @@
             var achievement = Math.round(Math.random() * 30) + 70;
 
             var item = new Array();
+            
             item = ["'" + Name + "'", lat2, lon2];
-            //            var distance = getDistanceFromLatLonInKm(lat1, lon2, lat2, lon2).toFixed(1);
-            var distance = distance(lat1, lon2, lat2, lon2);
 
-            /*
-                        function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-                            var R = 6371; // Radius of the earth in km
-                            var dLat = deg2rad(lat2 - lat1); // deg2rad below
-                            var dLon = deg2rad(lon2 - lon1);
-                            var a =
-                                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-                                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-                            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                            var d = R * c; // Distance in km
-                            return d;
-                        }
-
-                        function deg2rad(deg) {
-                            return deg * (Math.PI / 180)
-                        }
-                        
-                        */
-
-
-            function distance(lat1, lon1, lat2, lon2) {
-                var p = 0.017453292519943295; // Math.PI / 180
-                var c = Math.cos;
-                var a = 0.5 - c((lat2 - lat1) * p) / 2 +
-                    c(lat1 * p) * c(lat2 * p) *
-                    (1 - c((lon2 - lon1) * p)) / 2;
-
-                return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
-            }
-
-
+            var distance = distanceFromTo(lat1, lon2, lat2, lon2);
+            
             if (distance < radiusDistance) {
-               // console.log(distance);
-
                 mapMarkers.push(item);
-
                 infoWindows.push(["<div class='info_content'><h3>" + Name + "</h3><p>" + Address + "</p><a href='/sprint/{{sprint}}/provider/detail-single.html?proId=" + PROVIDER_ID + ">Details</a></div>"]);
 
-            }
+          	}
         });
 
-        initialize();
+				showTheMaps();
+      
     };
 
-    jQuery(function ($) { // Asynchronously Load the map API 
-        var script = document.createElement('script');
-        script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyA8291bnIVrC6Ev9hTQ_1jBh7VpvuAwW8A&callback=initialize";
-        document.body.appendChild(script);
-    });
+
 
 
 
     // Google Maps initialize
 
+		function initialize() {
+			return false;
+		}
 
-    function initialize() {
+
+    function showTheMaps() {
         //console.log(mapMarkers);
         var map;
         var bounds = new google.maps.LatLngBounds();
