@@ -46,23 +46,13 @@
         return (false);
     }
 
-    var newLevyAccount = getQueryVariable("newLevyAccount");
     // defines url variables as global vars 
     var $distance = Number(getQueryVariable("WithinDistance"));
-    var $resultsToDisplay = Number(getQueryVariable("resultsToDisplay"));
     var $location = getQueryVariable("Location");
-    var $keywords = getQueryVariable("Keywords");
-    var $trainingId = getQueryVariable("trainingId");
-    var $proId = getQueryVariable("proId");
-    var $address = getQueryVariable("address");
-    var $appType = getQueryVariable("appType");
-    var $appCat = parseInt(getQueryVariable("appCat"));
     var $usrLoc = getQueryVariable("usrLoc");
     var $levyPayer = getQueryVariable("levyPayer");
-    var $catId = getQueryVariable("catId");
     var $ignoreRadius = getQueryVariable("ignoreRadius");
     var $proName = getQueryVariable("proName");
-
     var $proOutput = "";
     var $mapOutput = [[]];
     var radiusDistance = localStorage.getItem("radius");
@@ -208,7 +198,7 @@
         
         function userName () {
             $proName = $("#providerName").val();
-            localStorage.setItem("keyword", $proName);
+            //localStorage.setItem("keyword", $proName);
             window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName=" + $proName + "";            
         }
     }
@@ -254,20 +244,16 @@
     function providerResultsList() {
 		
 
-        if ($proName != "") {
 
-            $("#providerName").val($proName.replace(/%20/g, " "));
-        } else {
-            $("#providerName").val("Learn");
-        }
 
         //GLOBAL VAR
         var XMLSource = $('#proData').attr('xmlData');
         var keyword = localStorage.getItem("keyword");
+        keyword = $proName;
         //keyword = "COLLEGE";
-        var catType = '';
-        var stn = '';
-        var frm = '';
+        //var catType = '';
+        //var stn = '';
+        //var frm = '';
 
         var i = 0;
         var msgPlural = 'are';
@@ -286,6 +272,14 @@
             radiusDistance = 50;
             localStorage.setItem("radius", radiusDistance);
         }
+        
+        if ($proName != "") {
+
+            $("#providerName").val($proName.replace(/%20/g, " "));
+        } else {
+            $("#providerName").val("Learndirect");
+        }        
+        
         var $address = $usrLoc.replace(/%20/g, " ");;
         //var $usrLoc = $usrLoc;
         var $appCat = 17;
@@ -294,7 +288,7 @@
         $appCat = Math.round(Math.random() * 20) + 1;;
 
 
-        //keyword = $("#input-keywords").val();
+
 
         $.ajax({
             url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
@@ -322,12 +316,12 @@
             $("span.count").text(resultCount);
             //$(".appName").text(Cookies.set("appName"));
 
-          /*  if ( resultCount < 1 ) {
+            if ( resultCount < 1 ) {
                 console.log("no results found");
                 $(".page-navigation").hide();
                 $("#provider-results").html("<span class='bold-small'>No results, please found try again</a></span>");
             }
-*/
+
 
             $("#providerLocation").val($address);
             
@@ -397,8 +391,12 @@
                                 
                 var exp = new RegExp(keyword, "gi");
                 searchExp = Name.match(exp);
+                //searchExp = Name.match("learndirect");
                 
+                //console.log("search term: " + searchExp);
 
+                if (searchExp != null ) {
+                
                 $proOutput += "<li id='" + PROVIDER_ID + "' class='result'>";
                 $proOutput += "<div class='column details'>";
                 $proOutput += "<h2 class='heading-medium'><a href='/sprint/{{sprint}}/provider/detail-single.html'class='proName'>" + Name + "</a></h2>";
@@ -414,7 +412,7 @@
                 $proOutput += "</dl></div>";
                 $proOutput += "</li>";
                 $proOutput += ""
-                
+                };
             });
 
             
