@@ -1,0 +1,220 @@
+{% extends "layout.html" %}
+{% block page_title %}
+  Sprint {{sprint}} - Dashboard
+{% endblock %}
+{% block inside_header %}
+{% endblock %}
+{% block content %}
+<main class="provider-detail-single" id="content" role="main" tabindex="-1">
+
+    
+<div class="breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sprint/{{sprint}}/provider/detail-multiple.html">ACL Essex</a></li>
+    <li aria-current="page">ACL Basildon</li>
+    
+  </ol>
+</div>    
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge" id="provider-name">
+                ACL Basildon
+            </h1>
+        </div>
+    </div>
+    <div class="grid-row">
+        <aside class="column-one-third pull-right">
+                            <h2 class="heading-medium">Provider information</h2>
+                <div class="provider-marketing-info">
+                    <article class="markdown"><p>ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</p>
+<p>Our dedicated and professional team deliver programmes up to and including level 5. We can support new employees and help develop existing staff and managers.</p>
+<p>Training is bespoke to your business and will include an element of classroom delivery as part of the programme.</p>
+<p>All of our delivery staff have industry experience and a wealth of knowledge in their subject area.</p>
+<p>We offer the following apprenticeships: Health &amp; Care, Management, Administration, Supporting Teaching &amp; Learning, Customer Service, Childcare, Accounting, Pharmacy and Hair.</p>
+
+</article>
+                </div>
+            <hr />
+            
+            <div class="panel--contact">
+                <h2 class="heading-medium">Contact details</h2>
+                <dl class="data-list--provider data-list--compact">
+                            <dt class="apprenticeshipContactTitle">Website:</dt>
+        <dd>
+            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="course-link apprenticeshipContact">
+ACL Essex website            </a>
+        </dd>
+
+                        <dt class="phone-title">Phone number:</dt>
+    <dd id="phone" class="phone">03330 139502</dd>
+
+                        <dt class="email-title">Email:</dt>
+    <dd id="email" class="email"><a href="mailto:acl.nostoppingme@essex.gov.uk">acl.nostoppingme@essex.gov.uk</a></dd>
+
+                            <dt class="providerContactTitle">Contact page:</dt>
+        <dd>
+            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="contact-link providerContact">
+contact this training provider            </a>
+        </dd>
+
+                        <dt class="training-location-title">Address:</dt>
+        <dd id="training-location" class="training-location">
+            ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB 
+        </dd>
+
+                </dl>
+            </div>
+            <hr />
+                 <section>
+
+                <dl class="data-list--provider data-list--compact">
+                    <dt>Employer satisfaction:</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="employer-satisfaction" class="rating-71">
+                                71%
+                            </span>
+                                    <div class="progress-container">
+            <div class="progressbar" style="width: 71%"></div>
+        </div>
+
+                        </div>
+                    </dd>
+                    <dt>Learner satisfaction:</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="learner-satisfaction" class="rating-93">
+                                93%
+                            </span>
+                                    <div class="progress-container">
+            <div class="progressbar" style="width: 93%"></div>
+        </div>
+
+                        </div>
+                            <span class="satisfaction-source font-small">
+                                Source: <a href="https://www.gov.uk/government/statistical-data-sets/fe-choices-performance-indicators" target="_blank">Skills Funding Agency FE Choices</a>
+                            </span>
+                    </dd>
+
+                        <dt class="legal-name-title">Legal trading name:</dt>
+    <dd id="legal-name" class="legal-name">ESSEX COUNTY COUNCIL</dd>
+
+                </dl>
+
+
+                <p class="content-source">
+                    Content maintained by ACL Essex
+                </p>
+            </section>
+            
+        </aside>
+        <div class="column-two-thirds">
+
+
+                  
+         <section class="courses">
+
+
+            <h2 class="heading-large">All training courses</h2>
+             <table class="responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">Course</th>
+                        <th scope="col"></th>
+                        <th scope="col" class="numeric">Level</th>
+                        <th scope="col" class="numeric"></th>
+                    </tr> 
+                </thead>
+                 <tbody>
+                    <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="tag tag-new">Standard</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="tag tag-new">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Business and Professional Administration</td> 
+                        <td></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">CNC Technician</td> 
+                        <td></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Fixed assest mangagement</td> 
+                        <td></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Groundsman</td> 
+                        <td><span class="tag tag-new">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Homestay Nurse</td> 
+                        <td></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Interior Designer</td> 
+                        <td></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Manufacturing engineer</td> 
+                        <td></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Network engineer</td> 
+                        <td><span class="tag tag-new">Standard</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                 </tbody>
+             </table>
+<div class="panel panel-info">
+<p class="labelmessage">
+        Results labelled <strong class="tag tag-new">Standard</strong> are Apprenticeship Standards developed by employer groups. They are replace the old Apprenticeship Frameworks from 2016 onwards.
+    </p>             
+</div>
+        </section>
+              <div class="survey">
+                <h2 class="bold-small">
+                    Give us your feedback
+                </h2>
+                <p>
+                    This is a new service and your feedback will help us improve it.<br>
+                    Use the link below to take part in a short survey.
+                </p>
+                <a href="https://www.surveymonkey.co.uk/r/MLTBYNX" target="_blank" class="button">Take the survey</a>
+            </div>
+            <div class="provider-disclaimer">
+                <h3 class="heading-small">Content disclaimer</h3>
+                <p>
+                    Skills Funding Agency cannot guarantee the accuracy of course information on this site and makes no representations about the quality of any courses which appear on the site. Skills Funding Agency is not liable for any losses suffered as a result of any party relying on the course information provided.
+                </p>
+            </div>
+     
+       
+        </div>
+    </div>
+</main><!-- / #content -->
+{% endblock %}
