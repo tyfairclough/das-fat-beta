@@ -360,6 +360,10 @@
             return deg * (Math.PI / 180)
         }
 
+        
+
+        
+        
         function loadproviders(xmlData) {
 
             i = 0;
@@ -379,6 +383,44 @@
                 var Name = $(this).find('Name').text();
                 var Address = $(this).find('Address').text();
                 var appCat = $(this).find('appCat').text();
+                var RatingType = "";
+                var Rating = "";
+                
+
+            if ( $(this).find('Ofsted') != null ) {
+                RatingType = "Ofsted";
+                Rating = $(this).find('Ofsted').text();
+                
+                
+switch (Rating) {
+    case '1':
+        Rating = "Outstanding"
+        break;
+    case '2':
+        Rating = "Good"
+        break;
+    case '3':
+        Rating = "Needs improvment"
+        break;
+    case '2':
+        Rating = "Close that place down yo"
+        break;
+    case '1':
+        Rating = "3 Mile island candidate"
+        break;
+        default:
+        break;
+}               
+            } else if ( $(this).find('Tef') != null ) {
+                RatingType = "Tef";
+                Rating = $(this).find('Tef').text();
+            } else {
+                RatingType = "";
+                Rating = "Rating coming soon&hellip;";
+            }
+
+                
+                
                 // co-ordinates
                 var LatLong = $(this).find('LatLong').text();
                 LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
@@ -394,6 +436,7 @@
                 //searchExp = Name.match("learndirect");
                 
                 //console.log("search term: " + searchExp);
+                
 
                 if (searchExp != null ) {
                 
@@ -403,6 +446,8 @@
                 $proOutput += "<dl class='result-data-list'><dt class='distance'>Distance</dt>";
                 $proOutput += "<dd class='distance' data-distance=" + distance + ">" + distance + " km</dd>";
                 $proOutput += "<dd class='address'><address>" + Address + "</address></dd>";
+                $proOutput += "<dt class='rating'><span class='type'>" + RatingType + "</span></dt>";
+                $proOutput += "<dd class='rating'>" + Rating + "</dd>";
                 $proOutput += "<dt class='courses'>Courses available</dt>";
                 $proOutput += "<dd class='courses' data-count=" + cousrsecount + ">" + cousrsecount + "</dd>";
                 $proOutput += "<dt class='satisfaction'>Employer satisfaction</dt>";
@@ -418,8 +463,11 @@
             
             showProviders($proOutput);
 
+            
+            
+            
         };
-
+    
 
 
 

@@ -1748,6 +1748,22 @@ dl.course-details {
 
         }
     }
+    
+    #results-list {
+        .form-block {
+            border-bottom: 1px solid lightgray;
+            padding-bottom: 15px;            
+        }
+        #switchMap {
+            font-weight: 400;
+            text-decoration: none;
+            border: 2px solid black;
+            padding: 3px 5px 1px 6px;
+            border-radius: 6px;
+            float: left;
+            color: black;            
+        }
+    }
     .filters {
     display: block;
     margin: 0 0 20px 0;
@@ -1780,6 +1796,27 @@ dl.course-details {
             }
         }
     }
+        #results-list {
+            .form-block {
+                .left, .right {
+                    float: left;
+                    width: 50%;
+                }
+                .right {
+                    float: right;
+                    text-align: right;
+                    label {
+                        padding-right: 5px;
+                        display: inline;
+                        line-height: 1.8em;                        
+                    }
+                    #select-order {
+                        float: right;
+                        width: 200px;
+                    }
+                }
+            }
+        }
 }
 
 #provider-results {
