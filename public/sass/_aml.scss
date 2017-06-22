@@ -2244,8 +2244,37 @@ body.fluid-width {
     background-color: #808080;
     color: white;
     padding: 0 0.4em;
+    padding: 0 0.4em;
     font-weight: bold;
     font-size: 16px;
     border-radius: 4px;
     text-transform: capitalize;
+}
+
+.show-more {
+    text-align: center;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.show-more span {
+    background: $white;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+}
+.show-more::before {
+    content: "";
+    border-top: 1px solid $govuk-blue;
+    height: 2px;
+    display: block;
+    top: 14px;
+    position: relative;
+    border-bottom: 1px solid $govuk-blue;
+    z-index: 0;
+}
+
+.column-one-third .form-control {
+    width: 100%;
 }
