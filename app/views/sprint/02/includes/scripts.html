@@ -8,6 +8,7 @@
 <script src="/public/javascripts/govuk/details.polyfill.js"></script>
 
 <script src="/public/javascripts/select2.min.js"></script>
+<script src="/public/javascripts/footable.min.js"></script>
 <script src="/public/javascripts/stackable.min.js"></script>
 <script src="/public/javascripts/jPages.min.js"></script>
 <script src="/public/javascripts/tinysort.min.js"></script>
@@ -94,6 +95,8 @@
         $('article.markdown').readmore({
             blockCSS: 'display: block; width: 100%'
         });
+        
+	$('table').footable();
     }
 
     function providerResultsWorkFlow() {
