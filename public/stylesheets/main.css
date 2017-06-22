@@ -4576,6 +4576,10 @@ dl.course-details dd {
   padding: 0 10px;
 }
 
+.show-more:focus span {
+  background: #ffbf47;
+}
+
 .show-more::before {
   content: "";
   border-top: 1px solid #005ea5;
@@ -4589,4 +4593,13 @@ dl.course-details dd {
 
 .column-one-third .form-control {
   width: 100%;
+}
+
+.levyOnly {
+  font-size: 16px;
+  float: left;
+  width: 100%;
+  display: block;
+  background: #F8F8F8;
+  box-sizing: border-box;
 }

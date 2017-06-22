@@ -249,9 +249,15 @@
   $('#apprenticeshipName').select2();
 
 
+
         $(".show-more").click(function(e){
             e.preventDefault();
-            $(this).next().removeClass("hidden");
+            $(this).next().toggleClass("hidden");
+            if ( $(this).next().hasClass("hidden") ) {
+               $("span",this).html("more filters")                
+            } else {
+                $("span",this).html("hide filters")
+            }
         })
         
         //GLOBAL VAR
@@ -294,8 +300,7 @@
 
         // randomly shorten the provider result by using the fake category filter
         $appCat = Math.round(Math.random() * 20) + 1;;
-
-
+        
 
 
         $.ajax({
@@ -332,6 +337,10 @@
 
 
             $("#providerLocation").val($address);
+            
+                  if ( $address == "uk") {
+            $(".distance").hide();
+        }
             
             console.log("done");
         }
@@ -394,7 +403,9 @@
                 var RatingType = "";
                 var Rating = "";
                 
-
+                var random_boolean = Math.random() >= 0.5;
+//                console.log(random_boolean)
+                var levyOnly;
             if ( $(this).find('Ofsted') != null ) {
                 RatingType = "Ofsted";
                 Rating = $(this).find('Ofsted').text();
@@ -427,6 +438,11 @@ switch (Rating) {
                 Rating = "Rating coming soon&hellip;";
             }
 
+                if ( random_boolean == true ) {
+                    levyOnly = "<div class='levyOnly'>This provider cannot work with non-levy paying organisations</div>";
+                } else {
+                    levyOnly = "";
+                }
                 
                 
                 // co-ordinates
@@ -463,6 +479,7 @@ switch (Rating) {
                 $proOutput += "<dt class='achievement'>Averaged achievement rate</dt>";
                 $proOutput += "<dd class='achievement' data-achievement=" + achievement + ">" + achievement + "%</dd>";
                 $proOutput += "</dl></div>";
+                $proOutput += levyOnly;
                 $proOutput += "</li>";
                 $proOutput += ""
                 };
