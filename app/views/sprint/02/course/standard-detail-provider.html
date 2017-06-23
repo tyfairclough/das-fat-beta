@@ -6,65 +6,32 @@
 {% endblock %}
 {% block content %}
 <main class="provider-detail-single" id="content" role="main" tabindex="-1">
-
-<header id="provider-header">
-    <div class="wrapper">
-    <div class="grid-row">
-        <div class="column-two-thirds">
-    <h2 class="heading-large">ACL Basildon</h2>
-            <p>ACL is a Further Education College in the heart of Mid Essex.</p>
-
-            <p>We currently offer a wide range of Apprenticeships in many different subject areas. These are predominantly at levels 2 and 3 and we have also just started two Higher Apprenticeships at level 4/5.</p>
-<p>
-We are constantly looking at ways of developing our provision to suit local employment and skills needs. Therefore if you can't find what you are looking for then please contact us for further discussions as we are happy to assist you and your business.</p>
-        </div>
-        <div class="column-one-third">
-            <h3 class="heading-medium">Contact</h3>
-            <div class="panel panel-width-thin">
-                <dl>
-                    <dt>Phone</dt><dd>01258 340 340</dd>
-                    <dt>Email</dt><dd><a href="mailto:info@aclbasildon.com">info@aclbasildon.com</a></dd>
-                    <dt>Website</dt><dd><a href="#">www.acltraining.co.uk</a></dd>
-                </dl>
-            </div>
-        </div>
+    <div class="breadcrumbs">
+  <ol>
+    <li><a href="/sprint/{{sprint}}/index">Home</a></li>
+    <li><a href="/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName=college">Provider results</a></li>
+    <li><a href="/sprint/{{sprint}}/provider/detail-single.html">ACL Basildon</a></li>
+      <li aria-current="page">Accounting level 3</li>
     
-    </div>
-        </div>
-</header>
-    
-    
-    <div class="grid-row">
-        <div class="column-two-thirds">
-            <h1 class="heading-xlarge">
+  </ol>
+</div>
+                <h1 class="heading-xlarge">
                 Accounting
             </h1>
+    <div class="grid-row">
+        <div class="column-two-thirds">
+    <section>
+    
             <p>
                 This information is taken from an apprenticeship framework. It sets out what qualifications the apprentice can achieve.
             </p>
-        </div>
-
-        <div class="column-third">
-            <div class="related-container">
-                <div class="hidden-for-mobile-tablet">
-
-                    <a class="button ui-find-training-providers" rel="nofollow" href="https://findapprenticeshiptraining.sfa.bis.gov.uk/Provider/FrameworkResults?PostCode=cm2+6ue&IsLevyPayingEmployer=true&apprenticeshipid=454-2-1&keywords=accountant">
-                More training providers
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <section>
         <header>
-            <h2 class="heading-large">
+            <h2 class="heading-medium">
                 Summary of this apprenticeship framework
             </h2>
         </header>
 
-        <dl class="data-list">
+        <dl class="appDetailsList">
                     <dt>Level</dt>
         <dd id="level">3 (equivalent to A levels at grades A to E)</dd>
 
@@ -117,10 +84,54 @@ We are constantly looking at ways of developing our provision to suit local empl
 
         <div id="bottom-actions">
             <a class="button ui-find-training-providers" rel="nofollow" id="ga-find-provider-bottom" href="https://findapprenticeshiptraining.sfa.bis.gov.uk/Provider/FrameworkResults?PostCode=cm2+6ue&IsLevyPayingEmployer=true&apprenticeshipid=454-2-1&keywords=accountant">
-                More training providers
-            </a>
+                Search other training providers for this apprenitceship
+            </a><br><br>
+            <a class="" href="/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName=college">Go back to the training proivder results</a>
         </div>
     </section>
+        </div>
+        <div class="column-one-third">
+        <aside id="provider-header">
+    <h2 class="bold-medium">ACL Basildon</h2>
+            <p>ACL is a Further Education College in the heart of Mid Essex.</p>
+            <article class="markdown">
+            <p>We currently offer a wide range of Apprenticeships in many different subject areas. These are predominantly at levels 2 and 3 and we have also just started two Higher Apprenticeships at level 4/5.</p>
+<p>
+We are constantly looking at ways of developing our provision to suit local employment and skills needs. Therefore if you can't find what you are looking for then please contact us for further discussions as we are happy to assist you and your business.</p>
+</article>
+                <h2 class="heading-medium">Provider apprenticeship details</h2>
+<dl class="data-list--provider data-list--compact">
+                            <dt class="apprenticeshipContactTitle">Website</dt>
+        <dd>
+            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="course-link apprenticeshipContact">
+ACL Essex website            </a>
+        </dd>
+
+                        <dt class="phone-title">Phone number</dt>
+    <dd id="phone" class="phone">03330 139502</dd>
+
+                        <dt class="email-title">Email</dt>
+    <dd id="email" class="email"><a href="mailto:acl.nostoppingme@essex.gov.uk">acl.nostoppingme@essex.gov.uk</a></dd>
+
+                            <dt class="providerContactTitle">Contact page</dt>
+        <dd>
+            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="contact-link providerContact">
+contact this training provider            </a>
+        </dd>
+
+                        <dt class="training-location-title">Address</dt>
+        <dd id="training-location" class="training-location">
+            ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB 
+        </dd>
+
+                </dl>
+            
+
+</aside>
+        
+        </div>
+    </div>
+
 
     
 </main><!-- / #content -->

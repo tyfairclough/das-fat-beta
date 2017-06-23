@@ -1856,7 +1856,7 @@ dl.course-details {
 .data-list--provider dt, .data-list--provider dd {
     float: left;
     box-sizing: border-box;
-    padding-bottom: 7.5px;
+    padding-bottom: 5px;
 }
 
 .data-list--provider dt {
@@ -1895,7 +1895,7 @@ dl.course-details {
 
 .satisfaction-source {
     display: block;
-    text-align: right;
+    text-align: left;
     font-family: "nta",Arial,sans-serif;
     font-weight: 400;
     text-transform: none;
@@ -1932,18 +1932,13 @@ dl.course-details {
 
 
 #provider-header {
-    background: #f8f8f8;
-    border-bottom:1px solid #bfc1c3;
-    width: 100%;
-    position: absolute;
-    left: 0;
+    background: #F8F8F8;
+    border: 1px solid #BFC1C3;
+    padding: 10px;
     .wrapper {
-        width: 960px;
         margin: 0 auto;
     }
-    + div {
-        padding-top: 400px;
-    }
+
 }
 
 .provider-detail-single, .provider-detail-multiple {
@@ -1970,8 +1965,11 @@ dl.course-details {
         }
     }
     aside {
+        .wrapper {
         background: #F8F8F8;
         border: 1px solid #BFC1C3;
+            padding: 10px;
+        }
         dl {
             overflow: auto;
         }
@@ -2233,7 +2231,7 @@ body.fluid-width {
     text-transform: none;
     font-size: 16px;
     line-height: 1.25;
-    padding: 20px;
+    padding: 0 10px;
 }
 .survey {
     margin-top: 30px;
@@ -2283,21 +2281,11 @@ body.fluid-width {
     width: 100%;
 }
 
-.levyOnly {
-    font-size: 16px;
-    float: left;
-    width: 100%;
-    display: block;
-    background: #F8F8F8;
-  //  border: 1px solid #DEE0E2;
-    box-sizing: border-box;
-}
-
 
 
 // Labels
 
-.label {
+.label, .footable .label {
     display: inline;
     padding: 0 .25em 0;
     font-size: 16px;
@@ -2324,4 +2312,28 @@ body.fluid-width {
 }
 .label.grey {
     background: #808080;
+}
+
+.select2-container--default .select2-selection--multiple {
+        border: 2px solid #0b0c0c;
+    border-radius: 0;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+
+}
+
+
+// new app details layout
+
+    dl.appDetailsList {
+        dt {
+            font-weight: 900;
+        }
+        dd {
+            margin-bottom: 10px;
+        }
+    }
+
+article.markdown {
+    overflow: hidden;
 }

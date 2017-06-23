@@ -11,7 +11,7 @@
 <div class="breadcrumbs">
   <ol>
     <li><a href="/">Home</a></li>
-    <li><a href="/sprint/{{sprint}}/provider/detail-multiple.html">ACL Essex</a></li>
+    <li><a href="/sprint/{{sprint}}/provider/results-list">Provider results</a></li>
     <li aria-current="page">ACL Basildon</li>
     
   </ol>
@@ -26,32 +26,30 @@
         </div>
     </div>
     <div class="grid-row">
-        <aside class="column-one-third pull-right">
-   
-            <hr />
-            
+        <aside class="column-one-third pull-right">   
+            <div class="wrapper">
             <div class="panel--contact">
-                <h2 class="heading-medium">Contact details</h2>
+                <h2 class="bold-medium" style="margin-bottom: 10px;">Provider details</h2>
                 <dl class="data-list--provider data-list--compact">
-                            <dt class="apprenticeshipContactTitle">Website:</dt>
+                            <dt class="apprenticeshipContactTitle">Website</dt>
         <dd>
             <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="course-link apprenticeshipContact">
 ACL Essex website            </a>
         </dd>
 
-                        <dt class="phone-title">Phone number:</dt>
+                        <dt class="phone-title">Phone number</dt>
     <dd id="phone" class="phone">03330 139502</dd>
 
-                        <dt class="email-title">Email:</dt>
+                        <dt class="email-title">Email</dt>
     <dd id="email" class="email"><a href="mailto:acl.nostoppingme@essex.gov.uk">acl.nostoppingme@essex.gov.uk</a></dd>
 
-                            <dt class="providerContactTitle">Contact page:</dt>
+                            <dt class="providerContactTitle">Contact page</dt>
         <dd>
             <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="contact-link providerContact">
 contact this training provider            </a>
         </dd>
 
-                        <dt class="training-location-title">Address:</dt>
+                        <dt class="training-location-title">Address</dt>
         <dd id="training-location" class="training-location">
             ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB 
         </dd>
@@ -62,7 +60,7 @@ contact this training provider            </a>
                  <section>
 
                 <dl class="data-list--provider data-list--compact">
-                    <dt>Employer satisfaction:</dt>
+                    <dt>Employer satisfaction</dt>
                     <dd>
                         <div class="rating rating--inline">
                             <span id="employer-satisfaction" class="rating-71">
@@ -74,7 +72,7 @@ contact this training provider            </a>
 
                         </div>
                     </dd>
-                    <dt>Learner satisfaction:</dt>
+                    <dt>Learner satisfaction</dt>
                     <dd>
                         <div class="rating rating--inline">
                             <span id="learner-satisfaction" class="rating-93">
@@ -86,7 +84,7 @@ contact this training provider            </a>
 
                         </div>
                             <span class="satisfaction-source font-small">
-                                Source: <a href="https://www.gov.uk/government/statistical-data-sets/fe-choices-performance-indicators" target="_blank">Skills Funding Agency FE Choices</a>
+                                Source <a style="display: inline-block; float: left;" href="https://www.gov.uk/government/statistical-data-sets/fe-choices-performance-indicators" target="_blank">Skills Funding Agency FE Choices</a>
                             </span>
                     </dd>
 
@@ -96,15 +94,26 @@ contact this training provider            </a>
                 </dl>
 
 
+            </section>
+
+            </div>
+            
+                        
+                    <div class="provider-disclaimer">
+                <h3 class="heading-small">Content disclaimer</h3>
+                        
                 <p class="content-source">
                     Content maintained by ACL Essex
                 </p>
-            </section>
-            
+                <p>
+                    Skills Funding Agency cannot guarantee the accuracy of course information on this site and makes no representations about the quality of any courses which appear on the site. Skills Funding Agency is not liable for any losses suffered as a result of any party relying on the course information provided.
+                </p>
+            </div>
         </aside>
+
         <div class="column-two-thirds">
 
-                                    <h2 class="heading-medium">Provider information</h2>
+                                    <h2 class="bold-large">Provider's introduction</h2>
                 <div class="provider-marketing-info">
                     <article class="markdown"><p>ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</p>
 <p>Our dedicated and professional team deliver programmes up to and including level 5. We can support new employees and help develop existing staff and managers.</p>
@@ -118,13 +127,14 @@ contact this training provider            </a>
          <section class="courses">
 
 
-            <h2 class="heading-large">All training courses</h2>
-             <table class="responsive">
+            <h2 class="heading-medium"><span>30</span> Apprenticeships offered</h2>
+             <table class="responsive" id="providerCourses">
                 <thead>
                     <tr>
                         <th scope="col">Apprenticeship</th>
                         <th scope="col">Type</th>
                         <th scope="col" class="numeric">Level</th>
+                        <th scope="col">Description</th>
                         <th scope="col" class="numeric"></th>
                     </tr> 
                 </thead>
@@ -133,360 +143,210 @@ contact this training provider            </a>
                         <td data-label="Course">Accounting</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Accounting</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Business and Professional Administration</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">CNC Technician</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Fixed assest mangagement</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Groundsman</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Homestay Nurse</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Interior Designer</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Manufacturing engineer</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Network engineer</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
-                    <tr>
+                     <tr>
                         <td data-label="Course">Accounting</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Accounting</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Business and Professional Administration</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">CNC Technician</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Fixed assest mangagement</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Groundsman</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Homestay Nurse</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Interior Designer</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Manufacturing engineer</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Network engineer</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
-                    <tr>
+                     <tr>
                         <td data-label="Course">Accounting</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Accounting</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Business and Professional Administration</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">CNC Technician</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Fixed assest mangagement</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Groundsman</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Homestay Nurse</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Interior Designer</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Manufacturing engineer</td> 
                         <td><span class="label grey">Framework</span></td>
                         <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                      <tr>
                         <td data-label="Course">Network engineer</td> 
                         <td><span class="label blue">Standard</span></td>
                         <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td data-label="Course">Accounting</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Accounting</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">2</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Business and Professional Administration</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">CNC Technician</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Fixed assest mangagement</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Groundsman</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">2</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Homestay Nurse</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Interior Designer</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Manufacturing engineer</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Network engineer</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td data-label="Course">Accounting</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Accounting</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">2</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Business and Professional Administration</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">CNC Technician</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Fixed assest mangagement</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Groundsman</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">2</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Homestay Nurse</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Interior Designer</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Manufacturing engineer</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Network engineer</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td data-label="Course">Accounting</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Accounting</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">2</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Business and Professional Administration</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">CNC Technician</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Fixed assest mangagement</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Groundsman</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">2</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Homestay Nurse</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Interior Designer</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">3</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Manufacturing engineer</td> 
-                        <td><span class="label grey">Framework</span></td>
-                        <td data-label="Level" class="numeric">4</td>
-                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
-                    </tr>
-                     <tr>
-                        <td data-label="Course">Network engineer</td> 
-                        <td><span class="label blue">Standard</span></td>
-                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
                         <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
                     </tr>
                  </tbody>
@@ -495,11 +355,126 @@ contact this training provider            </a>
              <summary>What are Standards and Frameworks?</summary>
     <div class="panel panel-info">
 <p class="labelmessage">
-        Results labelled <strong class="label blue">Standard</strong> are Apprenticeship Standards developed by employer groups. They are replace the old Apprenticeship Frameworks from 2016 onwards.
+        Results labelled <strong class="label blue">Standard</strong> are apprenticeships developed by employer groups. They are replace the old apprenticeship <span class="label grey">Frameworks</span> from 2016 onwards.
     </p>             
 </div>
              </details>
         </section>
+            
+            <section id="providerLocations">
+                        <h2 class="heading-medium"><span>20</span> training locations</h2>
+                <table id="providerLocationsTable">
+                                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Address</th>
+                        <th scope="col" class="numeric">Phone</th>
+                        <th scope="col"></th>
+                    </tr> 
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Training provider name">ACL Brentwood</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Southend</td>
+                            <td data-label="Training proivder location">Southend</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL St Peter</td>
+                            <td data-label="Training proivder location">Cambridge</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">Essex County Council</td>
+                            <td data-label="Training proivder location">Chelmsford</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Humbar Rd</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Clacton-on-Sea</td>
+                            <td data-label="Training proivder location">Clacton</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">All Care Ltd</td>
+                            <td data-label="Training proivder location">Brighton</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Shenfield</td>
+                            <td data-label="Training proivder location">Shenfield</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Black Prince Lane</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Bright St</td>
+                            <td data-label="Training proivder location">Cambridge</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">Flitch Green Academy</td>
+                            <td data-label="Training proivder location">Dunmow</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">Felstead Academy</td>
+                            <td data-label="Training proivder location">Dunmow</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Brentwood</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Brentwood</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
               <div class="survey">
                 <h2 class="bold-small">
                     Give us your feedback
@@ -509,12 +484,6 @@ contact this training provider            </a>
                     Use the link below to take part in a short survey.
                 </p>
                 <a href="https://www.surveymonkey.co.uk/r/MLTBYNX" target="_blank" class="button">Take the survey</a>
-            </div>
-            <div class="provider-disclaimer">
-                <h3 class="heading-small">Content disclaimer</h3>
-                <p>
-                    Skills Funding Agency cannot guarantee the accuracy of course information on this site and makes no representations about the quality of any courses which appear on the site. Skills Funding Agency is not liable for any losses suffered as a result of any party relying on the course information provided.
-                </p>
             </div>
      
        

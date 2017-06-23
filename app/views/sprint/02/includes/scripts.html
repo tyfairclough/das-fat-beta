@@ -95,8 +95,32 @@
         $('article.markdown').readmore({
             blockCSS: 'display: block; width: 100%'
         });
-        
-	$('table').footable();
+
+
+        $('#providerCourses').footable({
+                "paging": {
+                    "enabled": true,
+                    "size":12
+                },
+                "columns": [
+                    {"breakpoints": ""},{"breakpoints": "xs"},{"breakpoints": ""},{"breakpoints": "all"},{"breakpoints": ""}
+                ],
+                "filtering": {
+                    "enabled": true
+                }
+            });
+        $("#providerLocationsTable").footable({
+                "paging": {
+                    "enabled": true,
+                    "size":12
+                },
+                "columns": [
+                    {"breakpoints": ""},{"breakpoints": "xs"},{"breakpoints": "all"},{"breakpoints": "all"},{"breakpoints": ""}
+                ],
+                "filtering": {
+                    "enabled": true
+                }
+        });
     }
 
     function providerResultsWorkFlow() {
@@ -442,9 +466,10 @@ switch (Rating) {
             }
 
                 if ( random_boolean == true ) {
-                    levyOnly = "<div class='levyOnly'>This provider cannot work with non-levy paying organisations</div>";
+//                    levyOnly = "<div class='levyOnly'>This provider cannot work with non-levy paying organisations</div>";
+                    levyOnly = "<dt class='levyOnly'>Works with non-levy payers</dt><dd class='levyOnly'>No</dd>";
                 } else {
-                    levyOnly = "";
+                    levyOnly = "<dt class='levyOnly'>Works with non-levy payers</dt><dd class='levyOnly'>Yes</dd>";
                 }
                 
                 
@@ -479,10 +504,10 @@ switch (Rating) {
                 $proOutput += "<dd class='courses' data-count=" + cousrsecount + ">" + cousrsecount + "</dd>";
                 $proOutput += "<dt class='satisfaction'>Employer satisfaction</dt>";
                 $proOutput += "<dd class='satisfaction' data-satisfaction=" + satisfaction + ">" + satisfaction + "%</dd>";
-                $proOutput += "<dt class='achievement'>Averaged achievement rate</dt>";
-                $proOutput += "<dd class='achievement' data-achievement=" + achievement + ">" + achievement + "%</dd>";
-                $proOutput += "</dl></div>";
+             //   $proOutput += "<dt class='achievement'>Averaged achievement rate</dt>";
+             //   $proOutput += "<dd class='achievement' data-achievement=" + achievement + ">" + achievement + "%</dd>";
                 $proOutput += levyOnly;
+                $proOutput += "</dl></div>";
                 $proOutput += "</li>";
                 $proOutput += ""
                 };
