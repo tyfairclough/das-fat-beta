@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block page_title %}
+  Sprint {{sprint}} - Dashboard
+{% endblock %}
+{% block inside_header %}
+{% endblock %}
+{% block content %}
+<main class="search-select" id="content" role="main" tabindex="-1">
+    {% include "includes/link-back.html" %}
+  <div class="grid-row">
+    <div class="column-two-thirds">
+        <div class="hgroup">
+      <h1 class="heading-large">
+Search by training providers or apprenticeships first
+            </h1>
+            
+    </div>
+  </div>
+    </div>
+    <form>
+  <div class="form-group" action="add-your-details.html">
+    <fieldset>
+
+      <legend class="visually-hidden">Have you used this service before?</legend>
+        <div class="form-group">
+      <label class="block-label selection-button-radio" for="radio-1">
+        <input id="radio-1" type="radio" name="radio-group" value="1">
+          by apprenticeship
+      </label>
+      <label class="block-label selection-button-radio" for="radio-2">
+        <input id="radio-2" type="radio" name="radio-group" value="2">
+        by training providers
+      </label>
+        <label class="block-label selection-button-radio hidden" for="radio-3">
+        <input id="radio-3" type="radio" name="radio-group" value="3">
+        End point assessors
+      </label>
+            </div>
+        <div class="form-group">
+        <!--<a href="/sprint/31/onboarding/before-you-start.html"> id="action" class="button">Continue</a>-->
+        <a href="#" id="action" class="button">Continue</a>
+        </div>            
+    </fieldset>
+  </div>
+</form>
+</main><!-- / #content -->
+{% endblock %}

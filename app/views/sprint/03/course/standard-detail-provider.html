@@ -1,0 +1,190 @@
+{% extends "layout.html" %}
+{% block page_title %}
+  Sprint {{sprint}} - Dashboard
+{% endblock %}
+{% block inside_header %}
+{% endblock %}
+{% block content %}
+<main class="provider-detail-single" id="content" role="main" tabindex="-1">
+    
+<div class="breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sprint/{{sprint}}/provider/results-list">Provider results</a></li>
+    <li aria-current="page"><a href="/sprint/{{sprint}}/provider/detail-single">ACL Chelmsford</a></li>
+      <li>Business and Administration level 3</li>
+  </ol>
+</div>  
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge" id="provider-name">
+                ACL Chelmsford  <br> <span class="label purple">Levy paying training provider</span>
+                             <span class="label blue">National training provider</span>
+            </h1>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="column-one-third pull-right">
+            <aside id="provider-header">
+            <div class="panel--contact">
+                <h2 class="heading-medium">Provider details</h2>
+                          
+                <dl class="data-list--provider data-list--compact">
+                    
+                            <dt class="apprenticeshipContactTitle">Website:</dt>
+        <dd>
+            <a href="http://www.ensissolutions.co.uk" rel="external" target="_blank" class="course-link apprenticeshipContact">
+ACL Chelmsford website            </a>
+        </dd>
+
+                        <dt class="phone-title">Phone number:</dt>
+    <dd id="phone" class="phone">01245 265859</dd>
+
+                        <dt class="email-title">Email:</dt>
+    <dd id="email" class="email"><a href="mailto:info@ensissolutions.co.uk">info@ecc.gov.uk</a></dd>
+
+                            <dt class="providerContactTitle">Contact page:</dt>
+        <dd>
+            <a href="http://www.ensissolutions.co.uk/contact/" rel="external" target="_blank" class="contact-link providerContact">
+contact this training provider            </a>
+        </dd>
+
+                        <dt class="training-location-title">Address:</dt>
+        <dd id="training-location" class="training-location">
+            Training takes place at your location
+        </dd>
+
+                </dl>
+            </div>
+                
+              <hr />
+                <section>
+
+                <dl class="data-list--provider data-list--compact">
+                    <dt>Employer satisfaction</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="employer-satisfaction" class="rating-71">
+                                71%
+                            </span>
+                                    <div class="progress-container">
+            <div class="progressbar" style="width: 71%"></div>
+        </div>
+
+                        </div>
+                    </dd>
+                    <dt>Learner satisfaction</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="learner-satisfaction" class="rating-93">
+                                93%
+                            </span>
+                                    <div class="progress-container">
+            <div class="progressbar" style="width: 93%"></div>
+        </div>
+
+                        </div>
+                            <span class="satisfaction-source font-small">
+                                Source <a style="display: inline-block; float: left;" href="https://www.gov.uk/government/statistical-data-sets/fe-choices-performance-indicators" target="_blank">Skills Funding Agency FE Choices</a>
+                            </span>
+                    </dd>
+
+                        <dt class="legal-name-title">Legal trading name:</dt>
+    <dd id="legal-name" class="legal-name">ESSEX COUNTY COUNCIL</dd>
+
+                    
+           
+                </dl>
+
+
+            </section>
+</aside>
+        </div>
+        <div class="column-two-thirds">
+
+            <section>
+
+                <h2 class="heading-medium">Training information</h2>
+
+                <dl class="data-list--provider data-list--compact">
+                    <dt>Apprenticeship: </dt>
+                    <dd>Business and Administration</dd>
+                    <dt>Level: </dt>
+                    <dd>3 (equivalent to A levels at grades A to E)</dd>
+
+                        <dt class="training-structure">Training options:</dt>
+    <dd id="delivery-modes">
+        <ul>
+                                        <li class="active" aria-label="Available"><i class="fa fa-check" aria-hidden="true"></i> at your location</li>
+                                        <li class="" aria-label="Not available"><i class="fa fa-times" aria-hidden="true"></i> block release</li>
+                                        <li class="" aria-label="Not available"><i class="fa fa-times" aria-hidden="true"></i> day release</li>
+        </ul>
+        <details>
+            <summary>Explain training options</summary>
+            <div class="panel panel-border-narrow">
+                <p>
+                    <span class="bold-small">Day release:</span> for example one day a week at the training provider's location.
+                </p>
+                <p>
+                    <span class="bold-small">Block release:</span> for example 3-4 weeks at the training provider's location.
+                </p>
+                <p>
+                    <span class="bold-small">At your location:</span> the training provider comes to your workplace.
+                </p>
+            </div>
+        </details>
+    </dd>
+
+
+    
+                </dl>
+
+                <h3 class="heading-small">About the apprenticeship: </h3>
+                <div class="markdown"><p>This Advanced Apprenticeship can be applied across a broad range of sectors and job roles. Experienced business administrators are essential to the success of any business, therefore the skills gained with this Advanced Apprenticeship are transferable and valuable to any organisation.</p>
+<p>Our team of qualified trainers have at least 10 years' experience in the field of Business and Commerce, this means we can offer role-specific training to meet the needs of your business. We will conduct an in-depth Training Needs Analysis to design a bespoke programme to suite your business needs.</p>
+<p>The Business Administration Apprenticeship programme at Level 3 will provide your staff with the opportunity to gain a nationally recognised qualification.</p>
+
+</div>
+
+            </section>
+         
+            <section>
+                <h2 class="heading-medium">Provider information</h2>
+                <div class="provider-marketing-info">
+                    <div class="markdown"><p>Established in 2014 primarily to deliver Apprenticeship programmes, ACL Chelmsford offer a range of Intermediary and Advanced Apprenticeships, Traineeships and work based learning programmes to small and large employers based in; Business &amp; Commerce, Health &amp; Social Care, Logistics, Manufacturing and Construction sectors.</p>
+<p>Our programmes are bespoke meeting individual business needs and delivered at their place of work or in locally sourced training suites.</p>
+<p>We believe that a combination of our experience, excellent teaching and learning by industry experts and coverage across the south, south east, Midlands and the North of England with a local approach to all our customers sets us apart from our competitors.</p>
+
+</div>
+                </div>
+        
+   
+            </section>
+
+
+            <div class="provider-disclaimer panel panel-width-thin">
+                   <h3 class="heading-small">Content disclaimer</h3>
+                         <p class="content-source">
+                    Content maintained by ACL Chelmsford
+                </p> 
+                <p>
+                    Skills Funding Agency cannot guarantee the accuracy of course information on this site and makes no representations about the quality of any courses which appear on the site. Skills Funding Agency is not liable for any losses suffered as a result of any party relying on the course information provided.
+                </p>
+            </div>
+            
+                        
+            <div class="survey">
+                <h2 class="heading-small">
+                    Give us your feedback
+                </h2>
+                <p>
+                    This is a new service and your feedback will help us improve it.<br>
+                    Use the link below to take part in a short survey.
+                </p>
+                <a href="https://www.surveymonkey.co.uk/r/MLTBYNX" target="_blank" class="button">Take the survey</a>
+            </div>
+        </div>
+    </div>
+  
+</main>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block page_title %}
+  Sprint {{sprint}} - Dashboard
+{% endblock %}
+{% block inside_header %}
+{% endblock %}
+{% block content %}
+<main class="provider-start" id="content" role="main" tabindex="-1">
+        {% include "includes/link-back.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+        <div class="hgroup">
+      <h1 class="heading-large">Search training providers</h1>
+            
+    </div>
+  </div>
+    </div>
+    
+
+    <form class="" id="nameInput">
+    <fieldset>
+  <div class="form-group">
+        <div class="form-group">
+            <label for="providerName" class="heading-small">Name (optional)
+                <span class="form-hint">Enter the name of a training provider if you know it</span>
+            </label>
+                <input type="text" class="form-control" id="providerName" />
+            </div>
+
+            <label for="providerLocation" class="heading-small">Location (optional)
+                <span class="form-hint">Enter a location </span>
+            </label>
+                <input type="text" class="form-control" id="providerLocation" />
+            </div>
+        </fieldset>
+
+        <fieldset>
+        <div class="form-group inline">
+
+                                  <legend class="heading-small">Do you pay the apprenticeship levy?</legend>
+            <details>
+                <summary>What is the apprenticeship levy?</summary>
+                <div class="panel panel-width-thin">
+                Funny you should ask, it's a payment you make to HMRC if your annual payroll bill is over £3,000,000. You'll know about it if you are one otherwise you can assume you're not.
+                </div>
+            </details>
+                                  <label class="block-label selection-button-radio" for="levy-1">
+                                    <input id="levy-1" type="radio" name="levy-group" value="1">
+                                      Yes
+                                  </label>
+                                  <label class="block-label selection-button-radio" for="levy-2">
+                                    <input id="levy-2" type="radio" name="levy-group" value="2">
+                                      No
+                                  </label>
+           
+                                </div>           
+                       <div class="form-group">
+        <!--<a href="/sprint/31/onboarding/before-you-start.html"> id="action" class="button">Continue</a>-->
+        <a href="/sprint/{{sprint}}/provider/results.html" id="action" class="button">Continue</a>
+        </div> 
+    </fieldset>
+</form>
+</main><!-- / #content -->
+{% endblock %}

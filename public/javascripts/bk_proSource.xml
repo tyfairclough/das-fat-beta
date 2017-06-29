@@ -270,6 +270,24 @@
             <Ofsted>3</Ofsted>
             <Tef>2</Tef>
         </pro>
+        <pro proId="304611">
+            <PROVIDER_ID>304610</PROVIDER_ID>
+            <UKPRN>10000101</UKPRN>
+            <PROVIDER_TYPE_ID>10</PROVIDER_TYPE_ID>
+            <EMAIL></EMAIL>
+            <WEBSITE></WEBSITE>
+            <PHONE></PHONE>
+            <FAX></FAX>
+            <Name>ACL Chelmsford</Name>
+            <Address>101 Chelmsford Highstreet, Chelmsford, Essex, CM5 3QT</Address>
+            <LatLong>51.55581451970851,-0.140157880291502</LatLong>
+            <appCat>15</appCat>
+            <Levy>TRUE</Levy>
+            <ParentCompany>FALSE</ParentCompany>
+            <TrackRecord>FALSE</TrackRecord>
+            <Ofsted>3</Ofsted>
+            <Tef>2</Tef>
+        </pro>
         <pro proId="301419">
             <PROVIDER_ID>301419</PROVIDER_ID>
             <UKPRN>10000108</UKPRN>
