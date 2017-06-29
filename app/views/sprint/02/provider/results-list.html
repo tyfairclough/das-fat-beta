@@ -13,7 +13,7 @@
 
 
         <div class="grid-row">
-            <div class="column-one-third">
+            <div class="column-one-third" style="z-index: 999; background: white;">
                 <h3 class="bold-small">Filter results</h3>
                 <br>
                 <fieldset class="filters filters-accordion">
@@ -59,8 +59,7 @@
                         <details>
                             <summary>What is Apprenticeship levy </summary>
                             <div class="panel panel-border-narrow">
-                                <p>Apprenticeships are set at different levels of difficulty from the equivalent of GCSE (level 2) up to postgraduate (level 7)</p>
-                                <p><a href="https://www.gov.uk/what-different-qualification-levels-mean/overview" target="_blank" rel="external">More about levels</a></p>
+                                <p>The apprenticeship levy is applied to organisations with payrolls of over £3,000,000 annually. Training providers who are approved by the eSFA to provide to non-levy employers are regulated differently. Ensure this option reflects your organisation or you may find results that are not available to you.</p>
                             </div>
                         </details>
                         
@@ -79,6 +78,8 @@
                         
                         <a class="show-more" href="#"><span>more filters</span></a>
                         <section class="hidden">
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d159429.49330362602!2d0.28159503224332944!3d51.364718745890116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1498731563184" width="260" height="260" frameborder="0" style="border:0" allowfullscreen></iframe>
+
                         <div class="form-group">
                             <label class="form-label" for="select-distance">Distance from location</label>
                             <select class="form-control" id="select-distance" name="select-distance">
@@ -89,22 +90,22 @@
                             </select>
                         </div>
                                                 <div class="form-group">
-                            <label class="block-label selection-button-radio" for="providers-all">
-                                <input id="providers-all" type="radio" name="provider-type" value="1" checked> National and local
-                            </label>
+                                                    <legend>Provider coverage</legend>
                             <label class="block-label selection-button-radio" for="providers-national">
-                                <input id="providers-national" type="radio" name="provider-type" value="2"> National only
+                                <input id="providers-national" type="radio" name="provider-type" value="2"> National providers only
                             </label>
                             <label class="block-label selection-button-radio" for="providers-local">
-                                <input id="providers-local" type="radio" name="provider-type" value="3"> Local only
+                                <input id="providers-local" type="radio" name="provider-type" value="3"> Local providers only
+                            </label>
+                            <label class="block-label selection-button-radio selected" for="providers-all">
+                                <input id="providers-all" type="radio" name="provider-type" value="1" checked> National and local
                             </label>
                         </div>
                         
                         <details>
                             <summary>Provider location help</summary>
                             <div class="panel panel-border-narrow">
-                                <p>You can show and hide providers based on whether they offer their services nationally or if they are specifically local. If you are having dififculty finding a training provider </p>
-                                <p><a href="https://www.gov.uk/what-different-qualification-levels-mean/overview" target="_blank" rel="external">More about levels</a></p>
+                                <p>You can show and hide providers based on whether they offer their services nationally or if they are specifically local.</p>
                             </div>
                         </details>
                         </section>
@@ -698,8 +699,10 @@
 <option id='Youth Work level 2'>Youth Work level 2</option>
   </optgroup>
 </select>                </div>
+                        <a class="show-more" href="#"><span>more filters</span></a>
 
-                        
+                                                <section class="hidden">
+
                                                            <div class="form-group">
                                                                    <legend>Apprenticeship types</legend><br>    
                             <label class="block-label selection-button-radio" for="providers-all">
@@ -712,6 +715,7 @@
                                 <input id="providers-local" type="radio" name="provider-type" value="3"> Frameworks only
                             </label>
                         </div>
+                        </section>
 
                     </div>
                 </fieldset>

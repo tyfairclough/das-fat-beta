@@ -4166,7 +4166,7 @@ dl.course-details dd {
   margin-bottom: 1em;
 }
 
-.data-list--provider.data-list--compact dd, .data-list--provider.data-list--compact dt {
+.data-list--provider.data-list--compact dt {
   margin-bottom: 0;
 }
 
@@ -4228,12 +4228,16 @@ dl.course-details dd {
 
 #provider-header {
   background: #F8F8F8;
-  border: 1px solid #BFC1C3;
+  border-left: 5px solid #bfc1c3;
   padding: 10px;
 }
 
 #provider-header .wrapper {
   margin: 0 auto;
+}
+
+#provider-header h2 {
+  margin-top: 10px;
 }
 
 .provider-detail-single .ui-find-training-providers, .provider-detail-multiple .ui-find-training-providers {
@@ -4525,12 +4529,12 @@ dl.course-details dd {
 
 @media (min-width: 641px) {
   .survey, .provider-disclaimer {
-    font-size: 19px;
+    font-size: 16px;
     line-height: 1.316;
   }
 }
 
-.survey, .provider-disclaimer {
+.survey {
   font-family: "nta",Arial,sans-serif;
   font-weight: 400;
   text-transform: none;
@@ -4637,4 +4641,36 @@ dl.appDetailsList dd {
 
 article.markdown {
   overflow: hidden;
+}
+
+.data-list--compact dd {
+  margin-bottom: 10px;
+}
+
+#delivery-modes li {
+  float: left;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#delivery-modes li, #delivery-modes i {
+  color: #6f777b;
+}
+
+#delivery-modes .active {
+  color: #006435;
+}
+
+#delivery-modes .active i.fa-check {
+  color: #006435;
+}
+
+.survey {
+  outline: solid 15px #dee0e2;
+  padding: 5px 0;
+  margin-bottom: 35px;
+}
+
+.survey h2.heading-small {
+  margin-top: 0;
 }

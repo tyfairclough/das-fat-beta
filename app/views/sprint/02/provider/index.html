@@ -6,10 +6,12 @@
 {% endblock %}
 {% block content %}
 <main class="provider-start" id="content" role="main" tabindex="-1">
+        {% include "includes/link-back.html" %}
+
   <div class="grid-row">
     <div class="column-two-thirds">
         <div class="hgroup">
-      <h1 class="heading-large">Find a training provider</h1>
+      <h1 class="heading-large">Search training providers</h1>
             
     </div>
   </div>
@@ -35,6 +37,7 @@
       </label> 
 </div> 
     
+        
                <div class="form-group">
         <!--<a href="/sprint/31/onboarding/before-you-start.html"> id="action" class="button">Continue</a>-->
         <a href="/sprint/{{sprint}}/provider/results.html" id="action" class="button">Continue</a>

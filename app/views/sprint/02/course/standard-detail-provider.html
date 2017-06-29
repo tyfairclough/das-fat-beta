@@ -6,133 +6,167 @@
 {% endblock %}
 {% block content %}
 <main class="provider-detail-single" id="content" role="main" tabindex="-1">
-    <div class="breadcrumbs">
-  <ol>
-    <li><a href="/sprint/{{sprint}}/index">Home</a></li>
-    <li><a href="/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName=college">Provider results</a></li>
-    <li><a href="/sprint/{{sprint}}/provider/detail-single.html">ACL Basildon</a></li>
-      <li aria-current="page">Accounting level 3</li>
-    
-  </ol>
-</div>
-                <h1 class="heading-xlarge">
-                Accounting
-            </h1>
+    {% include "includes/link-back.html" %}
+
     <div class="grid-row">
         <div class="column-two-thirds">
-    <section>
-    
-            <p>
-                This information is taken from an apprenticeship framework. It sets out what qualifications the apprentice can achieve.
-            </p>
-        <header>
-            <h2 class="heading-medium">
-                Summary of this apprenticeship framework
-            </h2>
-        </header>
-
-        <dl class="appDetailsList">
-                    <dt>Level</dt>
-        <dd id="level">3 (equivalent to A levels at grades A to E)</dd>
-
-                    <dt>Typical length</dt>
-        <dd id="length">18 months</dd>
-
-                <dt>Funding cap<br>(from 1 May 2017)</dt>
-    <dd id="funding-cap">
-        Up to £2,000 per apprentice.<br>
-        <a href="https://www.gov.uk/government/publications/apprenticeship-levy-how-it-will-work/apprenticeship-levy-how-it-will-work" target="_blank">More information about funding</a>
-    </dd>
-
-            <dt>Entry requirements</dt>
-            <dd class="entry-requirements">
-                <div>Your chosen training provider can advise you about entry requirements for apprentices.</div>
-            </dd>
-
-            <dt>Suitable roles for apprentices</dt>
-            <dd class="job-roles">
-                    <ul>
-                            <li>Assistant Accountant</li>
-                            <li>Trainee Accounting Technician</li>
-                                            </ul>
-
-                <div>
-                    Your chosen training provider can advise you about the kinds of skills apprentices will learn.
-                </div>
-            </dd>
-            <dt>Qualifications</dt>
-            <dd>
-                <div class="qualifications">
-
-
-                        <div class="combinedQualification">
-                            <p>Apprentices will achieve a practical and theory-based (or 'combined') qualification:</p>
-                            <ul>
-                                    <li>Advanced Diploma in Accounting - Level 3</li>
-                                    <li>Diploma in Financial and Management Accounting</li>
-
-                            </ul>
-                        </div>
-                </div>
-
-                <p class="qualificationsStatic">Your chosen training provider can advise you about the qualifications open to apprentices as they can change depending on individual and other circumstances.</p>
-            </dd>
-
-            <dt>Professional registration</dt>
-            <dd>None specified.</dd>
-        </dl>
-
-        <div id="bottom-actions">
-            <a class="button ui-find-training-providers" rel="nofollow" id="ga-find-provider-bottom" href="https://findapprenticeshiptraining.sfa.bis.gov.uk/Provider/FrameworkResults?PostCode=cm2+6ue&IsLevyPayingEmployer=true&apprenticeshipid=454-2-1&keywords=accountant">
-                Find other providers
-            </a><br><br>
-            <a class="" href="/sprint/{{sprint}}/provider/results-list.html?levyPayer=1&usrLoc=uk&proName=college">Go back to proivder results</a>
+            <h1 class="heading-xlarge" id="provider-name">
+                ACL Chelmsford
+            </h1>
         </div>
-    </section>
-        </div>
-        <div class="column-one-third">
-        <aside id="provider-header">
-    <h2 class="bold-medium">ACL Basildon</h2>
-            <p>ACL is a Further Education College in the heart of Mid Essex.</p>
-            <article class="markdown">
-            <p>We currently offer a wide range of Apprenticeships in many different subject areas. These are predominantly at levels 2 and 3 and we have also just started two Higher Apprenticeships at level 4/5.</p>
-<p>
-We are constantly looking at ways of developing our provision to suit local employment and skills needs. Therefore if you can't find what you are looking for then please contact us for further discussions as we are happy to assist you and your business.</p>
-</article>
-                <h2 class="heading-medium">Provider apprenticeship details</h2>
-<dl class="data-list--provider data-list--compact">
-                            <dt class="apprenticeshipContactTitle">Website</dt>
+    </div>
+    <div class="grid-row">
+        <div class="column-one-third pull-right">
+            <aside id="provider-header">
+            <div class="panel--contact">
+                <h2 class="heading-medium">Contact details</h2>
+                <dl>
+                            <dt class="apprenticeshipContactTitle">Website:</dt>
         <dd>
-            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="course-link apprenticeshipContact">
-ACL Essex website            </a>
+            <a href="http://www.ensissolutions.co.uk" rel="external" target="_blank" class="course-link apprenticeshipContact">
+ENSIS SOLUTIONS LIMITED website            </a>
         </dd>
 
-                        <dt class="phone-title">Phone number</dt>
-    <dd id="phone" class="phone">03330 139502</dd>
+                        <dt class="phone-title">Phone number:</dt>
+    <dd id="phone" class="phone">01942 265859</dd>
 
-                        <dt class="email-title">Email</dt>
-    <dd id="email" class="email"><a href="mailto:acl.nostoppingme@essex.gov.uk">acl.nostoppingme@essex.gov.uk</a></dd>
+                        <dt class="email-title">Email:</dt>
+    <dd id="email" class="email"><a href="mailto:info@ensissolutions.co.uk">info@ensissolutions.co.uk</a></dd>
 
-                            <dt class="providerContactTitle">Contact page</dt>
+                            <dt class="providerContactTitle">Contact page:</dt>
         <dd>
-            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="contact-link providerContact">
+            <a href="http://www.ensissolutions.co.uk/contact/" rel="external" target="_blank" class="contact-link providerContact">
 contact this training provider            </a>
         </dd>
 
-                        <dt class="training-location-title">Address</dt>
+                        <dt class="training-location-title">Address:</dt>
         <dd id="training-location" class="training-location">
-            ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB 
+            Training takes place at your location
         </dd>
 
                 </dl>
-            
-
+            </div>
 </aside>
-        
+        </div>
+        <div class="column-two-thirds">
+
+            <section>
+
+                <h2 class="heading-medium">Training information</h2>
+
+                <dl class="data-list--provider data-list--compact">
+                    <dt>Apprenticeship: </dt>
+                    <dd>Business and Administration</dd>
+                    <dt>Level: </dt>
+                    <dd>3 (equivalent to A levels at grades A to E)</dd>
+
+                        <dt class="training-structure">Training options:</dt>
+    <dd id="delivery-modes">
+        <ul>
+                                        <li class="active" aria-label="Available"><i class="fa fa-check" aria-hidden="true"></i> at your location</li>
+                                        <li class="" aria-label="Not available"><i class="fa fa-times" aria-hidden="true"></i> block release</li>
+                                        <li class="" aria-label="Not available"><i class="fa fa-times" aria-hidden="true"></i> day release</li>
+        </ul>
+        <details>
+            <summary>Explain training options</summary>
+            <div class="panel panel-border-narrow">
+                <p>
+                    <span class="bold-small">Day release:</span> for example one day a week at the training provider's location.
+                </p>
+                <p>
+                    <span class="bold-small">Block release:</span> for example 3-4 weeks at the training provider's location.
+                </p>
+                <p>
+                    <span class="bold-small">At your location:</span> the training provider comes to your workplace.
+                </p>
+            </div>
+        </details>
+    </dd>
+
+
+                    <dt>Achievement rates: </dt>
+                    <dd>
+                        <div class="rating">
+                                <span class="national-rate">
+                                    no data available
+                                </span>
+                        </div>
+
+                                            </dd>
+                </dl>
+
+                <h3 class="heading-small">About the apprenticeship: </h3>
+                <div class="markdown"><p>This Advanced Apprenticeship can be applied across a broad range of sectors and job roles. Experienced business administrators are essential to the success of any business, therefore the skills gained with this Advanced Apprenticeship are transferable and valuable to any organisation.</p>
+<p>Our team of qualified trainers have at least 10 years' experience in the field of Business and Commerce, this means we can offer role-specific training to meet the needs of your business. We will conduct an in-depth Training Needs Analysis to design a bespoke programme to suite your business needs.</p>
+<p>The Business Administration Apprenticeship programme at Level 3 will provide your staff with the opportunity to gain a nationally recognised qualification.</p>
+
+</div>
+
+            </section>
+         
+            <section>
+                <h2 class="heading-medium">Provider information</h2>
+                <div class="provider-marketing-info">
+                    <div class="markdown"><p>Established in 2014 primarily to deliver Apprenticeship programmes, Ensis Solutions Ltd offer a range of Intermediary and Advanced Apprenticeships, Traineeships and work based learning programmes to small and large employers based in; Business &amp; Commerce, Health &amp; Social Care, Logistics, Manufacturing and Construction sectors.</p>
+<p>Our programmes are bespoke meeting individual business needs and delivered at their place of work or in locally sourced training suites.</p>
+<p>We believe that a combination of our experience, excellent teaching and learning by industry experts and coverage across the south, south east, Midlands and the North of England with a local approach to all our customers sets us apart from our competitors.</p>
+
+</div>
+                </div>
+                <dl class="data-list--provider data-list--compact">
+                    <dt>Employer satisfaction:</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="employer-satisfaction" class="rating-0">
+                                no data available
+                            </span>
+                            
+                        </div>
+                    </dd>
+                    <dt>Learner satisfaction:</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="learner-satisfaction" class="rating-0">
+                                no data available
+                            </span>
+                            
+                        </div>
+                    </dd>
+
+                        <dt class="legal-name-title">Legal name:</dt>
+    <dd id="legal-name" class="legal-name">ENSIS SOLUTIONS LIMITED</dd>
+
+                </dl>
+
+
+
+                        <p class="detail-highlight">
+                            Only levy paying employers can work with this provider
+                        </p>
+                <p class="content-source">
+                    Content maintained by ENSIS SOLUTIONS LIMITED
+                </p>
+            </section>
+
+            
+            <div class="survey">
+                <h2 class="heading-small">
+                    Give us your feedback
+                </h2>
+                <p>
+                    This is a new service and your feedback will help us improve it.<br>
+                    Use the link below to take part in a short survey.
+                </p>
+                <a href="https://www.surveymonkey.co.uk/r/MLTBYNX" target="_blank" class="button">Take the survey</a>
+            </div>
+            <div class="provider-disclaimer">
+                <h3 class="heading-small">Content disclaimer</h3>
+                <p>
+                    Skills Funding Agency cannot guarantee the accuracy of course information on this site and makes no representations about the quality of any courses which appear on the site. Skills Funding Agency is not liable for any losses suffered as a result of any party relying on the course information provided.
+                </p>
+            </div>
         </div>
     </div>
-
-
-    
-</main><!-- / #content -->
+  
+</main>
 {% endblock %}
