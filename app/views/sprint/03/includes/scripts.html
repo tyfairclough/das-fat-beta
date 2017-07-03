@@ -208,6 +208,12 @@ y),b(document.body).on("sticky_kit:recalc",y),a.on("sticky_kit:detach",H),setTim
                 levyPayer = "2"
             }   
             
+            if ( $providerLocation != null ) {
+                $providerLocation = $("#providerLocation").val();                
+            } else {
+                $providerLocation = "uk"
+            }
+            
             window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=" + levyPayer + "&usrLoc=" + $providerLocation + "&proName=" + $proName + "";                    
             
         });
@@ -518,6 +524,7 @@ switch (Rating) {
             paginateDat(paginateCount);
             affixSideBar();
             //shortlist();
+            sortResults();
 
             initialize();
 
@@ -561,6 +568,22 @@ switch (Rating) {
 
 
         //tiny sort options
+        
+        function sortResults() {
+            if ( localStorage.getItem("searchLocation") != "uk") {
+                tinysort('#provider-results li', {
+                    selector: 'dd.distance',
+                    data: 'distance',
+                    order: 'asc'
+                });
+            } else {
+                tinysort('#provider-results li', {
+                    selector: 'dd.achievement',
+                    data: 'achievement',
+                    order: 'desc'
+                });
+            }
+        }
 
         $('#select-order').on('change', function () {
             //alert( this.value );
@@ -595,18 +618,6 @@ switch (Rating) {
             }
         })
 
-        //tinysort('#provider-results li',{selector: 'dd.satisfaction', data: 'satisfaction', order:'desc'});
-        tinysort('#provider-results li', {
-            selector: 'dd.distance',
-            data: 'distance',
-            order: 'asc'
-        });
-        //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
-        //tinysort('#provider-results>li',{selector:'h2'});
-
-
-        // distance sort
-        //tinysort('#provider-results>article',{selector:'dd',data:'distance'});
 
         $('#select-distance').on('change', function () {
 

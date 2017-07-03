@@ -10,7 +10,7 @@
         "spec": "0.19.1",
         "type": "version"
       },
-      "F:\\Work\\github\\das-fat-beta"
+      "/Applications/XAMPP/xamppfiles/htdocs/das-fat-beta"
     ]
   ],
   "_from": "govuk_template_jinja@0.19.1",
@@ -43,7 +43,7 @@
   "_shasum": "8ced5b293782977ff4b1b4ad76233cdffe39deba",
   "_shrinkwrap": null,
   "_spec": "govuk_template_jinja@0.19.1",
-  "_where": "F:\\Work\\github\\das-fat-beta",
+  "_where": "/Applications/XAMPP/xamppfiles/htdocs/das-fat-beta",
   "author": {
     "name": "Government Digital Service developers",
     "url": "https://gds.blog.gov.uk/"
