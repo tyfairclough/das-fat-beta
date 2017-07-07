@@ -4297,6 +4297,26 @@ article.markdown {
   margin-top: 0;
 }
 
+dl dt {
+  font-weight: 900;
+}
+
+dl dd {
+  margin-bottom: 10px;
+}
+
+table.compact td, table.compact th {
+  font-size: 16px;
+}
+
+table.compact td {
+  padding: 10px 0;
+}
+
+table.dataTable.compact tbody th, table.dataTable.compact tbody td {
+  padding: 15px 0 !important;
+}
+
 .elements-index .heading-medium {
   margin: 1em 0 0 0;
 }

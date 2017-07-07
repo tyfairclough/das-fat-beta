@@ -14,6 +14,16 @@
 <script src="/public/javascripts/tinysort.min.js"></script>
 <script src="/public/javascripts/readmore.min.js"></script>
 
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+<link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.7/css/dataTables.checkboxes.css" rel="stylesheet" />
+<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.7/js/dataTables.checkboxes.min.js"></script>
+
+
+
 <script>
 /*
  Sticky-kit v1.1.2 | WTFPL | Leaf Corcoran 2015 | http://leafo.net
@@ -103,9 +113,106 @@ y),b(document.body).on("sticky_kit:recalc",y),a.on("sticky_kit:detach",H),setTim
     case 'provider-results-map':
         providerResultsMap();
         break;
+    case 'epa-results':
+        epaResults();
+        break;
+    case 'epa-results-2':
+        epaResults2();
+        break;
+    case 'assessor-detail':
+        assessorDetail();
+        break;
     default:
         break;
     };
+    
+    
+    function assessorDetail(){
+   var table = $('table').DataTable({
+      'ajax': '/public/data/assessorStandards.json',
+       'ordering':false,
+       'searching':false,
+       'paging': false,
+         "info": false,
+       'lengthChange':false,
+       columnDefs: [
+            {
+                targets: 0,
+                className: 'hidden'
+            }
+        ],      'select': {
+         'style': 'compact'
+      },
+      'order': [[1, 'asc']]
+   });
+
+
+   // Handle form submission event
+   $('#frm-example').on('submit', function(e){
+      var form = this;
+
+      var rows_selected = table.column(0).checkboxes.selected();
+
+      // Iterate over all selected checkboxes
+      $.each(rows_selected, function(index, rowId){
+         // Create a hidden element
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'id[]')
+                .val(rowId)
+         );
+      });
+});        
+    }
+    
+    function epaResults2() {
+        //foo tables here
+        	$('table').footable();
+
+    }
+    
+    function epaResults() {
+        
+   var table = $('table').DataTable({
+      'ajax': '/public/data/apprentices.json',
+       'ordering':false,
+       'searching':false,
+       'paging': false,
+         "info": false,
+       'lengthChange':false,
+       columnDefs: [
+            {
+                targets: 0,
+                className: 'hidden'
+            }
+        ],      'select': {
+         'style': 'compact'
+      },
+      'order': [[1, 'asc']]
+   });
+
+
+   // Handle form submission event
+   $('#frm-example').on('submit', function(e){
+      var form = this;
+
+      var rows_selected = table.column(0).checkboxes.selected();
+
+      // Iterate over all selected checkboxes
+      $.each(rows_selected, function(index, rowId){
+         // Create a hidden element
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'id[]')
+                .val(rowId)
+         );
+      });
+});
+
+    }    
+    
     
     function affixSideBar() {    
         $(".column-one-third").stick_in_parent();

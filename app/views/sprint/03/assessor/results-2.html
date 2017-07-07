@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block page_title %}
+  Sprint {{sprint}} - Dashboard
+{% endblock %}
+{% block inside_header %}
+{% endblock %}
+{% block content %}
+<main class="epa-results-2" id="content" role="main">
+
+
+    <div class="hgroup">
+        <h1 class="heading-xlarge">
+            <span class="stnName">End point assessors</span>
+            <span class="heading-secondary">Financial Services Administrator level 3</span>
+        </h1>
+        <p class="text">The following End Point Assessors are able to provide assessment for your chosen Apprenticeship Standard.</p>
+    </div>
+    <table>
+        <thead>
+            <tr role="row">
+                <th data-visible="false"></th>
+                <th>Name</th>
+                <th>Type</th>
+                <th data-breakpoints="xs">Delivery locations</th>
+                <th data-breakpoints="all">Notes</th>
+                <th data-breakpoints="all">Name</th>
+                <th data-breakpoints="all">Phone</th>
+                <th data-breakpoints="all">Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr role="row" class="odd">
+                <td>1</td>
+                <td>Chartered Institute of Credit Management</td>
+                <td>Professional body</td>
+                <td>West Midlands, East Midlands, East of England</td>
+                <td></td>
+                <td>Alex Peters</td>
+                <td>0800 389 9087</td>
+                <td><a href="mailto:alex@proqual.com">alex@proqualab.com</a></td>
+                <td><a href="/sprint/03/assessor/assessor">Details</a></td>
+            </tr>
+            <tr role="row" class="even">
+                <td>2</td>
+                <td>ProQual AB</td>
+                <td>Awarding Organisation</td>
+                <td>Nationwide</td>
+                <td><span class="font-xsmall">Available from 1 January 2018</span></td>
+                <td>Delia Smith</td>
+                <td>0800 389 9087</td>
+                <td><a href="mailto:alex@proqual.com">delia@proqualab.com</a></td>
+                <td><a href="/sprint/03/assessor/assessor">Details</a></td>
+            </tr>
+            <tr role="row" class="odd">
+                <td>3</td>
+                <td>Pearson Education Limited</td>
+                <td>Awarding Organisation</td>
+                <td>Nationwide</td>
+                <td><span class="font-xsmall">EPA stops service on 31 December 2018</span></td>
+                <td>Molly Watson</td>
+                <td>0800 389 9087</td>
+                <td><a href="mailto:alex@proqual.com">molly.watson@pearson.edu</a></td>
+                <td><a href="/sprint/03/assessor/assessor">Details</a></td>
+            </tr>
+            <tr role="row" class="even">
+                <td>4</td>
+                <td>iCQ</td>
+                <td>Awarding Organisation</td>
+                <td>Nationwide</td>
+                <td></td>
+                <td>Alex Peters</td>
+                <td>0800 389 9087</td>
+                <td><a href="mailto:alex@proqual.com">alex@proqualab.com</a></td>
+                <td><a href="/sprint/03/assessor/assessor">Details</a></td>
+            </tr>
+            <tr role="row" class="odd">
+                <td>5</td>
+                <td>City and Guilds</td>
+                <td>Awarding Organisation</td>
+                <td>Nationwide</td>
+                <td><span class="font-xsmall">Assessment available between 1 January 2018 and 31 December 2018</span></td>
+                <td>Suzy Wolffe</td>
+                <td>0800 389 9087</td>
+                <td><a href="mailto:alex@proqual.com">suzy@c&amp;q.gov.uk</a></td>
+                <td><a href="/sprint/03/assessor/assessor">Details</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</main>
+{% endblock %}
