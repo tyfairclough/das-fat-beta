@@ -1,0 +1,532 @@
+{% extends "layout.html" %}
+{% block page_title %}
+  Sprint {{sprint}} - Dashboard
+{% endblock %}
+{% block inside_header %}
+{% endblock %}
+{% block content %}
+<main class="provider-detail-single" id="content" role="main" tabindex="-1">
+
+    
+<div class="breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sprint/{{sprint}}/provider/results-list">Provider results</a></li>
+    <li aria-current="page"><span class="bold">ACL Chelmsford</span></li>
+      <li>Course information</li>
+  </ol>
+</div>    
+    
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge" id="provider-name">
+                ACL Chelmsford
+            </h1>
+ 
+        </div>
+    </div>
+    <div class="grid-row">
+        <aside class="column-one-third pull-right">   
+            <div id="provider-header">
+            <div class="panel--contact">
+                <h2 class="bold-medium" style="margin-bottom: 10px;">Provider details</h2>
+                <dl class="data-list--provider data-list--compact hidden">
+                            <dt class="apprenticeshipContactTitle">Website</dt>
+        <dd>
+            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="course-link apprenticeshipContact">
+ACL Essex website            </a>
+        </dd>
+
+                        <dt class="phone-title">Phone number</dt>
+    <dd id="phone" class="phone">03330 139502</dd>
+
+                        <dt class="email-title">Email</dt>
+    <dd id="email" class="email"><a href="mailto:acl.nostoppingme@essex.gov.uk">acl.nostoppingme@essex.gov.uk</a></dd>
+
+                            <dt class="providerContactTitle">Contact page</dt>
+        <dd>
+            <a href="http://www.essex.gov.uk/adult-learning" rel="external" target="_blank" class="contact-link providerContact">
+contact this training provider            </a>
+        </dd>
+
+                        <dt class="training-location-title">Address</dt>
+        <dd id="training-location" class="training-location">
+            ACL Chelmsford, Beeches Close, Chelmsford, Essex, CM1 2SB         
+         
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.8994204053183!2d0.4493093164740641!3d51.73487497967324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8ebb7fe0b6607%3A0xcd93af866f37f3b!2sACL+Chelmsford!5e0!3m2!1sen!2suk!4v1498734239815" width="260" height="260" frameborder="0" style="border:0" allowfullscreen></iframe>                                                      
+
+        </dd>
+
+                </dl>         
+            </div>
+                 <section>
+
+                <dl class="data-list--provider data-list--compact">
+                    <dt>Employer satisfaction</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="employer-satisfaction" class="rating-71">
+                                71%
+                            </span>
+                                    <div class="progress-container">
+            <div class="progressbar" style="width: 71%"></div>
+        </div>
+
+                        </div>
+                    </dd>
+                    <dt>Learner satisfaction</dt>
+                    <dd>
+                        <div class="rating rating--inline">
+                            <span id="learner-satisfaction" class="rating-93">
+                                93%
+                            </span>
+                                    <div class="progress-container">
+            <div class="progressbar" style="width: 93%"></div>
+        </div>
+
+                        </div>
+                            <span class="satisfaction-source font-small">
+                                Source <a style="display: inline-block; float: left;" href="https://www.gov.uk/government/statistical-data-sets/fe-choices-performance-indicators" target="_blank">Skills Funding Agency FE Choices</a>
+                            </span>
+                    </dd>
+
+                        <dt class="legal-name-title">Legal trading name:</dt>
+    <dd id="legal-name" class="legal-name">ESSEX COUNTY COUNCIL</dd>
+
+                </dl>
+
+
+            </section>
+
+            </div>
+            
+                        
+                    <div class="provider-disclaimer">
+                <h3 class="heading-small">Content disclaimer</h3>
+                        
+                <p class="content-source">
+                    Content maintained by ACL Essex
+                </p>
+                <p>
+                    Skills Funding Agency cannot guarantee the accuracy of course information on this site and makes no representations about the quality of any courses which appear on the site. Skills Funding Agency is not liable for any losses suffered as a result of any party relying on the course information provided.
+                </p>
+            </div>
+        </aside>
+
+        <div class="column-two-thirds">
+
+                                    <h2 class="bold-large">Provider's introduction</h2>
+                <div class="provider-marketing-info">
+                    <article class="markdown"><p>ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</p>
+<p>Our dedicated and professional team deliver programmes up to and including level 5. We can support new employees and help develop existing staff and managers.</p>
+<p>Training is bespoke to your business and will include an element of classroom delivery as part of the programme.</p>
+<p>All of our delivery staff have industry experience and a wealth of knowledge in their subject area.</p>
+<p>We offer the following apprenticeships: Health &amp; Care, Management, Administration, Supporting Teaching &amp; Learning, Customer Service, Childcare, Accounting, Pharmacy and Hair.</p>
+
+</article>
+                </div>
+                  
+         <section class="courses">
+
+
+            <h2 class="heading-medium"><span>30</span> Apprenticeships provided</h2>
+             <p>Choose an apprenticeship to contact the provider</p>
+             <table class="responsive" id="providerCourses">
+                <thead>
+                    <tr>
+                        <th scope="col">Apprenticeship</th>
+                        <th scope="col">Type</th>
+                        <th scope="col" class="numeric">Level</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col" class="numeric"></th>
+                    </tr> 
+                </thead>
+                 <tbody>
+                    <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">This Advanced Apprenticeship can be applied across a broad range of sectors and job roles. Experienced business administrators are essential to the success of any business, therefore the skills gained with this Advanced Apprenticeship are transferable and valuable to any organisation.</td>
+                        <td data-label="Phone">01245 265859</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Business and Professional Administration</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">CNC Technician</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Fixed assest mangagement</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Groundsman</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Homestay Nurse</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Interior Designer</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Manufacturing engineer</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Network engineer</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Business and Professional Administration</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">CNC Technician</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Fixed assest mangagement</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Groundsman</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Homestay Nurse</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Interior Designer</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Manufacturing engineer</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Network engineer</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Accounting</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                        <td data-label="Phone">0800 360 490</td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Business and Professional Administration</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">CNC Technician</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Fixed assest mangagement</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Groundsman</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">2</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Homestay Nurse</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Interior Designer</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">3</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Manufacturing engineer</td> 
+                        <td><span class="label grey">Framework</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                     <tr>
+                        <td data-label="Course">Network engineer</td> 
+                        <td><span class="label blue">Standard</span></td>
+                        <td data-label="Level" class="numeric">4</td>
+                        <td data-label="Description">ACL Essex is an established apprenticeship provider covering the whole of the county. Linked to Essex County Council we offer high quality apprenticeship programmes that meet the needs of local employers.</td>
+                        <td data-label="Phone">0800 360 490</td>
+                        <td data-label="Details" class="numeric"><a href="/sprint/{{sprint}}/course/standard-detail-provider.html">Details</a></td>
+                    </tr>
+                 </tbody>
+             </table>
+<details>
+             <summary>What are Standards and Frameworks?</summary>
+    <div class="panel panel-info">
+<p class="labelmessage">
+        Results labelled <strong class="label blue">Standard</strong> are apprenticeships developed by employer groups. They are replace the old apprenticeship <span class="label grey">Frameworks</span> from 2016 onwards.
+    </p>             
+</div>
+             </details>
+<details>
+                        <summary>Explain levels</summary>
+                        <div class="panel panel-border-narrow">
+                            <p>Apprenticeships are set at different levels of difficulty from the equivalent of GCSE (level 2) up to postgraduate (level 7)</p>
+                            <p><a href="https://www.gov.uk/what-different-qualification-levels-mean/overview" target="_blank" rel="external">More about levels</a></p>
+                        </div>
+                    </details>
+        </section>
+            
+            <section id="providerLocations">
+                        <h2 class="heading-medium"><span>20</span> training locations</h2>
+         
+                <iframe src="https://www.google.com/maps/d/embed?mid=14-gFPBuj23zsB55wHFayqvPBRkM&hl=en" width="640" height="480"></iframe>
+                <details>
+                    <summary>Show locations in a list</summary>
+                                    <table id="providerLocationsTable">
+                                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Address</th>
+                        <th scope="col" class="numeric">Phone</th>
+                        <th scope="col"></th>
+                    </tr> 
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Training provider name">ACL Brentwood</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Southend</td>
+                            <td data-label="Training proivder location">Southend</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL St Peter</td>
+                            <td data-label="Training proivder location">Cambridge</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">Essex County Council</td>
+                            <td data-label="Training proivder location">Chelmsford</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Humbar Rd</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Clacton-on-Sea</td>
+                            <td data-label="Training proivder location">Clacton</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">All Care Ltd</td>
+                            <td data-label="Training proivder location">Brighton</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Shenfield</td>
+                            <td data-label="Training proivder location">Shenfield</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Black Prince Lane</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Bright St</td>
+                            <td data-label="Training proivder location">Cambridge</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">Flitch Green Academy</td>
+                            <td data-label="Training proivder location">Dunmow</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">Felstead Academy</td>
+                            <td data-label="Training proivder location">Dunmow</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Training provider name">ACL Brentwood</td>
+                            <td data-label="Training proivder location">Brentwood</td>
+                            <td data-label="Training proivder location">101 Brentwood Highstreet, Brentwood, Essex, CM5 3QT</td>
+                            <td data-label="Training proivder phone number">01265 330 330</td>
+                            <td data-label="Details" class="numeric"><a href="#">Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </details>
+            </section>
+              <div class="survey hidden">
+                <h2 class="bold-small">
+                    Give us your feedback
+                </h2>
+                <p>
+                    This is a new service and your feedback will help us improve it.<br>
+                    Use the link below to take part in a short survey.
+                </p>
+                <a href="https://www.surveymonkey.co.uk/r/MLTBYNX" target="_blank" class="button">Take the survey</a>
+            </div>
+     
+       
+        </div>
+    </div>
+</main><!-- / #content -->
+{% endblock %}

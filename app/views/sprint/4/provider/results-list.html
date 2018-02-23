@@ -1,0 +1,781 @@
+{% extends "layout.html" %} {% block page_title %} Sprint {{sprint}} - Dashboard {% endblock %} {% block inside_header %} {% endblock %} {% block content %}
+<main class="provider-results-list" id="content" role="main" tabindex="-1">
+    {% include "includes/link-back.html" %}
+
+    <section id="results-list" class="">
+
+        <h1 class="heading-medium">Search results <span class="visuallyhidden">for “”</span>
+            <p><span class="count">0</span> results found</p>
+            
+</h1>
+
+
+
+
+        <div class="grid-row">
+            <div class="column-one-third" style="z-index: 999; background: white;">
+                <h3 class="bold-small">Filter results</h3>
+                <br>
+                <fieldset class="filters filters-accordion">
+                    <h2 class="toggler heading-small">Provider</h2>
+                    <div class="toggled-content">
+                        <div class="form-group">
+                            <label for="providerName" class="form-label">Name (optional)</label>
+                            <input type="search" name="q" value="" id="providerName" class="form-control" />
+                        </div>
+                        <a class="show-more" href="#"><span>more filters</span></a>
+                        <section class="hidden">
+                        <div class="form-group">
+                            <legend for="ofsteadFilter" class="form-label">Ofsted rating (optional)</legend>                            
+                        <div class="multiple-choice">
+                            <input id="ofstedFilter-1" type="checkbox" value="1" checked>
+                            <label class="block-label" for="ofstedFilter-1">Outstanding (<span class="ofstedCount1">34</span>)</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="ofstedFilter-2" type="checkbox" value="2" checked>
+                            <label class="block-label" for="ofstedFilter-2">Good (<span class="ofstedCount2">34</span>)</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="ofstedFilter-3" type="checkbox" value="3" checked>
+                            <label class="block-label" for="ofstedFilter-3">Satisfactory (<span class="ofstedCount3">34</span>)</label>
+                        </div>
+                        <div class="multiple-choice">
+                            <input id="ofstedFilter-4" type="checkbox" value="4" checked>
+                            <label class="block-label" for="ofstedFilter-4">Inadequate (<span class="ofstedCount4">34</span>)</label>
+                        </div>
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <legend class="form-label">Do you pay the apprenticeship levy?</legend>
+                            <label class="block-label selection-button-radio" for="levy-1">
+                                <input id="levy-1" type="radio" name="levy-group" value="1"> Yes
+                            </label>
+                            <label class="block-label selection-button-radio" for="levy-2">
+                                <input id="levy-2" type="radio" name="levy-group" value="2"> No
+                            </label>
+                        </div>
+                       
+                        <details>
+                            <summary>What is Apprenticeship levy </summary>
+                            <div class="panel panel-border-narrow">
+                                <p>The apprenticeship levy is applied to organisations with payrolls of over £3,000,000 annually. Training providers who are approved by the eSFA to provide to non-levy employers are regulated differently. Ensure this option reflects your organisation or you may find results that are not available to you.</p>
+                            </div>
+                        </details>
+                        
+                        </section>
+                    </div>
+                </fieldset>
+
+                
+                <fieldset class="filters filters-accordion">
+                    <h2 class="toggler heading-small">Location</h2>
+                    <div class="toggled-content">
+                        <div class="form-group">
+                            <label for="providerLocation" class="form-label">Search location (optional)</label>
+                            <input id="providerLocation" type="text" class="form-control" value="" />
+                        </div>
+                        
+                        <a class="show-more" href="#"><span>more filters</span></a>
+                        <section class="hidden">
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d159429.49330362602!2d0.28159503224332944!3d51.364718745890116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1498731563184" width="260" height="260" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                        <div class="form-group">
+                            <label class="form-label" for="select-distance">Distance from location</label>
+                            <select class="form-control" id="select-distance" name="select-distance">
+                                <option value="5">5 miles</option>
+                                <option value="10">10 miles</option>
+                                <option value="50" selected="selected">50 miles</option>
+                                <option value="10000">National</option>
+                            </select>
+                        </div>
+                                                <div class="form-group">
+                                                    <legend>Provider coverage</legend>
+                            <label class="block-label selection-button-radio" for="providers-national">
+                                <input id="providers-national" type="radio" name="provider-type" value="2" checked> National providers only
+                            </label>
+                            <label class="block-label selection-button-radio" for="providers-local">
+                                <input id="providers-local" type="radio" name="provider-type" value="3"> Local providers only
+                            </label>
+                            <label class="block-label selection-button-radio selected" for="providers-all">
+                                <input id="providers-all" type="radio" name="provider-type" value="1" checked> National and local
+                            </label>
+                        </div>
+                        
+                        <details>
+                            <summary>Provider location help</summary>
+                            <div class="panel panel-border-narrow">
+                                <p>You can show and hide providers based on whether they offer their services nationally or if they are specifically local.</p>
+                            </div>
+                        </details>
+                        </section>
+                    </div>
+                </fieldset>
+
+
+                <fieldset class="filters filters-accordion">
+                    <h2 class="toggler heading-small">Apprenticeship</h2>
+                    <div class="toggled-content">
+
+                  <div class="form-group">
+                            <label for="apprenticeshipKeyword" class="form-label">Keyword or job role</label>
+                            <input id="apprenticeshipKeyword" type="text" class="form-control" value="" />
+                </div>
+
+                        <div class="form-group">
+                            <label for="apprenticeshipName" class="form-label">Apprenticeship</label>
+<select id="apprenticeshipName" class="js-states form-control" multiple>
+  <optgroup label="Apprenticeship standards">
+<option id='Able Seafarer (Deck) level 2'>Able Seafarer (Deck) level 2</option>
+<option id='Actuarial Technician level 4'>Actuarial Technician level 4</option>
+<option id='Adult Care Worker level 2'>Adult Care Worker level 2</option>
+<option id='Advanced Beauty Professional level 3'>Advanced Beauty Professional level 3</option>
+<option id='Advanced Butcher level 3'>Advanced Butcher level 3</option>
+<option id='Advanced Carpentry and Joinery  level 3'>Advanced Carpentry and Joinery  level 3</option>
+<option id='Advanced systems engineer level 7'>Advanced systems engineer level 7</option>
+<option id='Advanced Welder level 3'>Advanced Welder level 3</option>
+<option id='Aerospace Engineer level 6'>Aerospace Engineer level 6</option>
+<option id='Aerospace Manufacturing Fitter level 3'>Aerospace Manufacturing Fitter level 3</option>
+<option id='Aerospace Manufacturing, Electrical, Mechanical and Systems Fitter level 3'>Aerospace Manufacturing, Electrical, Mechanical and Systems Fitter level 3</option>
+<option id='Aerospace Software Developer level 6'>Aerospace Software Developer level 6</option>
+<option id='Aircraft Certifying Engineer level 4'>Aircraft Certifying Engineer level 4</option>
+<option id='Aircraft Maintenance Fitter/Technician (fixed and rotary wing) level 3'>Aircraft Maintenance Fitter/Technician (fixed and rotary wing) level 3</option>
+<option id='Airworthiness Planning Quality & Safety Technician level 3'>Airworthiness Planning Quality & Safety Technician level 3</option>
+<option id='Ambulance assistant practitioner  level 4'>Ambulance assistant practitioner  level 4</option>
+<option id='Anerobic Digestion Technician level 3'>Anerobic Digestion Technician level 3</option>
+<option id='Arborist level 2'>Arborist level 2</option>
+<option id='Assistant Accountant level 4'>Assistant Accountant level 4</option>
+<option id='Assistant Early Years Practitioner level 2'>Assistant Early Years Practitioner level 2</option>
+<option id='Assistant Equalities Named Co-ordinator level 3'>Assistant Equalities Named Co-ordinator level 3</option>
+<option id='Assistant Technical Director level 4'>Assistant Technical Director level 4</option>
+<option id='Auto Industry Customer Service level 3'>Auto Industry Customer Service level 3</option>
+<option id='Aviation level 2'>Aviation level 2</option>
+<option id='Aviation level 3'>Aviation level 3</option>
+<option id='Aviation level 3'>Aviation level 3</option>
+<option id='Aviation level 4'>Aviation level 4</option>
+<option id='Bakery: Artisan / Craft Baker level 3'>Bakery: Artisan / Craft Baker level 3</option>
+<option id='Bakery: Automated Plant baker level 3'>Bakery: Automated Plant baker level 3</option>
+<option id='Bakery: Retail Baker level 3'>Bakery: Retail Baker level 3</option>
+<option id='Beauty Professional level 2'>Beauty Professional level 2</option>
+<option id='Biomass Installation Engineer  level 3'>Biomass Installation Engineer  level 3</option>
+<option id='Boatbuilder level 3'>Boatbuilder level 3</option>
+<option id='Book keeper level 3'>Book keeper level 3</option>
+<option id='Broadcast Content Assistant  level 3'>Broadcast Content Assistant  level 3</option>
+<option id='BSE Ductwork Installer  level 2'>BSE Ductwork Installer  level 2</option>
+<option id='BSE Service and Maintenance Manager  level 3'>BSE Service and Maintenance Manager  level 3</option>
+<option id='Building Services Engineer Ductwork installer  level 2'>Building Services Engineer Ductwork installer  level 2</option>
+<option id='Building Services Engineer Service & Maintenance Engineer  level 3'>Building Services Engineer Service & Maintenance Engineer  level 3</option>
+<option id='Building Services Engineering Craftsperson level 3'>Building Services Engineering Craftsperson level 3</option>
+<option id='Building Services Engineering Ductwork Craftsperson  level 3'>Building Services Engineering Ductwork Craftsperson  level 3</option>
+<option id='Building Services Engineering Installer level 2'>Building Services Engineering Installer level 2</option>
+<option id='Building Services Engineering Site Management level 6'>Building Services Engineering Site Management level 6</option>
+<option id='Bus and coach engineering manager level 4'>Bus and coach engineering manager level 4</option>
+<option id='Bus and Coach Technician level 3'>Bus and Coach Technician level 3</option>
+<option id='Business adminstrator level 3'>Business adminstrator level 3</option>
+<option id='Business Analyst  level 3'>Business Analyst  level 3</option>
+<option id='Business Fire Safety Advisor level 3'>Business Fire Safety Advisor level 3</option>
+<option id='Butcher level 2'>Butcher level 2</option>
+<option id='Carpentry and Joinery  level 2'>Carpentry and Joinery  level 2</option>
+<option id='Chartered Legal Executive level 6'>Chartered Legal Executive level 6</option>
+<option id='chartered surveyor level 6'>chartered surveyor level 6</option>
+<option id='Chef de Partie level 3'>Chef de Partie level 3</option>
+<option id='Children, Young People & Families Supervisor level 4'>Children, Young People & Families Supervisor level 4</option>
+<option id='Children, Young People & Families Worker level 3'>Children, Young People & Families Worker level 3</option>
+<option id='Civil Engineering Site Management level 6'>Civil Engineering Site Management level 6</option>
+<option id='Civil Engineering Technician level 3'>Civil Engineering Technician level 3</option>
+<option id='commercial professional level 4'>commercial professional level 4</option>
+<option id='Commis Chef level 2'>Commis Chef level 2</option>
+<option id='Composites technician level 3'>Composites technician level 3</option>
+<option id='Construction Assembly Technician level 2'>Construction Assembly Technician level 2</option>
+<option id='Construction Design Management level 6'>Construction Design Management level 6</option>
+<option id='Construction Quantity Surveyor level 6'>Construction Quantity Surveyor level 6</option>
+<option id='Construction Site Management level 6'>Construction Site Management level 6</option>
+<option id='Construction Technician level 4'>Construction Technician level 4</option>
+<option id='Continuous Improvement Manager level 3'>Continuous Improvement Manager level 3</option>
+<option id='Continuous Improvement Technician level 3'>Continuous Improvement Technician level 3</option>
+<option id='Control/Technical Support Engineer level 6'>Control/Technical Support Engineer level 6</option>
+<option id='Conveyancing Technician level 4'>Conveyancing Technician level 4</option>
+<option id='Cook at Sea level 2'>Cook at Sea level 2</option>
+<option id='Courier level 2'>Courier level 2</option>
+<option id='Craft Person level 3'>Craft Person level 3</option>
+<option id='Craft Welder level 2'>Craft Welder level 2</option>
+<option id='Creative Content Assistant level 3'>Creative Content Assistant level 3</option>
+<option id='Credit Controller level 2'>Credit Controller level 2</option>
+<option id='Customer experience specialist level 3'>Customer experience specialist level 3</option>
+<option id='Cyber Intrusion Analyst level 4'>Cyber Intrusion Analyst level 4</option>
+<option id='Data analyst level 4'>Data analyst level 4</option>
+<option id='Deckhand level 3'>Deckhand level 3</option>
+<option id='Decorative Finishing & Industrial  Painter level 2'>Decorative Finishing & Industrial  Painter level 2</option>
+<option id='Degree Public Relations  level 3'>Degree Public Relations  level 3</option>
+<option id='Dental Hygiene Therapist level 4'>Dental Hygiene Therapist level 4</option>
+<option id='Dental Lab Assistant level 3'>Dental Lab Assistant level 3</option>
+<option id='Dental Lab Technician level 3'>Dental Lab Technician level 3</option>
+<option id='Dental Laboratory Manager level 4'>Dental Laboratory Manager level 4</option>
+<option id='Dental Nursing level 3'>Dental Nursing level 3</option>
+<option id='Dental Practice Manager level 4'>Dental Practice Manager level 4</option>
+<option id='Digital & Technology Solutions Professional level 6'>Digital & Technology Solutions Professional level 6</option>
+<option id='Digital Business Administrator  level 3'>Digital Business Administrator  level 3</option>
+<option id='Digital Business Specialist  level 3'>Digital Business Specialist  level 3</option>
+<option id='Digital Engineering Technician level 3'>Digital Engineering Technician level 3</option>
+<option id='Digital Marketer level 3'>Digital Marketer level 3</option>
+<option id='Digital Media Technology Practitioner level 4'>Digital Media Technology Practitioner level 4</option>
+<option id='Early Years Centre Leader level 5'>Early Years Centre Leader level 5</option>
+<option id='Early Years Educator level 3'>Early Years Educator level 3</option>
+<option id='Electrical & Electronic Appliance Servicing & Installation level 3'>Electrical & Electronic Appliance Servicing & Installation level 3</option>
+<option id='Electrical/Electonic Technical Support Engineer level 6'>Electrical/Electonic Technical Support Engineer level 6</option>
+<option id='Embedded electronic systems design and development engineer level 6'>Embedded electronic systems design and development engineer level 6</option>
+<option id='Engine Room Ratings level 2'>Engine Room Ratings level 2</option>
+<option id='Engineering Design & Draughtsperson level 3'>Engineering Design & Draughtsperson level 3</option>
+<option id='Equine groom (horse care) level 2'>Equine groom (horse care) level 2</option>
+<option id='Events Management level 3'>Events Management level 3</option>
+<option id='Extractive Plant Mobile Service Engineer level 3'>Extractive Plant Mobile Service Engineer level 3</option>
+<option id='Facilities Management Supervisor level 3'>Facilities Management Supervisor level 3</option>
+<option id='Farrier level 2'>Farrier level 2</option>
+<option id='Fashion Studio Assistant level 3'>Fashion Studio Assistant level 3</option>
+<option id='FE Assessor/Coach  level 4'>FE Assessor/Coach  level 4</option>
+<option id='FE Lead Teacher  level 7'>FE Lead Teacher  level 7</option>
+<option id='FE Learning Mentor  level 3'>FE Learning Mentor  level 3</option>
+<option id='FE Qualified Teacher  level 5'>FE Qualified Teacher  level 5</option>
+<option id='Financial Services Administrator level 3'>Financial Services Administrator level 3</option>
+<option id='Financial Services Customer Adviser  level 1'>Financial Services Customer Adviser  level 1</option>
+<option id='First Assistant/Head Greenkeeper/Deputy Golf Course Manager level 3'>First Assistant/Head Greenkeeper/Deputy Golf Course Manager level 3</option>
+<option id='Fishmonger level 3'>Fishmonger level 3</option>
+<option id='Food & Drink Maintenance Engineer level 3'>Food & Drink Maintenance Engineer level 3</option>
+<option id='Food and Drink Operations, Production and Processing: Production Processing Manager level 3'>Food and Drink Operations, Production and Processing: Production Processing Manager level 3</option>
+<option id='Food and Drink Quality Assurance, Production Development and Food Science: Technical Manager level 3'>Food and Drink Quality Assurance, Production Development and Food Science: Technical Manager level 3</option>
+<option id='Food and DrinkÊÊ Operations, Production and Processing: Skilled Technical Operative level 3'>Food and DrinkÊÊ Operations, Production and Processing: Skilled Technical Operative level 3</option>
+<option id='Food and DrinkÊÊ Quality Assurance, Product Development & Food Science:Food Science Technologist level 3'>Food and DrinkÊÊ Quality Assurance, Product Development & Food Science:Food Science Technologist level 3</option>
+<option id='Forester level 2'>Forester level 2</option>
+<option id='Front line customer service practitioner level 2'>Front line customer service practitioner level 2</option>
+<option id='Furnace Control & Glass Melting level 5'>Furnace Control & Glass Melting level 5</option>
+<option id='Furniture maker level 2'>Furniture maker level 2</option>
+<option id='Garden/horticultural operative level 2'>Garden/horticultural operative level 2</option>
+<option id='Gas Network Construction Team Leader level 2'>Gas Network Construction Team Leader level 2</option>
+<option id='Gas Networks Craftsperson level 3'>Gas Networks Craftsperson level 3</option>
+<option id='Gas service engineer level 4'>Gas service engineer level 4</option>
+<option id='Golf Greenkeeper level 2'>Golf Greenkeeper level 2</option>
+<option id='Hair Professional level 2'>Hair Professional level 2</option>
+<option id='Head gardener/parks supervisor  level 3'>Head gardener/parks supervisor  level 3</option>
+<option id='Head Greenkeeper/Golf Course Manager level 3'>Head Greenkeeper/Golf Course Manager level 3</option>
+<option id='Health and Wellbeing Leader level 4'>Health and Wellbeing Leader level 4</option>
+<option id='health physics monitor level 3'>health physics monitor level 3</option>
+<option id='Healthcare assistant practitioner level 4'>Healthcare assistant practitioner level 4</option>
+<option id='Healthcare science assistant level 2'>Healthcare science assistant level 2</option>
+<option id='Healthcare science assistant practitioner level 3'>Healthcare science assistant practitioner level 3</option>
+<option id='Healthcare science associate level 4'>Healthcare science associate level 4</option>
+<option id='healthcare support worker level 2'>healthcare support worker level 2</option>
+<option id='Healthcare/assistant nursing assistant level 3'>Healthcare/assistant nursing assistant level 3</option>
+<option id='HGV Engineering & Maintenance Technician level 3'>HGV Engineering & Maintenance Technician level 3</option>
+<option id='High Tech Engineer level 3'>High Tech Engineer level 3</option>
+<option id='Highway Electrical - Maintenance and Installation level 2'>Highway Electrical - Maintenance and Installation level 2</option>
+<option id='Highways Electrician/Service Operative level 3'>Highways Electrician/Service Operative level 3</option>
+<option id='Highways Maintenance Skilled Operative\n level 2'>Highways Maintenance Skilled Operative\n level 2</option>
+<option id='Highways Maintenance Supervision level 3'>Highways Maintenance Supervision level 3</option>
+<option id='Historic Environment Practitioner level 3'>Historic Environment Practitioner level 3</option>
+<option id='HM Forces Public Services Opeational Delivery (uniformed) level 2'>HM Forces Public Services Opeational Delivery (uniformed) level 2</option>
+<option id='Hospitality Manager level 4'>Hospitality Manager level 4</option>
+<option id='Hospitality Supervisor level 3'>Hospitality Supervisor level 3</option>
+<option id='Hospitality Team Member level 2'>Hospitality Team Member level 2</option>
+<option id='Housing Management Assistant level 2'>Housing Management Assistant level 2</option>
+<option id='Housing Management level 3'>Housing Management level 3</option>
+<option id='HR Advisor level 5'>HR Advisor level 5</option>
+<option id='HR assistant level 3'>HR assistant level 3</option>
+<option id='HR director/consultant level 7'>HR director/consultant level 7</option>
+<option id='Information & Cyber Security  level 3'>Information & Cyber Security  level 3</option>
+<option id='Infrastructure technician level 3'>Infrastructure technician level 3</option>
+<option id='Installation & Maintenance Electrician level 3'>Installation & Maintenance Electrician level 3</option>
+<option id='Insurance Practitioner level 3'>Insurance Practitioner level 3</option>
+<option id='Insurance Professional level 4'>Insurance Professional level 4</option>
+<option id='International Supply Chain level 3'>International Supply Chain level 3</option>
+<option id='Investment Operations level 1'>Investment Operations level 1</option>
+<option id='Investment Operations level 2'>Investment Operations level 2</option>
+<option id='Investment Operations level 2'>Investment Operations level 2</option>
+<option id='IT Services & Sales Technician  level 3'>IT Services & Sales Technician  level 3</option>
+<option id='IT Support  level 3'>IT Support  level 3</option>
+<option id='Junior 2D Artist  level 4'>Junior 2D Artist  level 4</option>
+<option id='Junior Energy Manager level 3'>Junior Energy Manager level 3</option>
+<option id='Junior Journalist level 3'>Junior Journalist level 3</option>
+<option id='Junior Management Consultant level 4'>Junior Management Consultant level 4</option>
+<option id='Laboratory Scientist level 5'>Laboratory Scientist level 5</option>
+<option id='Laboratory Technician level 3'>Laboratory Technician level 3</option>
+<option id='Lead Adult Adult Care Worker   level 3'>Lead Adult Adult Care Worker   level 3</option>
+<option id='Lead Equalities Named Co-ordinator level 3'>Lead Equalities Named Co-ordinator level 3</option>
+<option id='Lead Practitioner in Adult Care level 4'>Lead Practitioner in Adult Care level 4</option>
+<option id='Leader/Manager in Adult Care level 5'>Leader/Manager in Adult Care level 5</option>
+<option id='Leisure manager level 3'>Leisure manager level 3</option>
+<option id='Licensed Conveyancer level 6'>Licensed Conveyancer level 6</option>
+<option id='Licensed Probate Practitioner level 4'>Licensed Probate Practitioner level 4</option>
+<option id='Lifting Technician level 2'>Lifting Technician level 2</option>
+<option id='Live Events Rigger level 3'>Live Events Rigger level 3</option>
+<option id='Live Events Technician  level 2'>Live Events Technician  level 2</option>
+<option id='Livestock Manager level 2'>Livestock Manager level 2</option>
+<option id='Logistics Operator/Manager level 3'>Logistics Operator/Manager level 3</option>
+<option id='Machinist  level 3'>Machinist  level 3</option>
+<option id='Maintainer & Installer level 2'>Maintainer & Installer level 2</option>
+<option id='Maintenance Mechanic (Military) level 2'>Maintenance Mechanic (Military) level 2</option>
+<option id='Manager in Residential Childcare level 5'>Manager in Residential Childcare level 5</option>
+<option id='Manufacturing Engineer level 6'>Manufacturing Engineer level 6</option>
+<option id='Maritime Electrical Fitter Level 3 level 3'>Maritime Electrical Fitter Level 3 level 3</option>
+<option id='Maritime Fabricator Level 3 level 3'>Maritime Fabricator Level 3 level 3</option>
+<option id='Maritime Maintenance Mechanical/Electrical Mechanic Level 2 level 3'>Maritime Maintenance Mechanical/Electrical Mechanic Level 2 level 3</option>
+<option id='Maritime Pipeworker Level 3 level 3'>Maritime Pipeworker Level 3 level 3</option>
+<option id='Master Welder level 4'>Master Welder level 4</option>
+<option id='Mechanical fitter level 3'>Mechanical fitter level 3</option>
+<option id='Mechatronics Maintenance Technician level 3'>Mechatronics Maintenance Technician level 3</option>
+<option id='Mineral Extraction Drill & Blasting Operator level 3'>Mineral Extraction Drill & Blasting Operator level 3</option>
+<option id='Mineral Processing Plant Engineer level 3'>Mineral Processing Plant Engineer level 3</option>
+<option id='Mineral Processing Plant Skilled Operator level 3'>Mineral Processing Plant Skilled Operator level 3</option>
+<option id='Mineral Products Weighbridge Operations level 3'>Mineral Products Weighbridge Operations level 3</option>
+<option id='Mortgage Adviser level 4'>Mortgage Adviser level 4</option>
+<option id='Motor Vehicle Technciain (Light Vehicle) level 3'>Motor Vehicle Technciain (Light Vehicle) level 3</option>
+<option id='Network Engineer level 4'>Network Engineer level 4</option>
+<option id='Non-destructive testing(NDT) engineering technican  level 3'>Non-destructive testing(NDT) engineering technican  level 3</option>
+<option id='Nuclear Degree Apprenticeship level 3'>Nuclear Degree Apprenticeship level 3</option>
+<option id='nuclear welding inspection technician level 3'>nuclear welding inspection technician level 3</option>
+<option id='Nuclear Worker level 3'>Nuclear Worker level 3</option>
+<option id='Nurse level 6'>Nurse level 6</option>
+<option id='Ophthalmic Technician level 3'>Ophthalmic Technician level 3</option>
+<option id='outside broadcast engineer level 7'>outside broadcast engineer level 7</option>
+<option id='Packhouse operative(stock person-beef, diary, pigs, poultry and sheep) level 2'>Packhouse operative(stock person-beef, diary, pigs, poultry and sheep) level 2</option>
+<option id='Papermaking Operator level 2'>Papermaking Operator level 2</option>
+<option id='Papermaking Supervisor level 3'>Papermaking Supervisor level 3</option>
+<option id='Papermaking Technician level 3'>Papermaking Technician level 3</option>
+<option id='Paralegal level 3'>Paralegal level 3</option>
+<option id='Paraplanner level 2'>Paraplanner level 2</option>
+<option id='Payroll adminstrator level 3'>Payroll adminstrator level 3</option>
+<option id='Personal  Trainer level 3'>Personal  Trainer level 3</option>
+<option id='Pharmacy services assistant level 2'>Pharmacy services assistant level 2</option>
+<option id='Piling Attendant level 2'>Piling Attendant level 2</option>
+<option id='plumbing and domestic heating engineer level 3'>plumbing and domestic heating engineer level 3</option>
+<option id='Police officer level 3'>Police officer level 3</option>
+<option id='Port Crane Operator level 3'>Port Crane Operator level 3</option>
+<option id='Port operative level 3'>Port operative level 3</option>
+<option id='Port Plant Machinery Operator level 3'>Port Plant Machinery Operator level 3</option>
+<option id='Power Network Craftsperson level 3'>Power Network Craftsperson level 3</option>
+<option id='Practitioner in Residential Childcare level 3'>Practitioner in Residential Childcare level 3</option>
+<option id='Print Finisher, Prepress Operative & Printer level 3'>Print Finisher, Prepress Operative & Printer level 3</option>
+<option id='Product Design and Development Engineer level 6'>Product Design and Development Engineer level 6</option>
+<option id='Product Design and Development Technician level 3'>Product Design and Development Technician level 3</option>
+<option id='Product Forming in the Container Industry level 5'>Product Forming in the Container Industry level 5</option>
+<option id='Product Forming in the Float Glass Industry level 5'>Product Forming in the Float Glass Industry level 5</option>
+<option id='Professional Accountant level 7'>Professional Accountant level 7</option>
+<option id='Professional Accounting and TaxationTechnician level 4'>Professional Accounting and TaxationTechnician level 4</option>
+<option id='Professional Manager (Degree app)  level 6'>Professional Manager (Degree app)  level 6</option>
+<option id='Property Services Operative level 2'>Property Services Operative level 2</option>
+<option id='Protection, installation & commissioning technician level 3'>Protection, installation & commissioning technician level 3</option>
+<option id='Public Relations  level 4'>Public Relations  level 4</option>
+<option id='Public Service Operational Delivery level 3'>Public Service Operational Delivery level 3</option>
+<option id='Quality Assurance Technician/Analyst level 3'>Quality Assurance Technician/Analyst level 3</option>
+<option id='Quality Improvement Leader level 4'>Quality Improvement Leader level 4</option>
+<option id='Rail Advanced Technician Engineering  level 4'>Rail Advanced Technician Engineering  level 4</option>
+<option id='Rail Engineering Operative level 2'>Rail Engineering Operative level 2</option>
+<option id='Rail Engineering Technician level 3'>Rail Engineering Technician level 3</option>
+<option id='Railway Engineering Design Technician level 3'>Railway Engineering Design Technician level 3</option>
+<option id='Recruitment Consultant level 4'>Recruitment Consultant level 4</option>
+<option id='Recruitment Resourcer level 3'>Recruitment Resourcer level 3</option>
+<option id='Refrigertation, air conditioning Heat Pump Technician level 3'>Refrigertation, air conditioning Heat Pump Technician level 3</option>
+<option id='Relationship Manager (Banking) level 6'>Relationship Manager (Banking) level 6</option>
+<option id='Retail Manager level 4'>Retail Manager level 4</option>
+<option id='Retail Supervisor level 3'>Retail Supervisor level 3</option>
+<option id='Retailer level 2'>Retailer level 2</option>
+<option id='Saddler level 3'>Saddler level 3</option>
+<option id='Sawmilling level 3'>Sawmilling level 3</option>
+<option id='Science Industry Maintenance Technician level 3'>Science Industry Maintenance Technician level 3</option>
+<option id='Science Manufacturing Technician level 3'>Science Manufacturing Technician level 3</option>
+<option id='security first line manager level 3'>security first line manager level 3</option>
+<option id='Senior Culinary Arts Chef level 4'>Senior Culinary Arts Chef level 4</option>
+<option id='Senior Early Years Practitioner level 4'>Senior Early Years Practitioner level 4</option>
+<option id='Senior Equine Groom level 3'>Senior Equine Groom level 3</option>
+<option id='Senior Financial Services Customer Adviser level 3'>Senior Financial Services Customer Adviser level 3</option>
+<option id='Senior Hair Professional level 3'>Senior Hair Professional level 3</option>
+<option id='Senior Healthcare assistant/senior nursing assistant level 3'>Senior Healthcare assistant/senior nursing assistant level 3</option>
+<option id='Senior Housing Manager level 4'>Senior Housing Manager level 4</option>
+<option id='Senior Journalist level 4'>Senior Journalist level 4</option>
+<option id='Senior Paraplanner level 2'>Senior Paraplanner level 2</option>
+<option id='Senior pharmacy services assistant level 3'>Senior pharmacy services assistant level 3</option>
+<option id='Senior Production Chef level 3'>Senior Production Chef level 3</option>
+<option id='Service Engineer level 2'>Service Engineer level 2</option>
+<option id='Service Engineer Technician level 3'>Service Engineer Technician level 3</option>
+<option id='Services Leader level 5'>Services Leader level 5</option>
+<option id='Small Business Financial Adminstrator level 2'>Small Business Financial Adminstrator level 2</option>
+<option id='SMART meter installation level 2'>SMART meter installation level 2</option>
+<option id='Software Developer level 4'>Software Developer level 4</option>
+<option id='Software Development Technician  level 3'>Software Development Technician  level 3</option>
+<option id='Software Tester level 4'>Software Tester level 4</option>
+<option id='Solicitor level 7'>Solicitor level 7</option>
+<option id='Sports Turf Operative level 2'>Sports Turf Operative level 2</option>
+<option id='Steel Fixer level 2'>Steel Fixer level 2</option>
+<option id='Structural Steel Fabricator  level 2'>Structural Steel Fabricator  level 2</option>
+<option id='Supply chain LGV driver level 2'>Supply chain LGV driver level 2</option>
+<option id='Supply chain operative level 2'>Supply chain operative level 2</option>
+<option id='Supply Chain Operator/Manager level 3'>Supply Chain Operator/Manager level 3</option>
+<option id='Supply chain warehouse level 2'>Supply chain warehouse level 2</option>
+<option id='surveying Technician level 3'>surveying Technician level 3</option>
+<option id='Survival Equipment Fitter  level 3'>Survival Equipment Fitter  level 3</option>
+<option id='Tailoring & Cutting level 5'>Tailoring &amp; Cutting level 5</option>
+<option id='Technican (horticultural/fresh produce/arable/glasshouse) level 2'>Technican (horticultural/fresh produce/arable/glasshouse) level 2</option>
+<option id='Telecoms and Unified Comms  level 3'>Telecoms and Unified Comms  level 3</option>
+<option id='Thermal Insulation Engineer level 3'>Thermal Insulation Engineer level 3</option>
+<option id='Tool and Die level 3'>Tool and Die level 3</option>
+<option id='Trade Business Services level 3'>Trade Business Services level 3</option>
+<option id='transport planning technician level 3'>transport planning technician level 3</option>
+<option id='Transport Service Manager level 4'>Transport Service Manager level 4</option>
+<option id='Transport Service Professional - Driver level 2'>Transport Service Professional - Driver level 2</option>
+<option id='Transport Service Professional - Service Operations level 2'>Transport Service Professional - Service Operations level 2</option>
+<option id='Transport Service Team Leader level 3'>Transport Service Team Leader level 3</option>
+<option id='Travel Consultant level 3'>Travel Consultant level 3</option>
+<option id='Unified Communications Trouble Shooter level 4'>Unified Communications Trouble Shooter level 4</option>
+<option id='Utilities Engineering Technician level 3'>Utilities Engineering Technician level 3</option>
+<option id='Vehicle Parts Operations level 3'>Vehicle Parts Operations level 3</option>
+<option id='Vehicle Sales level 3'>Vehicle Sales level 3</option>
+<option id='Water Process Technician level 3'>Water Process Technician level 3</option>
+  </optgroup>
+  <optgroup label="Apprenticeship frameworks">
+<option id='Accounting  level 2'>Accounting  level 2</option>
+<option id='Accounting  level 3'>Accounting  level 3</option>
+<option id='Accounting  level 4'>Accounting  level 4</option>
+<option id='Activity Leadership level 2'>Activity Leadership level 2</option>
+<option id='Agriculture level 2'>Agriculture level 2</option>
+<option id='Agriculture level 3'>Agriculture level 3</option>
+<option id='Agriculture level 4'>Agriculture level 4</option>
+<option id='Animal Care  level 2'>Animal Care  level 2</option>
+<option id='Animal Care  level 3'>Animal Care  level 3</option>
+<option id='Aviation Operations on the Ground level 2'>Aviation Operations on the Ground level 2</option>
+<option id='Aviation Operations on the Ground level 3'>Aviation Operations on the Ground level 3</option>
+<option id='Barbering level 2'>Barbering level 2</option>
+<option id='Barbering level 3'>Barbering level 3</option>
+<option id='Beauty Therapy level 2'>Beauty Therapy level 2</option>
+<option id='Beauty Therapy level 3'>Beauty Therapy level 3</option>
+<option id='Broadcasting Technology level 6'>Broadcasting Technology level 6</option>
+<option id='Building Services Engineering Technology and Project Management level '>Building Services Engineering Technology and Project Management level </option>
+<option id='Building Services Engineering Technology and Project Management level 3'>Building Services Engineering Technology and Project Management level 3</option>
+<option id='Bus and Coach Engineering and Maintenance level 2'>Bus and Coach Engineering and Maintenance level 2</option>
+<option id='Bus and Coach Engineering and Maintenance level 3'>Bus and Coach Engineering and Maintenance level 3</option>
+<option id='Business and Administration level 2'>Business and Administration level 2</option>
+<option id='Business and Administration level 3'>Business and Administration level 3</option>
+<option id='Business and Professional Administration level 4'>Business and Professional Administration level 4</option>
+<option id='Care Leadership and Management level 5'>Care Leadership and Management level 5</option>
+<option id='Catering and Professional Chefs level 2'>Catering and Professional Chefs level 2</option>
+<option id='Catering and Professional Chefs level 3'>Catering and Professional Chefs level 3</option>
+<option id='Children and Young Peoples Workforce level 2'>Children and Young People's Workforce level 2</option>
+<option id='Children and Young Peoples Workforce level 3'>Children and Young People's Workforce level 3</option>
+<option id='Cleaning and Environmental Support Services level 2'>Cleaning and Environmental Support Services level 2</option>
+<option id='Cleaning and Environmental Support Services level 3'>Cleaning and Environmental Support Services level 3</option>
+<option id='Coaching level 2'>Coaching level 2</option>
+<option id='Coaching level 3'>Coaching level 3</option>
+<option id='Community Arts level 2'>Community Arts level 2</option>
+<option id='Community Arts level 3'>Community Arts level 3</option>
+<option id='Community Safety level 2'>Community Safety level 2</option>
+<option id='Composite Engineering   level 2'>Composite Engineering   level 2</option>
+<option id='Composite Engineering   level 3'>Composite Engineering   level 3</option>
+<option id='Construction Building level 2'>Construction Building level 2</option>
+<option id='Construction Building level 3'>Construction Building level 3</option>
+<option id='Construction Civil Engineering level 2'>Construction Civil Engineering level 2</option>
+<option id='Construction Civil Engineering level 3'>Construction Civil Engineering level 3</option>
+<option id='Construction Management level 4'>Construction Management level 4</option>
+<option id='Construction Management level 5'>Construction Management level 5</option>
+<option id='Construction Management level 6'>Construction Management level 6</option>
+<option id='Construction Specialist level 2'>Construction Specialist level 2</option>
+<option id='Construction Specialist level 3'>Construction Specialist level 3</option>
+<option id='Construction Technical and Professional level 3'>Construction Technical and Professional level 3</option>
+<option id='Consumer Electrical and Electronic Products  level 2'>Consumer Electrical and Electronic Products  level 2</option>
+<option id='Consumer Electrical and Electronic Products  level 3'>Consumer Electrical and Electronic Products  level 3</option>
+<option id='Contact Centre Operations level 2'>Contact Centre Operations level 2</option>
+<option id='Contact Centre Operations level 3'>Contact Centre Operations level 3</option>
+<option id='Courts, Tribunal and Prosecution Operations level 2'>Courts, Tribunal and Prosecution Operations level 2</option>
+<option id='Creative and Digital Media level 3'>Creative and Digital Media level 3</option>
+<option id='Creative and Digital Media level 4'>Creative and Digital Media level 4</option>
+<option id='Cultural and Heritage Venue operations level 2'>Cultural and Heritage Venue operations level 2</option>
+<option id='Cultural and Heritage Venue operations level 3'>Cultural and Heritage Venue operations level 3</option>
+<option id='Custodial Care level 3'>Custodial Care level 3</option>
+<option id='Customer Service level 2'>Customer Service level 2</option>
+<option id='Customer Service level 3'>Customer Service level 3</option>
+<option id='Design level 2'>Design level 2</option>
+<option id='Design level 3'>Design level 3</option>
+<option id='Digital Learning Design level 3'>Digital Learning Design level 3</option>
+<option id='Digital Learning Design level 4'>Digital Learning Design level 4</option>
+<option id='Domestic Heating level 2'>Domestic Heating level 2</option>
+<option id='Domestic Heating level 3'>Domestic Heating level 3</option>
+<option id='Driving Goods Vehicles level 2'>Driving Goods Vehicles level 2</option>
+<option id='Driving Goods Vehicles level 3'>Driving Goods Vehicles level 3</option>
+<option id='Electrotechnical  level 3'>Electrotechnical  level 3</option>
+<option id='Emergency Fire Service Operations level 3'>Emergency Fire Service Operations level 3</option>
+<option id='Employment Related Services level 3'>Employment Related Services level 3</option>
+<option id='Engineering Construction level '>Engineering Construction level </option>
+<option id='Engineering Construction level 3'>Engineering Construction level 3</option>
+<option id='Engineering Manufacture level 2'>Engineering Manufacture level 2</option>
+<option id='Engineering Manufacture level 3'>Engineering Manufacture level 3</option>
+<option id='Environmental Conservation level 2'>Environmental Conservation level 2</option>
+<option id='Environmental Conservation level 3'>Environmental Conservation level 3</option>
+<option id='Equine level 2'>Equine level 2</option>
+<option id='Equine level 3'>Equine level 3</option>
+<option id='Exercise and Fitness level 2'>Exercise and Fitness level 2</option>
+<option id='Exercise and Fitness level 3'>Exercise and Fitness level 3</option>
+<option id='Facilities Management level 2'>Facilities Management level 2</option>
+<option id='Facilities Management level 3'>Facilities Management level 3</option>
+<option id='Facilities Management level 4'>Facilities Management level 4</option>
+<option id='Facilities Management level 5'>Facilities Management level 5</option>
+<option id='Farriery level 3'>Farriery level 3</option>
+<option id='Fashion and Textiles level 2'>Fashion and Textiles level 2</option>
+<option id='Fashion and Textiles level 3'>Fashion and Textiles level 3</option>
+<option id='Fencing level 2'>Fencing level 2</option>
+<option id='Floristry level 2'>Floristry level 2</option>
+<option id='Floristry level 3'>Floristry level 3</option>
+<option id='Food and Drink level 2'>Food and Drink level 2</option>
+<option id='Food and Drink level 3'>Food and Drink level 3</option>
+<option id='Funeral Operations and Services  level 2'>Funeral Operations and Services  level 2</option>
+<option id='Funeral Operations and Services  level 3'>Funeral Operations and Services  level 3</option>
+<option id='Furniture, Furnishing and Interiors Manufacturing level 2'>Furniture, Furnishing and Interiors Manufacturing level 2</option>
+<option id='Furniture, Furnishing and Interiors Manufacturing level 3'>Furniture, Furnishing and Interiors Manufacturing level 3</option>
+<option id='Game and Wildlife Management  level 2'>Game and Wildlife Management  level 2</option>
+<option id='Game and Wildlife Management  level 3'>Game and Wildlife Management  level 3</option>
+<option id='Glass Industry level 2'>Glass Industry level 2</option>
+<option id='Glass Industry level 3'>Glass Industry level 3</option>
+<option id='Hairdressing level 2'>Hairdressing level 2</option>
+<option id='Hairdressing level 3'>Hairdressing level 3</option>
+<option id='Health - Allied Health Profession Support level 3'>Health - Allied Health Profession Support level 3</option>
+<option id='Health - Assistant Practitioner level 5'>Health - Assistant Practitioner level 5</option>
+<option id='Health - Clinical Healthcare Support level 2'>Health - Clinical Healthcare Support level 2</option>
+<option id='Health - Clinical Healthcare Support level 3'>Health - Clinical Healthcare Support level 3</option>
+<option id='Health - Dental Nursing level 3'>Health - Dental Nursing level 3</option>
+<option id='Health - Emergency Care level 2'>Health - Emergency Care level 2</option>
+<option id='Health - Healthcare Support Services level 2'>Health - Healthcare Support Services level 2</option>
+<option id='Health - Healthcare Support Services level 3'>Health - Healthcare Support Services level 3</option>
+<option id='Health - Maternity and Paediatric Support level 3'>Health - Maternity and Paediatric Support level 3</option>
+<option id='Health - Optical Retail level 2'>Health - Optical Retail level 2</option>
+<option id='Health - Optical Retail level 3'>Health - Optical Retail level 3</option>
+<option id='Health - Perioperative Support level 3'>Health - Perioperative Support level 3</option>
+<option id='Health - Pharmacy Services level 2'>Health - Pharmacy Services level 2</option>
+<option id='Health - Pharmacy Services level 3'>Health - Pharmacy Services level 3</option>
+<option id='Health and Social Care level 2'>Health and Social Care level 2</option>
+<option id='Health and Social Care level 3'>Health and Social Care level 3</option>
+<option id='Heating and Ventilating level 2'>Heating and Ventilating level 2</option>
+<option id='Heating and Ventilating level 3'>Heating and Ventilating level 3</option>
+<option id='HM Forces level 2'>HM Forces level 2</option>
+<option id='Horticulture level 2'>Horticulture level 2</option>
+<option id='Horticulture level 3'>Horticulture level 3</option>
+<option id='Hospitality level 2'>Hospitality level 2</option>
+<option id='Hospitality level 3'>Hospitality level 3</option>
+<option id='Hospitality Management level 4'>Hospitality Management level 4</option>
+<option id='Housing level 2'>Housing level 2</option>
+<option id='Housing level 3'>Housing level 3</option>
+<option id='Human Resource Management level 5'>Human Resource Management level 5</option>
+<option id='Improving Operational Performance level 2'>Improving Operational Performance level 2</option>
+<option id='Intelligence Operations level 4'>Intelligence Operations level 4</option>
+<option id='International Trade and Logistics Operations level 2'>International Trade and Logistics Operations level 2</option>
+<option id='IT Application Specialist level 2'>IT Application Specialist level 2</option>
+<option id='IT Application Specialist level 3'>IT Application Specialist level 3</option>
+<option id='IT, Software, Web & Telecoms Professionals level 2'>IT, Software, Web & Telecoms Professionals level 2</option>
+<option id='IT, Software, Web & Telecoms Professionals level 3'>IT, Software, Web & Telecoms Professionals level 3</option>
+<option id='IT, Software, Web & Telecoms Professionals level 4'>IT, Software, Web & Telecoms Professionals level 4</option>
+<option id='Jewellery, Silversmithing and Allied Trades level 2'>Jewellery, Silversmithing and Allied Trades level 2</option>
+<option id='Jewellery, Silversmithing and Allied Trades level 3'>Jewellery, Silversmithing and Allied Trades level 3</option>
+<option id='Journalism level 3'>Journalism level 3</option>
+<option id='Laboratory and Science Technicians level 2'>Laboratory and Science Technicians level 2</option>
+<option id='Laboratory and Science Technicians level 3'>Laboratory and Science Technicians level 3</option>
+<option id='Land-based Engineering level 2'>Land-based Engineering level 2</option>
+<option id='Land-based Engineering level 3'>Land-based Engineering level 3</option>
+<option id='Learning and Development level 3'>Learning and Development level 3</option>
+<option id='Legal Advice level 2'>Legal Advice level 2</option>
+<option id='Legal Advice level 3'>Legal Advice level 3</option>
+<option id='Legal Services level 3'>Legal Services level 3</option>
+<option id='Legal Services level 4'>Legal Services level 4</option>
+<option id='Leisure Operations and Leisure Management level 2'>Leisure Operations and Leisure Management level 2</option>
+<option id='Leisure Operations and Leisure Management level 3'>Leisure Operations and Leisure Management level 3</option>
+<option id='Libraries, Archives, Records and IM Services level 2'>Libraries, Archives, Records and IM Services level 2</option>
+<option id='Libraries, Archives, Records and IM Services level 3'>Libraries, Archives, Records and IM Services level 3</option>
+<option id='Licensed Hospitality  level 2'>Licensed Hospitality  level 2</option>
+<option id='Licensed Hospitality  level 3'>Licensed Hospitality  level 3</option>
+<option id='Life Sciences and Chemical Science Professionals level 4'>Life Sciences and Chemical Science Professionals level 4</option>
+<option id='Life Sciences and Chemical Science Professionals level 5'>Life Sciences and Chemical Science Professionals level 5</option>
+<option id='Live Events and Promotion level 2'>Live Events and Promotion level 2</option>
+<option id='Live Events and Promotion level 3'>Live Events and Promotion level 3</option>
+<option id='Logistics Operations level 2'>Logistics Operations level 2</option>
+<option id='Logistics Operations level 3'>Logistics Operations level 3</option>
+<option id='Management level 2'>Management level 2</option>
+<option id='Management level 3'>Management level 3</option>
+<option id='Management level 4'>Management level 4</option>
+<option id='Management level 5'>Management level 5</option>
+<option id='Manufacturing Engineering  level 4'>Manufacturing Engineering  level 4</option>
+<option id='Maritime Occupations level 2'>Maritime Occupations level 2</option>
+<option id='Maritime Occupations level 3'>Maritime Occupations level 3</option>
+<option id='Marketing level 2'>Marketing level 2</option>
+<option id='Marketing level 3'>Marketing level 3</option>
+<option id='Mineral Products Technology level 4'>Mineral Products Technology level 4</option>
+<option id='Mineral Products Technology level 5'>Mineral Products Technology level 5</option>
+<option id='Nail Services level 2'>Nail Services level 2</option>
+<option id='Nail Services level 3'>Nail Services level 3</option>
+<option id='Nursing Assistants in a Veterinary Environment  level 2'>Nursing Assistants in a Veterinary Environment  level 2</option>
+<option id='Operations and Quality Improvement level 3'>Operations and Quality Improvement level 3</option>
+<option id='Outdoor Programmes level 3'>Outdoor Programmes level 3</option>
+<option id='Passenger Carrying Vehicle Driving  level 2'>Passenger Carrying Vehicle Driving  level 2</option>
+<option id='Photo Imaging level 3'>Photo Imaging level 3</option>
+<option id='Playwork level 2'>Playwork level 2</option>
+<option id='Playwork level 3'>Playwork level 3</option>
+<option id='Plumbing and Heating  level 2'>Plumbing and Heating  level 2</option>
+<option id='Plumbing and Heating  level 3'>Plumbing and Heating  level 3</option>
+<option id='Policing level 3'>Policing level 3</option>
+<option id='Print and Printed Packaging level 2'>Print and Printed Packaging level 2</option>
+<option id='Print and Printed Packaging level 3'>Print and Printed Packaging level 3</option>
+<option id='Process Manufacturing level 2'>Process Manufacturing level 2</option>
+<option id='Process Manufacturing level 3'>Process Manufacturing level 3</option>
+<option id='Professional Development for Work Based Learning Practitioners level 4'>Professional Development for Work Based Learning Practitioners level 4</option>
+<option id='Professional Development for Work Based Learning Practitioners level 5'>Professional Development for Work Based Learning Practitioners level 5</option>
+<option id='Professional Services level 4'>Professional Services level 4</option>
+<option id='Project Management level 4'>Project Management level 4</option>
+<option id='Property Services level 2'>Property Services level 2</option>
+<option id='Property Services level 3'>Property Services level 3</option>
+<option id='Providing Financial Services level 2'>Providing Financial Services level 2</option>
+<option id='Providing Financial Services level 3'>Providing Financial Services level 3</option>
+<option id='Providing Security Services level 2'>Providing Security Services level 2</option>
+<option id='Public Relations level 4'>Public Relations level 4</option>
+<option id='Rail Engineering (Track) level 2'>Rail Engineering (Track) level 2</option>
+<option id='Rail Infrastructure Engineering level 3'>Rail Infrastructure Engineering level 3</option>
+<option id='Rail Services level 2'>Rail Services level 2</option>
+<option id='Rail Services level 3'>Rail Services level 3</option>
+<option id='Rail Traction and Rolling Stock Engineering level 3'>Rail Traction and Rolling Stock Engineering level 3</option>
+<option id='Recruitment level 2'>Recruitment level 2</option>
+<option id='Recruitment level 3'>Recruitment level 3</option>
+<option id='Recruitment level 4'>Recruitment level 4</option>
+<option id='Refrigeration and Air Conditioning level 2'>Refrigeration and Air Conditioning level 2</option>
+<option id='Refrigeration and Air Conditioning level 3'>Refrigeration and Air Conditioning level 3</option>
+<option id='Retail level 2'>Retail level 2</option>
+<option id='Retail level 3'>Retail level 3</option>
+<option id='Sales and Telesales level 2'>Sales and Telesales level 2</option>
+<option id='Sales and Telesales level 3'>Sales and Telesales level 3</option>
+<option id='Security Systems level 2'>Security Systems level 2</option>
+<option id='Security Systems level 3'>Security Systems level 3</option>
+<option id='Signmaking level 2'>Signmaking level 2</option>
+<option id='Signmaking level 3'>Signmaking level 3</option>
+<option id='Skills for Security level '>Skills for Security level </option>
+<option id='Smart Meter Installations (Dual Fuel) level 2'>Smart Meter Installations (Dual Fuel) level 2</option>
+<option id='Social Media and Digital Marketing level 3'>Social Media and Digital Marketing level 3</option>
+<option id='Social Media and Digital Marketing level 4'>Social Media and Digital Marketing level 4</option>
+<option id='Spectator Safety level 2'>Spectator Safety level 2</option>
+<option id='Spectator Safety level 3'>Spectator Safety level 3</option>
+<option id='Sporting Excellence level 3'>Sporting Excellence level 3</option>
+<option id='Sports Development  level 3'>Sports Development  level 3</option>
+<option id='Supply Chain Management  level 2'>Supply Chain Management  level 2</option>
+<option id='Supply Chain Management  level 3'>Supply Chain Management  level 3</option>
+<option id='Supply Chain Management  level 5'>Supply Chain Management  level 5</option>
+<option id='Supporting Teaching and Learning in Physical Education level 3'>Supporting Teaching and Learning in Physical Education level 3</option>
+<option id='Supporting Teaching and Learning in Schools level 2'>Supporting Teaching and Learning in Schools level 2</option>
+<option id='Supporting Teaching and Learning in Schools level 3'>Supporting Teaching and Learning in Schools level 3</option>
+<option id='Surveying level 3'>Surveying level 3</option>
+<option id='Sustainable Resource Management level 2'>Sustainable Resource Management level 2</option>
+<option id='Sustainable Resource Management level 3'>Sustainable Resource Management level 3</option>
+<option id='Sustainable Resource Operations and Management level 4'>Sustainable Resource Operations and Management level 4</option>
+<option id='Technical Theatre, Lighting, Sound and Stage level 2'>Technical Theatre, Lighting, Sound and Stage level 2</option>
+<option id='Technical Theatre, Lighting, Sound and Stage level 3'>Technical Theatre, Lighting, Sound and Stage level 3</option>
+<option id='The Gas Industry level 2'>The Gas Industry level 2</option>
+<option id='The Gas Industry level 3'>The Gas Industry level 3</option>
+<option id='The Power Industry  level 2'>The Power Industry  level 2</option>
+<option id='The Power Industry  level 3'>The Power Industry  level 3</option>
+<option id='The Water Industry level 2'>The Water Industry level 2</option>
+<option id='The Water Industry level 3'>The Water Industry level 3</option>
+<option id='The Water Industry level 4'>The Water Industry level 4</option>
+<option id='Trade Business Services level 2'>Trade Business Services level 2</option>
+<option id='Traffic Office level 2'>Traffic Office level 2</option>
+<option id='Traffic Office level 3'>Traffic Office level 3</option>
+<option id='Travel Services level 2'>Travel Services level 2</option>
+<option id='Travel Services level 3'>Travel Services level 3</option>
+<option id='Trees and Timber level 2'>Trees and Timber level 2</option>
+<option id='Trees and Timber level 3'>Trees and Timber level 3</option>
+<option id='Vehicle Body and Paint level 2'>Vehicle Body and Paint level 2</option>
+<option id='Vehicle Body and Paint level 3'>Vehicle Body and Paint level 3</option>
+<option id='Vehicle Fitting  level 2'>Vehicle Fitting  level 2</option>
+<option id='Vehicle Fitting  level 3'>Vehicle Fitting  level 3</option>
+<option id='Vehicle Maintenance and Repair  level 2'>Vehicle Maintenance and Repair  level 2</option>
+<option id='Vehicle Maintenance and Repair  level 3'>Vehicle Maintenance and Repair  level 3</option>
+<option id='Vehicle Parts  level 2'>Vehicle Parts  level 2</option>
+<option id='Vehicle Parts  level 3'>Vehicle Parts  level 3</option>
+<option id='Vehicle Restoration level 2'>Vehicle Restoration level 2</option>
+<option id='Vehicle Restoration level 3'>Vehicle Restoration level 3</option>
+<option id='Vehicle Sales  level 2'>Vehicle Sales  level 2</option>
+<option id='Vehicle Sales  level 3'>Vehicle Sales  level 3</option>
+<option id='Veterinary Nursing level 3'>Veterinary Nursing level 3</option>
+<option id='Warehousing and Storage level 2'>Warehousing and Storage level 2</option>
+<option id='Warehousing and Storage level 3'>Warehousing and Storage level 3</option>
+<option id='Youth Work level 2'>Youth Work level 2</option>
+  </optgroup>
+</select>                </div>
+                        <a class="show-more" href="#"><span>more filters</span></a>
+
+                                                <section class="hidden">
+
+                                                           <div class="form-group">
+                                                                   <legend>Apprenticeship types</legend><br>    
+                            <label class="block-label selection-button-radio" for="providers-all">
+                                <input id="providers-all" type="radio" name="provider-type" value="1" checked> Standards and Frameworks
+                            </label>
+                            <label class="block-label selection-button-radio" for="providers-national">
+                                <input id="providers-national" type="radio" name="provider-type" value="2"> Standards only
+                            </label>
+                            <label class="block-label selection-button-radio" for="providers-local">
+                                <input id="providers-local" type="radio" name="provider-type" value="3"> Frameworks only
+                            </label>
+                        </div>
+                        </section>
+
+                    </div>
+                </fieldset>
+
+                <a class="button">Update results</a>
+            </div>
+            <div class="column-two-thirds">
+                <form method="GET" id="search-results-order">
+                    <input type="hidden" name="Keywords" value="engineer">
+                    <input type="hidden" name="page" value="1">
+                    <input type="hidden" name="take" value="10">
+                    <div class="form-block">
+
+                        <div style="float: left;">
+                            <a class="hidden" href="#">List view</a>
+                            <a id="switchMap" href="/sprint/{{sprint}}/provider/results-map.html?usrLoc=basildon">Show on a map <i class="fa fa-map-o"></i></a>
+                        </div>
+
+                        <div style="float: right;">
+                            <label class="bold-small">Sort by</label>
+                            <select name="order" id="select-order" class="form-control form-control-1-3" style="width: 250px;">
+                                <option selected="selected" value="1">Best match</option>
+                                <option value="2">Closest first</option>
+                                <option value="3">Highest employer satisfaction</option>
+                                <option value="4">Highest achievement</option>
+                                <option value="4">Highest Ofsted rating</option>
+                            </select>
+                            <button type="submit" value="Sort" class="button sr-only secondary">Sort</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <ol id="provider-results" style="float: left; width: 100%;">
+                </ol>
+
+                <div id="pagedat" style="display: none;">
+
+                </div>
+
+
+                <div class="page-navigation">
+                    <a class="page-navigation__btn previous">
+                        <i class="arrow-button fa fa-angle-left"></i>
+                        <span class="description">Previous <span class="hide-mob">page</span></span>
+                        <span class="counter">Page <span class="prevPage"></span> of <span class="totalPage"></span></span>
+                    </a>
+
+
+
+                    <a style="" class="page-navigation__btn next">
+                        <i class="arrow-button fa fa-angle-right"></i>
+                        <span class="description">Next <span class="hide-mob">page</span></span>
+                        <span class="counter">Page <span class="nextPage"></span> of <span class="totalPage"></span></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- / #content -->
+{% endblock %}

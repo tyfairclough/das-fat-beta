@@ -1,0 +1,936 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+
+<!-- govuk_frontend_toolkit js -->
+<script src="/public/javascripts/vendor/polyfills/bind.js"></script>
+<script src="/public/javascripts/govuk/selection-buttons.js"></script>
+<script src="/public/javascripts/govuk/shim-links-with-button-role.js"></script>
+<script src="/public/javascripts/govuk/show-hide-content.js"></script>
+<script src="/public/javascripts/govuk/details.polyfill.js"></script>
+
+<script src="/public/javascripts/select2.min.js"></script>
+<script src="/public/javascripts/footable.min.js"></script>
+<script src="/public/javascripts/stackable.min.js"></script>
+<script src="/public/javascripts/jPages.min.js"></script>
+<script src="/public/javascripts/tinysort.min.js"></script>
+<script src="/public/javascripts/readmore.min.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+<link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.7/css/dataTables.checkboxes.css" rel="stylesheet" />
+<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.7/js/dataTables.checkboxes.min.js"></script>
+
+
+
+<script>
+/*
+ Sticky-kit v1.1.2 | WTFPL | Leaf Corcoran 2015 | http://leafo.net
+*/
+(function(){var b,f;b=this.jQuery||window.jQuery;f=b(window);b.fn.stick_in_parent=function(d){var A,w,J,n,B,K,p,q,k,E,t;null==d&&(d={});t=d.sticky_class;B=d.inner_scrolling;E=d.recalc_every;k=d.parent;q=d.offset_top;p=d.spacer;w=d.bottoming;null==q&&(q=0);null==k&&(k=void 0);null==B&&(B=!0);null==t&&(t="is_stuck");A=b(document);null==w&&(w=!0);J=function(a,d,n,C,F,u,r,G){var v,H,m,D,I,c,g,x,y,z,h,l;if(!a.data("sticky_kit")){a.data("sticky_kit",!0);I=A.height();g=a.parent();null!=k&&(g=g.closest(k));
+if(!g.length)throw"failed to find stick parent";v=m=!1;(h=null!=p?p&&a.closest(p):b("<div />"))&&h.css("position",a.css("position"));x=function(){var c,f,e;if(!G&&(I=A.height(),c=parseInt(g.css("border-top-width"),10),f=parseInt(g.css("padding-top"),10),d=parseInt(g.css("padding-bottom"),10),n=g.offset().top+c+f,C=g.height(),m&&(v=m=!1,null==p&&(a.insertAfter(h),h.detach()),a.css({position:"",top:"",width:"",bottom:""}).removeClass(t),e=!0),F=a.offset().top-(parseInt(a.css("margin-top"),10)||0)-q,
+u=a.outerHeight(!0),r=a.css("float"),h&&h.css({width:a.outerWidth(!0),height:u,display:a.css("display"),"vertical-align":a.css("vertical-align"),"float":r}),e))return l()};x();if(u!==C)return D=void 0,c=q,z=E,l=function(){var b,l,e,k;if(!G&&(e=!1,null!=z&&(--z,0>=z&&(z=E,x(),e=!0)),e||A.height()===I||x(),e=f.scrollTop(),null!=D&&(l=e-D),D=e,m?(w&&(k=e+u+c>C+n,v&&!k&&(v=!1,a.css({position:"fixed",bottom:"",top:c}).trigger("sticky_kit:unbottom"))),e<F&&(m=!1,c=q,null==p&&("left"!==r&&"right"!==r||a.insertAfter(h),
+h.detach()),b={position:"",width:"",top:""},a.css(b).removeClass(t).trigger("sticky_kit:unstick")),B&&(b=f.height(),u+q>b&&!v&&(c-=l,c=Math.max(b-u,c),c=Math.min(q,c),m&&a.css({top:c+"px"})))):e>F&&(m=!0,b={position:"fixed",top:c},b.width="border-box"===a.css("box-sizing")?a.outerWidth()+"px":a.width()+"px",a.css(b).addClass(t),null==p&&(a.after(h),"left"!==r&&"right"!==r||h.append(a)),a.trigger("sticky_kit:stick")),m&&w&&(null==k&&(k=e+u+c>C+n),!v&&k)))return v=!0,"static"===g.css("position")&&g.css({position:"relative"}),
+a.css({position:"absolute",bottom:d,top:"auto"}).trigger("sticky_kit:bottom")},y=function(){x();return l()},H=function(){G=!0;f.off("touchmove",l);f.off("scroll",l);f.off("resize",y);b(document.body).off("sticky_kit:recalc",y);a.off("sticky_kit:detach",H);a.removeData("sticky_kit");a.css({position:"",bottom:"",top:"",width:""});g.position("position","");if(m)return null==p&&("left"!==r&&"right"!==r||a.insertAfter(h),h.remove()),a.removeClass(t)},f.on("touchmove",l),f.on("scroll",l),f.on("resize",
+y),b(document.body).on("sticky_kit:recalc",y),a.on("sticky_kit:detach",H),setTimeout(l,0)}};n=0;for(K=this.length;n<K;n++)d=this[n],J(b(d));return this}}).call(this);
+</script>
+
+<script src="/public/javascripts/application.js"></script>
+
+
+<script src="/public/javascripts/aml.js" id="proData" xmldata="/public/javascripts/bk_proSource.xml "></script>
+
+<script>
+
+
+
+    
+		var script = document.createElement('script');
+        script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyA8291bnIVrC6Ev9hTQ_1jBh7VpvuAwW8A&callback=initialize";
+        document.body.appendChild(script);
+
+    // scripts.html
+
+    var infoWindows = new Array();
+    var mapMarkers = new Array();
+
+
+    // get variables
+    var i = 0;
+    var className = $("#content").attr('class');
+
+
+    //get url variables    
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+
+    // defines url variables as global vars 
+    var $distance = Number(getQueryVariable("WithinDistance"));
+    var $location = getQueryVariable("Location");
+    var $usrLoc = getQueryVariable("usrLoc");
+    var $levyPayer = getQueryVariable("levyPayer");
+    var $ignoreRadius = getQueryVariable("ignoreRadius");
+    var $proName = getQueryVariable("proName");
+    var $proOutput = "";
+    var $mapOutput = [[]];
+    var radiusDistance = localStorage.getItem("radius");
+
+    if (radiusDistance == null) {
+        var radiusDistance = 10;
+        localStorage.setItem("radius", radiusDistance);
+    }
+
+
+    // get local storage variables
+    var sessionState = JSON.parse(localStorage.getItem("sessionState"));
+
+    switch (className) {
+    case 'search-select':
+        searchSelect();
+        break;
+    case 'provider-detail-multiple':
+        providerDetailMultiple();
+        break;
+    case 'provider-start':
+        providerStart();
+        break;
+    case 'provider-detail-single':
+        providerDetailSingle();
+        break;
+    case 'provider-results-list':
+        providerResultsList();
+        break;
+    case 'provider-results-map':
+        providerResultsMap();
+        break;
+    case 'epa-results':
+        epaResults();
+        break;
+    case 'epa-results-2':
+        epaResults2();
+        break;
+    case 'assessor-detail':
+        assessorDetail();
+        break;
+    default:
+        break;
+    };
+    
+    
+    function assessorDetail(){
+   var table = $('table').DataTable({
+      'ajax': '/public/data/assessorStandards.json',
+       'ordering':false,
+       'searching':false,
+       'paging': false,
+         "info": false,
+       'lengthChange':false,
+       columnDefs: [
+            {
+                targets: 0,
+                className: 'hidden'
+            }
+        ],      'select': {
+         'style': 'compact'
+      },
+      'order': [[1, 'asc']]
+   });
+
+
+   // Handle form submission event
+   $('#frm-example').on('submit', function(e){
+      var form = this;
+
+      var rows_selected = table.column(0).checkboxes.selected();
+
+      // Iterate over all selected checkboxes
+      $.each(rows_selected, function(index, rowId){
+         // Create a hidden element
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'id[]')
+                .val(rowId)
+         );
+      });
+});        
+    }
+    
+    function epaResults2() {
+        //foo tables here
+        	$('table').footable();
+
+    }
+    
+    function epaResults() {
+        
+   var table = $('table').DataTable({
+      'ajax': '/public/data/apprentices.json',
+       'ordering':false,
+       'searching':false,
+       'paging': false,
+         "info": false,
+       'lengthChange':false,
+       columnDefs: [
+            {
+                targets: 0,
+                className: 'hidden'
+            }
+        ],      'select': {
+         'style': 'compact'
+      },
+      'order': [[1, 'asc']]
+   });
+
+
+   // Handle form submission event
+   $('#frm-example').on('submit', function(e){
+      var form = this;
+
+      var rows_selected = table.column(0).checkboxes.selected();
+
+      // Iterate over all selected checkboxes
+      $.each(rows_selected, function(index, rowId){
+         // Create a hidden element
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'id[]')
+                .val(rowId)
+         );
+      });
+});
+
+    }    
+    
+    
+    function affixSideBar() {    
+        $(".column-one-third").stick_in_parent();
+    }
+
+    function providerDetailSingle() {
+        $('article.markdown').readmore({
+            blockCSS: 'display: block; width: 100%'
+        });
+
+        $(".column-one-third").stick_in_parent();
+        
+        $('#providerCourses').footable({
+                "paging": {
+                    "enabled": true,
+                    "size":12
+                },
+                "columns": [
+                    {"breakpoints": ""},{"breakpoints": "xs"},{"breakpoints": ""},{"breakpoints": "all"},{"breakpoints": "all"},{"breakpoints": ""}
+                ],
+                "filtering": {
+                    "enabled": true
+                }
+            });
+        $("#providerLocationsTable").footable({
+                "paging": {
+                    "enabled": true,
+                    "size":12
+                },
+                "columns": [
+                    {"breakpoints": ""},{"breakpoints": "xs"},{"breakpoints": "all"},{"breakpoints": "all"},{"breakpoints": ""}
+                ],
+                "filtering": {
+                    "enabled": true
+                }
+        });
+    }
+
+    function providerResultsWorkFlow() {
+
+
+        $("#providerName").val(localStorage.getItem("queryProviderName"));
+        //$("#providerLocation").val(localStorage.getItem("queryproviderLocation"));
+        var levy = localStorage.getItem("queryLevy");
+
+        if (levy != "1") {
+            // set levy to yes
+            $('#levy-1').prop('checked', true).parent().addClass("selection-button-radio selected");
+
+        } else {
+            //set levy to no
+            $('#levy-2').prop('checked', true).parent().addClass("selection-button-radio selected");
+        }
+
+        var resultSet = localStorage.getItem("resultSet");
+
+        if (resultSet == "0") {
+            console.log("all levy providers")
+            var nationalCount = $(".national").len;
+        } else if (resultSet == "1") {
+            console.log("all non levy providers")
+        } else if (resultSet == "2") {
+            console.log("levy paying with a provider name")
+        } else if (resultSet == "3") {
+            console.log("levy payyign with location ")
+        } else if (resultSet == "4") {
+            console.log("levy with name and location")
+        } else if (resultSet == "5") {
+            console.log("non levy with name")
+        } else if (resultSet == "6") {
+            console.log("non levy with location");
+        } else if (resultSet == "7") {
+            console.log("non levy with name and location");
+        } else {
+            console.log("please choose if you pay the levy");
+        }
+
+        // hide national    
+        $("article.national").hide();
+        $("article.national").show();
+    }
+
+    function providerStart() {
+
+
+        $("#action").click(function(e){
+            e.preventDefault();
+            localStorage.setItem("providerName",$("#providerName").val());
+            localStorage.setItem("searchLocation",$("#providerLocation").val());
+            $proName = $("#providerName").val();
+            $providerLocation = $("#providerLocation").val();
+            
+            var state = $('input[name=levy-group]:checked').val();
+            if (state == "1") {
+                //window.location.href = "/sprint/{{sprint}}/course/index";
+            localStorage.setItem("levyPayer","1")
+                levyPayer = "1"
+            } else {
+            localStorage.setItem("levyPayer","2")
+                levyPayer = "2"
+            }   
+            
+            if ( $providerLocation != null ) {
+                $providerLocation = $("#providerLocation").val();                
+            } else {
+                $providerLocation = "uk"
+            }
+            
+            window.location.href = "/sprint/{{sprint}}/provider/results-list.html?levyPayer=" + levyPayer + "&usrLoc=" + $providerLocation + "&proName=" + $proName + "";                    
+            
+        });
+        };
+
+    function searchSelect() {
+        
+    $('.search-select').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            directUser();
+        }
+    });        
+        
+        $(".button").click(function (e) {
+            e.preventDefault();
+            directUser();
+        })
+        
+        function directUser(){
+            var state = $('input[name=radio-group]:checked').val();
+            if (state == "1") {
+                //window.location.href = "/sprint/{{sprint}}/course/index";
+                window.location.href = "https://findapprenticeshiptraining.sfa.bis.gov.uk/Apprenticeship/Search";
+            } else if (state == "2") {
+                window.location.href = "/sprint/{{sprint}}/provider/index";
+            } else {
+                window.location.href = "/sprint/{{sprint}}/assessor/index";
+            }            
+        }
+    }
+
+    function providerDetailMultiple() {
+
+        $("#map-tab").hide();
+        $(".course-index > a.map").click(function (e) {
+            e.preventDefault();
+            $("#alpha-tab").hide();
+            $("#map-tab").show();
+            $(".course-index .alphabetic").removeClass("active");
+            alert("map coming soon");
+        });
+    }
+
+    function providerResultsList() {
+        
+        
+        function reloadFilters() {
+            alert("feature not available in this prototype");
+        }
+        
+        $(".column-one-third a.button").click(function(e){
+            e.preventDefault();
+            reloadFilters();
+        });
+        
+        
+        $('#apprenticeshipName').select2();
+
+        $(".show-more").click(function(e){
+            e.preventDefault();
+            $(this).next().toggleClass("hidden");
+            if ( $(this).next().hasClass("hidden") ) {
+               $("span",this).html("more filters")                
+            } else {
+                $("span",this).html("hide filters")
+            }
+        })
+        
+        //GLOBAL VAR
+        var XMLSource = $('#proData').attr('xmlData');
+        var providerName = localStorage.getItem("providerName");
+        var providerLocation = localStorage.getItem("providerLocation");
+        var levyPayer = localStorage.getItem("levyPayer");
+        keyword = $proName;
+        //keyword = "COLLEGE";
+        //var catType = '';
+        //var stn = '';
+        //var frm = '';
+
+        var i = 0;
+        var msgPlural = 'are';
+
+        var paginateCount = 10;
+
+        var lat1 = "";
+        var lon1 = "";
+        var lat2 = "";
+        var lon2 = "";
+
+
+        var radiusDistance = localStorage.getItem("radius");
+
+        if (radiusDistance == null) {
+            radiusDistance = 50;
+            localStorage.setItem("radius", radiusDistance);
+        }
+        
+        if ($proName != "") {
+
+            $("#providerName").val($proName.replace(/%20/g, " "));
+        } else {
+            $("#providerName").val("Learndirect");
+        }        
+        
+        var $address = $usrLoc.replace(/%20/g, " ");;
+     
+
+
+        $.ajax({
+            url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
+            type: "POST",
+            success: function (res) {
+                //console.log(res.results[0].geometry.location.lat);
+                //console.log(res.results[0].geometry.location.lng);
+
+
+                lat1 = res.results[0].geometry.location.lat;
+                lon1 = res.results[0].geometry.location.lng;
+                //console.log(lat1);
+                console.log("search longditude: " + lon1, "latitude: " + lat1);
+                //var lat2 = 51.5073509;
+                //var lon2 = -0.1277583;  
+                //loadloc(lat1, lon1);
+                searchThis();
+            }
+        });
+
+
+        function feedbackMsg() {
+            var resultCount = $("ol li").length;
+            //console.log("result count: " + resultCount);
+            $("span.count").text(resultCount);
+            //$(".appName").text(Cookies.set("appName"));
+
+            if ( resultCount < 1 ) {
+                console.log("no results found");
+                $(".page-navigation").hide();
+                $("#provider-results").html("<span class='bold-small'>No results, please found try again</a></span>");
+            }
+
+
+            $("#providerLocation").val($address);
+            
+                  if ( $address == "uk") {
+            $(".distance").hide();
+        }
+            
+            console.log("done");
+        }
+
+        function searchThis() {
+            $.ajax({
+                type: "GET",
+                url: XMLSource,
+                dataType: "xml",
+                success: function (xml) {
+                    loadproviders(xml)
+                },
+                error: function (request, error) {
+                    console.log("theres been an error in searchThisList: " + arguments);
+                    //alert(" Can't do because: " + error);
+                }
+            });
+        }
+
+				function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = deg2rad(lat2 - lat1); // deg2rad below
+            var dLon = deg2rad(lon2 - lon1);
+            var a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d;
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180)
+        }
+
+        
+
+        
+        
+        function loadproviders(xmlData) {
+
+            i = 0;
+            var row;
+            var searchExp = "";
+
+            $(xmlData).find('pro').each(function () {
+
+                var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
+                //console.log(PROVIDER_ID);
+                var UKPRN = $(this).find('UKPRN').text();
+                var PROVIDER_TYPE_ID = $(this).find('PROVIDER_TYPE_ID').text();
+                var EMAIL = $(this).find('EMAIL').text();
+                var WEBSITE = $(this).find('WEBSITE').text();
+                var PHONE = $(this).find('PHONE').text();
+                var FAX = $(this).find('FAX').text();
+                var Name = $(this).find('Name').text();
+                var Address = $(this).find('Address').text();
+                var appCat = $(this).find('appCat').text();
+                var RatingType = "";
+                var Rating = "";
+                
+                var random_boolean = Math.random() >= 0.5;
+//                console.log(random_boolean)
+                var levyOnly;
+            if ( $(this).find('Ofsted') != null ) {
+                RatingType = "Ofsted";
+                Rating = $(this).find('Ofsted').text();
+                
+                
+switch (Rating) {
+    case '1':
+        Rating = "Outstanding"
+        break;
+    case '2':
+        Rating = "Good"
+        break;
+    case '3':
+        Rating = "Needs improvment"
+        break;
+    case '2':
+        Rating = "Close that place down yo"
+        break;
+    case '1':
+        Rating = "3 Mile island candidate"
+        break;
+        default:
+        break;
+}               
+            } else if ( $(this).find('Tef') != null ) {
+                RatingType = "Tef";
+                Rating = $(this).find('Tef').text();
+            } else {
+                RatingType = "";
+                Rating = "Rating coming soon&hellip;";
+            }
+
+                if ( random_boolean == true ) {
+//                    levyOnly = "<div class='levyOnly'>This provider cannot work with non-levy paying organisations</div>";
+                    levyOnly = "<dt class='levyOnly'>Works with non-levy payers</dt><dd class='levyOnly'>No</dd>";
+                } else {
+                    levyOnly = "<dt class='levyOnly'>Works with non-levy payers</dt><dd class='levyOnly'>Yes</dd>";
+                }
+                
+                
+                // co-ordinates
+                var LatLong = $(this).find('LatLong').text();
+                LatLong = LatLong.replace(/[\(\)]/g, '').split(',');
+                var lat2 = LatLong[0];
+                var lon2 = LatLong[1];
+                var satisfaction = Math.round(Math.random() * 30) + 70;
+                var achievement = Math.round(Math.random() * 30) + 70;
+                var cousrsecount = Math.round(Math.random() * 30) + 10;
+                var distance = getDistanceFromLatLonInKm(lat1, lon2, lat2, lon2).toFixed(1);
+                                
+                var exp = new RegExp(keyword, "gi");
+                searchExp = Name.match(exp);
+                //searchExp = Name.match("learndirect");
+                
+                //console.log("search term: " + searchExp);
+                
+
+                if (searchExp != null ) {
+                
+                $proOutput += "<li id='" + PROVIDER_ID + "' class='result'>";
+                $proOutput += "<div class='column details'>";
+                $proOutput += "<h2 class='heading-medium'><a href='/sprint/{{sprint}}/provider/detail-single.html'class='proName'>" + Name + "</a></h2>";
+                $proOutput += "<dl class='result-data-list'><dt class='distance'>Distance</dt>";
+                $proOutput += "<dd class='distance' data-distance=" + distance + ">" + distance + " km</dd>";
+                $proOutput += "<dd class='address'><address>" + Address + "</address></dd>";
+                $proOutput += "<dt class='rating'><span class='type'>" + RatingType + "</span></dt>";
+                $proOutput += "<dd class='rating'>" + Rating + "</dd>";
+                $proOutput += "<dt class='courses'>Apprenticeships provided</dt>";
+                $proOutput += "<dd class='courses' data-count=" + cousrsecount + ">" + cousrsecount + "</dd>";
+                $proOutput += "<dt class='satisfaction'>Employer satisfaction</dt>";
+                $proOutput += "<dd class='satisfaction' data-satisfaction=" + satisfaction + ">" + satisfaction + "%</dd>";
+             //   $proOutput += "<dt class='achievement'>Averaged achievement rate</dt>";
+             //   $proOutput += "<dd class='achievement' data-achievement=" + achievement + ">" + achievement + "%</dd>";
+                $proOutput += levyOnly;
+                $proOutput += "</dl></div>";
+                $proOutput += "</li>";
+                $proOutput += ""
+                };
+            });
+
+            
+            showProviders($proOutput);
+
+            
+            
+            
+        };
+    
+
+
+
+        function showProviders($proOutput) {
+	        
+            $("#provider-results").html($proOutput);
+
+            feedbackMsg();
+            paginateDat(paginateCount);
+            affixSideBar();
+            //shortlist();
+            sortResults();
+
+            initialize();
+
+            $(".proName").click(function (e) {
+                var proId = $(this).parent().parent().parent().attr("id");
+                e.preventDefault();
+                location.replace("/sprint/{{sprint}}/provider/detail-single.html?proId=" + proId);
+                localStorage.setItem("providerName", proId);
+            });
+        };
+
+        //
+        // Pagination
+        //
+        function paginateDat(paginateCount) {
+            //$(".page-navigation__btn.previous").css("visibility","hidden");
+            //$("ol li").hide();
+            //$("ol#standard-results li:lt(" + paginateCount + ")").show();
+            //$("ol#framework-results li:lt(" + paginateCount + ")").show();
+            $("#pagedat").jPages({
+                containerID: "provider-results",
+                perPage: paginateCount,
+                animation: "none",
+                first: false,
+                previous: "a.previous",
+                next: "a.next",
+                last: false,
+                midRange: 0,
+                callback: function (pages, items) {
+                    $(".totalPage").html(pages.count);
+                    $(".prevPage").html((pages.current) - 1);
+                    $(".nextPage").html((pages.current) + 1);
+                    $("html, body").animate({
+                        scrollTop: 0
+                    }, "slow");
+                }
+            });
+
+
+        }
+
+
+        //tiny sort options
+        
+        function sortResults() {
+            if ( localStorage.getItem("searchLocation") != "uk") {
+                tinysort('#provider-results li', {
+                    selector: 'dd.distance',
+                    data: 'distance',
+                    order: 'asc'
+                });
+            } else {
+                tinysort('#provider-results li', {
+                    selector: 'dd.achievement',
+                    data: 'achievement',
+                    order: 'desc'
+                });
+            }
+        }
+
+        $('#select-order').on('change', function () {
+            //alert( this.value );
+
+            if (this.value == 2) {
+                // closest first
+                tinysort('#provider-results li', {
+                    selector: 'dd.distance',
+                    data: 'distance',
+                    order: 'asc'
+                });
+            } else if (this.value == 3) {
+                // satisfaction
+                tinysort('#provider-results li', {
+                    selector: 'dd.satisfaction',
+                    data: 'satisfaction',
+                    order: 'desc'
+                });
+            } else if (this.value == 4) {
+                // achievement
+                tinysort('#provider-results li', {
+                    selector: 'dd.achievement',
+                    data: 'achievement',
+                    order: 'desc'
+                });
+            } else {
+                tinysort('#provider-results li', {
+                    selector: 'dd.distance',
+                    data: 'distance',
+                    order: 'asc'
+                });
+            }
+        })
+
+
+        $('#select-distance').on('change', function () {
+
+            radiusDistance = this.value;
+            localStorage.setItem("radius", radiusDistance);
+            //searchThis();
+            location.reload();
+        });
+
+        $("#select-distance").val(localStorage.getItem("radius"));
+
+    }
+    
+     var paginateCount = 10;
+
+    var lat1 = "";
+    var lon1 = "";
+    var lat2 = "";
+    var lon2 = "";
+
+    function providerResultsMap() {
+	    
+        $("body").addClass("fluid-width");
+        var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        var brandHeight = $("#global-header").height();
+        var navHeight = $("#loggedIn").height();
+        var mapSearchHeight = $("#map-search .wrapper").height();
+        var footerHeight = $("#map-search footer").height();
+        var bodyHeight = viewportHeight - brandHeight - navHeight - mapSearchHeight - footerHeight - 34;
+        $("#map-search aside, #map-search #map").height(bodyHeight);
+        
+		    if ($usrLoc != "") {
+		        $("#location").val($usrLoc.replace(/%20/g, " "));
+		    } else {
+		        $("#location").val("");
+		    }
+		
+		    if ($proName != "") {
+		        $("#name").val($proName.replace(/%20/g, " "));
+		    } else {
+		        $("#name").val("");
+		    }
+		
+		    if ($levyPayer == 1) {
+		        $("input[name=levy-group][value='1']").attr('checked', 'checked').parent().addClass("selected");
+		    } else {
+		        $("input[name=levy-group][value='2']").attr('checked', 'checked').parent().addClass("selected");
+		    }
+    
+
+		
+		    $.ajax({
+		        url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + $usrLoc + "%20UK&sensor=false",
+		        type: "POST",
+		        success: function (res) {
+			        console.log(res);
+		            lat1 = res.results[0].geometry.location.lat;
+		            lon1 = res.results[0].geometry.location.lng;
+		            searchMap();
+		        }
+		    });
+		}
+    
+    
+    //GLOBAL VAR
+    var XMLSource = $('#proData').attr('xmlData');
+
+    function searchMap() {
+        $.ajax({
+            type: "GET",
+            url: XMLSource,
+            dataType: "xml",
+            success: function (xml) {
+                loadMap(xml)
+            },
+            error: function (request, error) {
+                console.log("theres been an error in searchMap: " + arguments);
+            }
+        });
+    }
+
+	     
+   function distanceFromTo (lat1, lon1, lat2, lon2) {
+	      var p = 0.017453292519943295; // Math.PI / 180
+	      var c = Math.cos;
+	      var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+	          c(lat1 * p) * c(lat2 * p) *
+	          (1 - c((lon2 - lon1) * p)) / 2;
+	
+	      return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+	  }
+	  
+	  
+				  
+    function loadMap(xmlData) {
+
+        $(xmlData).find('pro').each(function (i) {
+
+            var PROVIDER_ID = $(this).find('PROVIDER_ID').text();
+            var UKPRN = $(this).find('UKPRN').text();
+            var WEBSITE = $(this).find('WEBSITE').text();
+            var PHONE = $(this).find('PHONE').text();
+            var Name = $(this).find('Name').text();
+            var Address = $(this).find('Address').text();
+
+            // co-ordinates
+            var LatLong = $(this).find('LatLong').text();
+            LatLong = LatLong.split(',');
+            var lat2 = LatLong[0];
+            var lon2 = LatLong[1];
+
+            var satisfaction = Math.round(Math.random() * 30) + 70;
+            var achievement = Math.round(Math.random() * 30) + 70;
+
+            var item = new Array();
+            
+            item = ["'" + Name + "'", lat2, lon2];
+
+            var distance = distanceFromTo(lat1, lon2, lat2, lon2);
+            
+            if (distance < radiusDistance) {
+                mapMarkers.push(item);
+                infoWindows.push(["<div class='info_content'><h3>" + Name + "</h3><p>" + Address + "</p><a href='/sprint/{{sprint}}/provider/detail-single.html?proId=" + PROVIDER_ID + ">Details</a></div>"]);
+
+          	}
+        });
+
+				showTheMaps();
+      
+    };
+
+
+
+
+
+    // Google Maps initialize
+
+		function initialize() {
+			return false;
+		}
+
+
+    function showTheMaps() {
+        //console.log(mapMarkers);
+        var map;
+        var bounds = new google.maps.LatLngBounds();
+        var mapOptions = {
+            mapTypeId: 'roadmap'
+        };
+
+        // Display a map on the page
+        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        map.setTilt(45);
+
+        var markers = [
+        ['London Eye, London', 51.503454, -0.119562],
+        ['Palace of Westminster, London', 51.499633, -0.124755]
+    ];
+
+        console.log(markers);
+        console.log(mapMarkers);
+
+        markers = mapMarkers;
+
+
+        // Info Window Content
+        var infoWindowContent = [
+        ['<div class="info_content">' +
+        '<h3>London Eye</h3>' +
+        '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' + '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Palace of Westminster</h3>' +
+        '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +
+        '</div>']
+    ];
+
+        infoWindowContent = infoWindows;
+
+
+        // Display multiple markers on a map
+        var infoWindow = new google.maps.InfoWindow(),
+            marker, i;
+
+        // Loop through our array of markers & place each one on the map  
+        for (i = 0; i < markers.length; i++) {
+            var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            bounds.extend(position);
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: markers[i][0]
+            });
+
+            // Allow each marker to have an info window    
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infoWindow.setContent(infoWindowContent[i][0]);
+                    infoWindow.open(map, marker);
+                }
+            })(marker, i));
+
+
+            // Automatically center the map fitting all markers on the screen
+            map.fitBounds(bounds);
+        }
+
+    }
+</script>
